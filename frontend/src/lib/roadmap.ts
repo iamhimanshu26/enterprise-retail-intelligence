@@ -21,14 +21,14 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     title: 'Enterprise Dashboard',
     description: 'Executive KPI views, workspace switching, and premium dashboard layouts.',
     technologies: ['React', 'TanStack Query', 'Recharts'],
-    status: 'locked',
+    status: 'completed',
   },
   {
     phase: 2,
     title: 'Backend APIs',
     description: 'RESTful domain APIs for sales, inventory, customers, and suppliers.',
     technologies: ['Spring Boot', 'JPA', 'OpenAPI'],
-    status: 'locked',
+    status: 'current',
   },
   {
     phase: 3,
@@ -116,4 +116,4 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
   },
 ]
 
-export const CURRENT_PHASE = 0
+export const CURRENT_PHASE = 1

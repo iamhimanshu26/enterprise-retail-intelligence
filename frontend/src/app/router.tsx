@@ -1,11 +1,32 @@
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { AppShell } from '@/components/design-system'
+import { AppShell, CardSkeleton } from '@/components/design-system'
 import { LoginPage } from '@/features/auth/LoginPage'
 import { LandingPage } from '@/features/landing/LandingPage'
-import { ExecutiveDashboard } from '@/features/dashboard/ExecutiveDashboard'
-import { EngineeringArchitecture } from '@/features/engineering/EngineeringArchitecture'
 import { PlaceholderPage } from '@/features/placeholder/PlaceholderPage'
 import { useAuthStore } from '@/stores/authStore'
+
+const ExecutiveDashboard = lazy(() =>
+  import('@/features/dashboard/ExecutiveDashboard').then((m) => ({
+    default: m.ExecutiveDashboard,
+  })),
+)
+
+const EngineeringArchitecture = lazy(() =>
+  import('@/features/engineering/EngineeringArchitecture').then((m) => ({
+    default: m.EngineeringArchitecture,
+  })),
+)
+
+function DashboardFallback() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <CardSkeleton key={i} />
+      ))}
+    </div>
+  )
+}
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
@@ -51,7 +72,14 @@ export function AppRouter() {
           </ProtectedRoute>
         }
       >
-        <Route index element={<ExecutiveDashboard />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <ExecutiveDashboard />
+            </Suspense>
+          }
+        />
         <Route path="sales" element={<PlaceholderPage navId="sales-intelligence" />} />
         <Route path="inventory" element={<PlaceholderPage navId="inventory-intelligence" />} />
         <Route path="customers" element={<PlaceholderPage navId="customer-analytics" />} />
@@ -62,7 +90,14 @@ export function AppRouter() {
         <Route path="generator" element={<PlaceholderPage navId="synthetic-data-generator" />} />
         <Route path="pipeline" element={<PlaceholderPage navId="pipeline-monitor" />} />
         <Route path="insights" element={<PlaceholderPage navId="business-insights" />} />
-        <Route path="engineering" element={<EngineeringArchitecture />} />
+        <Route
+          path="engineering"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <EngineeringArchitecture />
+            </Suspense>
+          }
+        />
         <Route path="settings" element={<PlaceholderPage navId="system-settings" />} />
       </Route>
 

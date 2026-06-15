@@ -4,7 +4,7 @@
 
 A production-quality microservices platform demonstrating full-stack engineering, data pipelines, business intelligence, statistics, and demand forecasting — architected for Fortune 500 retail scale.
 
-[![Phase](https://img.shields.io/badge/Phase-0%20Complete-success)](/)
+[![Phase](https://img.shields.io/badge/Phase-1%20Complete-success)](/)
 [![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
 
@@ -252,7 +252,7 @@ Manifests in `k8s/` provide deployment templates for frontend, backend, data ser
 | **13** | Monitoring & Observability | Distributed tracing, logging, and SLA dashboards |
 | **14** | Portfolio Polish | Final UX, documentation, demos, and hardening |
 
-**Current:** Phase 0 complete · **Next:** Phase 1 — Enterprise Dashboard
+**Current:** Phase 1 complete · **Next:** Phase 2 — Backend APIs
 
 ---
 

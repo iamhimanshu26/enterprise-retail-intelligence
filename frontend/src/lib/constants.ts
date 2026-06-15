@@ -34,7 +34,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/',
     icon: LayoutDashboard,
     description: 'High-level KPIs and executive insights',
-    phase: 0,
+    phase: 1,
   },
   {
     id: 'sales-intelligence',

@@ -8,7 +8,32 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Phase 0 complete — enterprise foundation, design system, authentication shell, and navigation for all planned modules.
+**Current status:** Phase 1 complete — executive dashboard with live mock KPIs, charts, rankings, alerts, and workspace-aware filters.
+
+---
+
+## Phase 1 — Executive Dashboard ✅
+
+The executive dashboard delivers a full enterprise BI experience using mock data architected for future API swap:
+
+- **8 global KPIs** — revenue, orders, customers, stores, products, margin, inventory, growth
+- **7 interactive charts** — Recharts-powered trend, sales, category, store, customer, regional, and inventory views
+- **Executive summary** — AI-ready summary panel with key highlights
+- **Regional performance** — top, lowest, fastest-growing, and highest-profit regions
+- **Top products & store rankings** — sortable, filterable tables
+- **Business alerts & activity feed** — severity-coded alerts and timeline events
+- **Dashboard filters** — date range, region, store, category (mock-aware)
+- **Mock data layer** — `src/data/mock/` with TanStack Query hook for API-ready integration
+
+### Screenshot Placeholders
+
+| File | Section |
+|------|---------|
+| `docs/screenshots/dashboard.png` | Full executive dashboard |
+| `docs/screenshots/kpi-section.png` | Global KPI cards |
+| `docs/screenshots/charts.png` | Analytics chart grid |
+| `docs/screenshots/rankings.png` | Product & store tables |
+| `docs/screenshots/alerts.png` | Business alerts panel |
 
 ---
 
@@ -34,6 +59,7 @@ The frontend is a production-quality single-page application built for Fortune 5
 | Client State | Zustand |
 | HTTP | Axios |
 | Animation | Framer Motion |
+| Charts | Recharts |
 | Icons | Lucide React |
 
 ---
@@ -47,13 +73,15 @@ frontend/
 │   ├── app/                 # App shell, router, providers
 │   ├── components/
 │   │   ├── design-system/   # Reusable enterprise UI components
-│   │   └── error-boundary/  # Global error handling
+│   │   └── analytics/       # KPI, chart, alert, ranking components
+│   ├── data/
+│   │   └── mock/            # Mock datasets (dashboard, sales, stores, products)
 │   ├── features/            # Feature-based page modules
 │   │   ├── auth/            # Login & authentication layout
-│   │   ├── dashboard/       # Executive dashboard
+│   │   ├── dashboard/       # Executive dashboard + chart components
 │   │   ├── engineering/     # Architecture documentation portal
-│   │   and placeholder/     # Future module placeholders
-│   ├── layouts/             # Dashboard and auth layouts
+│   │   └── placeholder/     # Future module placeholders
+│   ├── hooks/               # TanStack Query hooks
 │   ├── lib/                 # API client, constants, utilities
 │   ├── stores/              # Zustand state stores
 │   ├── styles/              # Design tokens and global CSS

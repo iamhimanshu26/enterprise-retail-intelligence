@@ -97,7 +97,7 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onMobileClose }
         {!collapsed && (
           <div className="border-t border-sidebar-border p-4">
             <div className="rounded-lg bg-sidebar-accent/50 p-3">
-              <p className="text-xs font-medium text-sidebar-foreground">Phase 0 — Foundation</p>
+              <p className="text-xs font-medium text-sidebar-foreground">Phase 1 — Dashboard</p>
               <p className="mt-1 text-[10px] text-sidebar-muted">
                 Enterprise architecture ready for scale
               </p>
