@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   BarChart3,
@@ -11,8 +11,10 @@ import {
   Shield,
   Sparkles,
   TrendingUp,
+  UserCircle,
   Zap,
 } from 'lucide-react'
+import { ThemeToggle } from '@/components/design-system/ThemeToggle'
 import { useAuthStore } from '@/stores/authStore'
 import { APP_NAME, APP_TAGLINE, DEMO_CREDENTIALS } from '@/lib/constants'
 import { cn } from '@/lib/cn'
@@ -44,6 +46,17 @@ export function LoginPage() {
       } else {
         setError('Invalid credentials. Use the demo account below.')
       }
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleDemoLogin() {
+    setError('')
+    setLoading(true)
+    try {
+      const success = await login(DEMO_CREDENTIALS.email, DEMO_CREDENTIALS.password)
+      if (success) navigate('/')
     } finally {
       setLoading(false)
     }
@@ -122,7 +135,10 @@ export function LoginPage() {
       </div>
 
       {/* Login card */}
-      <div className="flex flex-1 items-center justify-center p-6 sm:p-10">
+      <div className="relative flex flex-1 flex-col items-center justify-center p-6 sm:p-10">
+        <div className="absolute right-4 top-4 sm:right-6 sm:top-6">
+          <ThemeToggle />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -213,6 +229,16 @@ export function LoginPage() {
                   'Continue to dashboard'
                 )}
               </button>
+
+              <button
+                type="button"
+                disabled={loading}
+                onClick={handleDemoLogin}
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-60"
+              >
+                <UserCircle className="h-4 w-4" />
+                Continue as Demo
+              </button>
             </form>
           </div>
 
@@ -223,6 +249,12 @@ export function LoginPage() {
             <p className="mt-2 font-mono text-xs text-foreground">{DEMO_CREDENTIALS.email}</p>
             <p className="font-mono text-xs text-foreground">{DEMO_CREDENTIALS.password}</p>
           </div>
+
+          <p className="mt-4 text-center text-xs text-muted-foreground">
+            <Link to="/welcome" className="font-medium text-primary hover:underline">
+              Explore platform overview
+            </Link>
+          </p>
         </motion.div>
       </div>
     </div>

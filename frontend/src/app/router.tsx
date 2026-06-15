@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@/components/design-system'
 import { LoginPage } from '@/features/auth/LoginPage'
+import { LandingPage } from '@/features/landing/LandingPage'
 import { ExecutiveDashboard } from '@/features/dashboard/ExecutiveDashboard'
 import { EngineeringArchitecture } from '@/features/engineering/EngineeringArchitecture'
 import { PlaceholderPage } from '@/features/placeholder/PlaceholderPage'
@@ -25,6 +26,15 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 export function AppRouter() {
   return (
     <Routes>
+      <Route
+        path="/welcome"
+        element={
+          <PublicRoute>
+            <LandingPage />
+          </PublicRoute>
+        }
+      />
+
       <Route
         path="/login"
         element={

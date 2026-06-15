@@ -158,7 +158,15 @@ npx vercel --prod
 
 ---
 
-## Future Roadmap
+## Phase 0.5 Features
+
+- Public landing page at `/welcome`
+- Command palette (`⌘K` / `Ctrl+K`) for module navigation
+- One-click **Continue as Demo** on login
+- System health widget on executive dashboard
+- Reusable analytics placeholder components in `src/components/analytics/`
+
+---
 
 | Phase | Module |
 |-------|--------|

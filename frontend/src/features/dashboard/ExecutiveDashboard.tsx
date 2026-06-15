@@ -1,13 +1,13 @@
 import {
   Breadcrumb,
-  CardSkeleton,
   DataTable,
   DateRangeSelector,
-  EmptyState,
   MetricCard,
   SectionContainer,
   StatusBadge,
+  SystemHealthWidget,
 } from '@/components/design-system'
+import { ChartContainer } from '@/components/analytics'
 import { DollarSign, Package, ShoppingCart, Sparkles, Users } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -72,9 +72,9 @@ export function ExecutiveDashboard() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <SectionContainer title="Revenue Overview" description="Interactive charts coming in Phase 6.">
-          <EmptyState
-            title="Analytics Not Yet Available"
-            description="Revenue visualization will be enabled once the ETL pipeline and analytics engine are implemented in future phases."
+          <ChartContainer
+            title="Revenue Trend"
+            description="Placeholder for future analytics visualization"
           />
         </SectionContainer>
 
@@ -95,12 +95,8 @@ export function ExecutiveDashboard() {
         </SectionContainer>
       </div>
 
-      <SectionContainer title="System Status" description="Platform foundation services.">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-        </div>
+      <SectionContainer title="System Status" description="Platform foundation services and future modules.">
+        <SystemHealthWidget />
       </SectionContainer>
     </div>
   )

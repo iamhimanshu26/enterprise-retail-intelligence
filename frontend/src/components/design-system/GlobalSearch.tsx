@@ -3,12 +3,14 @@ import { cn } from '@/lib/cn'
 
 interface GlobalSearchProps {
   className?: string
+  onClick?: () => void
 }
 
-export function GlobalSearch({ className }: GlobalSearchProps) {
+export function GlobalSearch({ className, onClick }: GlobalSearchProps) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className={cn(
         'flex h-9 w-full max-w-sm items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted/60',
         className,

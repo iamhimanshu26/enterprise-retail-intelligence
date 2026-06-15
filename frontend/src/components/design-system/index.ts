@@ -1,5 +1,7 @@
 export { AppShell } from './AppShell'
 export { AppSplash } from './AppSplash'
+export { CommandPalette, useCommandPalette } from './CommandPalette'
+export { SystemHealthWidget } from './SystemHealthWidget'
 export { ArchitectureTimeline } from './ArchitectureTimeline'
 export { Sidebar } from './Sidebar'
 export { TopNav } from './TopNav'
