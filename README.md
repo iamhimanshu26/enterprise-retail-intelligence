@@ -134,7 +134,32 @@ cd frontend && npm run dev
 
 ---
 
-## Vercel Deployment (Frontend)
+## Authentication & Full Deploy
+
+Run this **once** in your macOS Terminal (outside Cursor sandbox) to authenticate Docker + Vercel and start all services:
+
+```bash
+cd /Users/iamhimanshusharma/Projects/enterprise-retail-intelligence
+chmod +x scripts/auth-and-deploy.sh
+./scripts/auth-and-deploy.sh
+```
+
+This script will:
+
+1. Start **Docker Desktop** and wait for the daemon
+2. Copy `.env` files from examples
+3. Run **`docker compose up --build -d`** (PostgreSQL, Spring Boot, FastAPI, frontend)
+4. Open **Vercel login** in your browser (GitHub/Google/email)
+5. Build and **deploy frontend to Vercel production**
+
+Alternatively, set a Vercel token to skip interactive login:
+
+```bash
+export VERCEL_TOKEN='your-token-from-vercel.com/account/settings/tokens'
+./scripts/auth-and-deploy.sh
+```
+
+---
 
 The frontend is deployed independently from the monorepo. Vercel serves the enterprise UI shell (login, dashboard, Engineering Architecture, and all placeholder modules).
 
