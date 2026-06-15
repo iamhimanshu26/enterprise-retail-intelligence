@@ -104,7 +104,7 @@ echo "  Local Docker:"
 echo "    Frontend:     http://localhost:5173"
 echo "    Backend:      http://localhost:8080"
 echo "    Data Service: http://localhost:8000"
-echo "    PostgreSQL:   localhost:5432"
+echo "    PostgreSQL:   localhost:5433"
 echo ""
 if [[ -n "$DEPLOY_URL" ]]; then
   echo "  Vercel Production: $DEPLOY_URL"

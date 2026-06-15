@@ -110,7 +110,7 @@ Stop all services:
 | Swagger UI | http://localhost:8080/swagger-ui.html |
 | Data Service | http://localhost:8000 |
 | Data Service Docs | http://localhost:8000/docs |
-| PostgreSQL | localhost:5432 |
+| PostgreSQL | localhost:5433 |
 
 **Demo Login:** `executive@retailcorp.com` / `Enterprise2026!`
 

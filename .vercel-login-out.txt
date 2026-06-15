@@ -1,0 +1,11 @@
+Vercel CLI 54.14.0 (Node.js 26.0.0)
+(node:89538) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Error: An unexpected error occurred in login: FetchError: request to https://vercel.com/.well-known/openid-configuration failed, reason: getaddrinfo ENOTFOUND vercel.com
+Error: Failed to get package info: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'registry.npmjs.org'
+}
