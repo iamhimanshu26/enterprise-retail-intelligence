@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border/60 shadow-sm;
+  }
+
+  .gradient-surface {
+    background: linear-gradient(
+      135deg,
+      var(--color-surface-elevated) 0%,
+      var(--color-surface) 100%
+    );
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-accent) 100%
+    );
+  }
+}

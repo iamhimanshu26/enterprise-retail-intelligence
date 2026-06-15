@@ -1,0 +1,4 @@
+-- Future database migrations will be placed here starting in Phase 1.
+-- Phase 0 uses only database/init/01-init.sql via Docker Compose entrypoint.
+--
+-- Planned migration tooling: Flyway (backend) or Alembic (Python data service)

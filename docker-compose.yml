@@ -1,0 +1,85 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: retail-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: retail_intelligence
+      POSTGRES_USER: retail_admin
+      POSTGRES_PASSWORD: retail_secure_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    networks:
+      - retail-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U retail_admin -d retail_intelligence"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend-springboot
+      dockerfile: Dockerfile
+    container_name: retail-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/retail_intelligence
+      DATABASE_USERNAME: retail_admin
+      DATABASE_PASSWORD: retail_secure_pass
+      JWT_SECRET: enterprise-retail-intelligence-jwt-secret-key-phase-0-minimum-256-bits-required
+      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost:3000,http://frontend
+      DATA_SERVICE_URL: http://data-service:8000
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - retail-network
+
+  data-service:
+    build:
+      context: ./data-service-python
+      dockerfile: Dockerfile
+    container_name: retail-data-service
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://retail_admin:retail_secure_pass@postgres:5432/retail_intelligence
+      BACKEND_URL: http://backend:8080
+      CORS_ORIGINS: '["http://localhost:5173","http://localhost:8080","http://frontend"]'
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - retail-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8080
+        VITE_DATA_SERVICE_URL: http://localhost:8000
+    container_name: retail-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+      - data-service
+    networks:
+      - retail-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  retail-network:
+    driver: bridge
