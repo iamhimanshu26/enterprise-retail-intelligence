@@ -17,7 +17,7 @@ export function MetricCard({ label, value, change, trend = 'neutral', className,
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className={cn(
-        'glass-panel rounded-xl p-5 transition-shadow hover:shadow-md',
+        'rounded-xl border border-border/80 bg-card p-5 shadow-sm transition-all duration-300 hover:border-primary/15 hover:shadow-md',
         className,
       )}
     >

@@ -22,7 +22,15 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-card/80 backdrop-blur-xl border border-border/60 shadow-sm;
+    @apply bg-card/90 backdrop-blur-xl border border-border/70 shadow-sm;
+  }
+
+  .enterprise-card {
+    @apply rounded-xl border border-border/80 bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  .enterprise-input {
+    @apply rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
   }
 
   .gradient-surface {

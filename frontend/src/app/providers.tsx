@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { ErrorBoundary } from '@/components/error-boundary/ErrorBoundary'
-import { useEffect } from 'react'
+import { AppSplash } from '@/components/design-system/AppSplash'
 import { useThemeStore } from '@/stores/themeStore'
 
 const queryClient = new QueryClient({
@@ -25,12 +27,30 @@ function ThemeInitializer({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
+function SplashGate({ children }: { children: React.ReactNode }) {
+  const [showSplash, setShowSplash] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 1200)
+    return () => clearTimeout(timer)
+  }, [])
+
+  return (
+    <>
+      <AnimatePresence>{showSplash && <AppSplash visible={showSplash} />}</AnimatePresence>
+      {children}
+    </>
+  )
+}
+
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ThemeInitializer>
-          <ErrorBoundary>{children}</ErrorBoundary>
+          <ErrorBoundary>
+            <SplashGate>{children}</SplashGate>
+          </ErrorBoundary>
         </ThemeInitializer>
       </BrowserRouter>
     </QueryClientProvider>

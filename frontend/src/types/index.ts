@@ -22,7 +22,9 @@ export interface BreadcrumbItem {
   href?: string
 }
 
-export type StatusVariant = 'planned' | 'in-progress' | 'foundation' | 'future'
+export type StatusVariant = 'planned' | 'in-progress' | 'foundation' | 'future' | 'completed'
+
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert'
 
 export interface ArchitectureSection {
   id: string
@@ -31,6 +33,9 @@ export interface ArchitectureSection {
   icon: string
   status: StatusVariant
   phase: number
+  difficulty: DifficultyLevel
+  technologies: string[]
+  implementationStatus: string
 }
 
 export interface MetricData {

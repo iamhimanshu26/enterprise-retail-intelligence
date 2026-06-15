@@ -15,7 +15,7 @@ export function DataTable<T extends Record<string, unknown>>({
   emptyMessage = 'No data available',
 }: DataTableProps<T>) {
   return (
-    <div className={cn('glass-panel overflow-hidden rounded-xl', className)}>
+    <div className={cn('glass-panel overflow-hidden rounded-xl border-border/80 shadow-sm', className)}>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

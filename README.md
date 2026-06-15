@@ -1,86 +1,151 @@
 # Enterprise Retail Intelligence & Forecasting Platform
 
-A production-quality enterprise SaaS platform for retail intelligence, analytics, and forecasting. Built with a microservices architecture comparable to enterprise BI systems like Snowflake, Databricks, and Microsoft Fabric.
+**Unified retail intelligence, data engineering, and forecasting for enterprise operations.**
 
-**Current Status: Phase 0 — Enterprise Foundation**
+A production-quality microservices platform demonstrating full-stack engineering, data pipelines, business intelligence, statistics, and demand forecasting — architected for Fortune 500 retail scale.
+
+[![Phase](https://img.shields.io/badge/Phase-0%20Complete-success)](/)
+[![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
+[![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
 
 ---
 
-## Vision
+## Features Overview
 
-Deliver a unified platform that demonstrates expertise across full-stack development, data engineering, business intelligence, statistics, and forecasting — purpose-built for Fortune 500 retail operations.
+The platform delivers a comprehensive suite of enterprise retail capabilities:
 
-Phase 0 establishes the enterprise foundation: architecture, UI shell, authentication infrastructure, and scalable codebase. No business logic, ETL, analytics, or forecasting is implemented yet.
+| Capability | Description |
+|------------|-------------|
+| **Retail Intelligence** | Sales, inventory, customer, and supplier analytics |
+| **Business Intelligence** | Executive dashboards and dimensional reporting |
+| **Data Engineering** | Scalable ETL pipelines and data validation |
+| **ETL Pipelines** | Batch ingestion, transformation, and orchestration |
+| **Statistics** | Hypothesis testing, regression, and modeling |
+| **Forecasting** | Demand prediction with scenario planning |
+| **Executive Dashboards** | KPI views for C-suite decision makers |
+| **Synthetic Data Generation** | Realistic retail datasets for development |
+| **Business Insights** | AI-powered recommendations and anomaly detection |
+| **Cloud-Native Architecture** | Docker, Kubernetes-ready, independently deployable services |
 
 ---
 
 ## Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    React Frontend (Vite)                     │
-│              Enterprise Design System + UI Shell             │
-└─────────────────────────┬───────────────────────────────────┘
-                          │ REST / JWT
-┌─────────────────────────▼───────────────────────────────────┐
-│              Spring Boot Backend (Java 21)                   │
-│         JWT · Security · OpenAPI · Feature Packages          │
-└──────────────┬──────────────────────────┬───────────────────┘
-               │                          │
-               ▼                          ▼
-┌──────────────────────────┐  ┌───────────────────────────────┐
-│  FastAPI Data Service     │  │       PostgreSQL 16           │
-│  (Python 3.12)            │  │   Schemas · Audit · Retail    │
-└──────────────────────────┘  └───────────────────────────────┘
+                         ┌─────────────────────────────────────┐
+                         │         CDN / Vercel Edge           │
+                         │     React 19 · TypeScript · Vite     │
+                         └──────────────────┬──────────────────┘
+                                            │ HTTPS / REST
+                         ┌──────────────────▼──────────────────┐
+                         │      Spring Boot API Gateway         │
+                         │   JWT · Security · OpenAPI · JPA     │
+                         └───┬──────────────────────┬──────────┘
+                             │                      │
+              ┌──────────────▼─────────┐   ┌───────▼──────────────┐
+              │  FastAPI Data Service   │   │   PostgreSQL 16      │
+              │  ETL · Stats · ML Prep  │   │  Retail · Audit · OLAP│
+              └──────────────┬─────────┘   └──────────────────────┘
+                             │
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+    ┌────▼────┐        ┌─────▼─────┐      ┌─────▼─────┐
+    │ Airflow │        │   Kafka   │      │ Prometheus │
+    │ (Ph. 9) │        │  (Ph. 10) │      │  (Ph. 13)  │
+    └─────────┘        └───────────┘      └───────────┘
+                         ┌─────────────────────────────────────┐
+                         │     Kubernetes Cluster (Ph. 12)     │
+                         │  Helm · GitOps · Auto-scaling · mTLS  │
+                         └─────────────────────────────────────┘
 ```
 
-All services are independently deployable via Docker and Kubernetes-ready from day one.
+All services are independently deployable. Phase 0 establishes the foundation; future phases add orchestration, events, and observability layers.
 
 ---
 
-## Technology Stack
+## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19, TypeScript, Vite, Tailwind CSS, TanStack Query, Zustand |
-| Backend | Java 21, Spring Boot 3, Spring Security, JWT, OpenAPI |
-| Data Service | Python 3.12, FastAPI, Pydantic |
-| Database | PostgreSQL 16 |
-| Infrastructure | Docker, Docker Compose, Kubernetes manifests |
+### Frontend
+React 19 · TypeScript · Vite · Tailwind CSS · TanStack Query · Zustand · Framer Motion · React Router
+
+### Backend
+Java 21 · Spring Boot 3 · Spring Security · JWT · Spring Data JPA · OpenAPI / Swagger
+
+### Python
+Python 3.12 · FastAPI · Pydantic · (planned: Pandas, Polars, Scikit-learn, Statsmodels)
+
+### Database
+PostgreSQL 16 · Schema-separated (`retail`, `audit`) · Flyway migrations (planned)
+
+### Infrastructure
+Docker · Docker Compose · Kubernetes manifests · Nginx reverse proxy
+
+### DevOps
+GitHub Actions CI · Vercel (frontend) · Helm charts (planned)
+
+### Future ML Libraries
+Prophet · XGBoost · Scikit-learn · Statsmodels · DuckDB · Faker
 
 ---
 
-## Project Structure
+## Screenshots
+
+> Screenshots will be added as modules are implemented. Placeholders below represent planned views.
+
+| Module | Preview |
+|--------|---------|
+| **Dashboard** | `docs/screenshots/dashboard.png` *(Phase 1)* |
+| **Forecasting** | `docs/screenshots/forecasting.png` *(Phase 7)* |
+| **ETL Pipeline** | `docs/screenshots/etl.png` *(Phase 4)* |
+| **Architecture** | `docs/screenshots/architecture.png` *(Phase 0)* |
+| **Statistics** | `docs/screenshots/statistics.png` *(Phase 5)* |
+| **Data Generator** | `docs/screenshots/generator.png` *(Phase 3)* |
+
+Live demo: deploy frontend to Vercel and visit `/engineering` for the architecture portal.
+
+---
+
+## Folder Structure
 
 ```
 enterprise-retail-intelligence/
-├── frontend/                 # React SPA with enterprise design system
-├── backend-springboot/       # Spring Boot API microservice
-├── data-service-python/      # FastAPI data/analytics service
-├── database/                 # PostgreSQL init scripts & future migrations
-│   ├── init/                 # Docker entrypoint bootstrap (Phase 0)
-│   └── migrations/           # Placeholder for Phase 1+ schema changes
-├── docker/                   # Shared Docker configuration
+├── frontend/                 # React SPA — enterprise UI shell & design system
+├── backend-springboot/       # Spring Boot API — JWT, security, domain packages
+├── data-service-python/      # FastAPI — ETL, statistics, forecasting (planned)
+├── database/
+│   ├── init/                 # Docker PostgreSQL bootstrap scripts
+│   └── migrations/           # Future schema migrations
+├── docker/                   # Shared Docker configs (nginx, etc.)
 ├── k8s/                      # Kubernetes deployment manifests
-├── docs/                     # Architecture and phase documentation
-├── scripts/                  # Development and deployment scripts
-├── .github/                  # CI/CD workflows
+├── docs/                     # Architecture guides and phase documentation
+├── scripts/                  # Dev, deploy, and Docker helper scripts
+├── .github/workflows/        # CI pipeline (frontend, backend, Python)
 └── docker-compose.yml        # Local multi-service orchestration
 ```
 
+| Folder | Responsibility |
+|--------|---------------|
+| `frontend/` | UI, routing, design system, Vercel deployment |
+| `backend-springboot/` | REST APIs, authentication, business orchestration |
+| `data-service-python/` | Data processing, ETL, ML/statistics workloads |
+| `database/` | Schema initialization and migration scripts |
+| `docker/` | Container configuration shared across services |
+| `k8s/` | Production Kubernetes resources |
+| `docs/` | System architecture and roadmap documentation |
+| `scripts/` | Automation for local dev and deployment |
+
 ---
 
-## Quick Start
+## Getting Started
 
 ### Prerequisites
 
-- Docker & Docker Compose
-- Node.js 22+ (local frontend dev)
-- Java 21 + Maven (local backend dev)
-- Python 3.12 (local data service dev)
-- Vercel CLI (optional, for frontend deployment)
+- Docker Desktop
+- Node.js 22+
+- Java 21 + Maven *(optional, for local backend)*
+- Python 3.12 *(optional, for local data service)*
 
-Copy environment variables before starting:
+### Environment Variables
 
 ```bash
 cp .env.example .env
@@ -88,19 +153,13 @@ cp frontend/.env.example frontend/.env
 cp data-service-python/.env.example data-service-python/.env
 ```
 
-> **Database note:** PostgreSQL is configured for **Docker Compose only** in Phase 0. No paid or cloud database services are required. Business schema migrations will be added in `database/migrations/` starting in Phase 1.
+> PostgreSQL runs **locally via Docker Compose only** — no paid cloud database required.
 
-### Run with Docker (Recommended)
+### Docker Compose (Recommended)
 
 ```bash
 chmod +x scripts/*.sh
 ./scripts/start.sh
-```
-
-Stop all services:
-
-```bash
-./scripts/stop.sh
 ```
 
 | Service | URL |
@@ -108,137 +167,100 @@ Stop all services:
 | Frontend | http://localhost:5173 |
 | Backend API | http://localhost:8080 |
 | Swagger UI | http://localhost:8080/swagger-ui.html |
-| Data Service | http://localhost:8000 |
-| Data Service Docs | http://localhost:8000/docs |
+| Data Service | http://localhost:8000/docs |
 | PostgreSQL | localhost:5433 |
 
-**Demo Login:** `executive@retailcorp.com` / `Enterprise2026!`
+**Demo login:** `executive@retailcorp.com` / `Enterprise2026!`
 
-### Local Development
+### Individual Services
 
 ```bash
-./scripts/dev-setup.sh
+# Frontend
+cd frontend && npm install && npm run dev
 
-# Terminal 1 — Database
-docker compose up postgres -d
-
-# Terminal 2 — Backend
+# Backend
 cd backend-springboot && mvn spring-boot:run
 
-# Terminal 3 — Data Service
-cd data-service-python && source .venv/bin/activate && uvicorn app.main:app --reload
+# Python
+cd data-service-python && python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt && uvicorn app.main:app --reload
 
-# Terminal 4 — Frontend
-cd frontend && npm run dev
+# Database only
+docker compose up postgres -d
 ```
 
 ---
 
-## Authentication & Full Deploy
+## Deployment
 
-Run this **once** in your macOS Terminal (outside Cursor sandbox) to authenticate Docker + Vercel and start all services:
+### Vercel (Frontend)
 
-```bash
-cd /Users/iamhimanshusharma/Projects/enterprise-retail-intelligence
-chmod +x scripts/auth-and-deploy.sh
-./scripts/auth-and-deploy.sh
-```
+The frontend deploys independently from the monorepo.
 
-This script will:
+**Git-connected (recommended):**
 
-1. Start **Docker Desktop** and wait for the daemon
-2. Copy `.env` files from examples
-3. Run **`docker compose up --build -d`** (PostgreSQL, Spring Boot, FastAPI, frontend)
-4. Open **Vercel login** in your browser (GitHub/Google/email)
-5. Build and **deploy frontend to Vercel production**
+1. Push repository to GitHub
+2. Import in [Vercel Dashboard](https://vercel.com/new)
+3. Set **Root Directory** → `frontend`
+4. Confirm: Framework **Vite** · Build `npm run build` · Output `dist`
+5. Deploy — every push to `main` auto-redeploys
 
-Alternatively, set a Vercel token to skip interactive login:
+**CLI:**
 
 ```bash
-export VERCEL_TOKEN='your-token-from-vercel.com/account/settings/tokens'
-./scripts/auth-and-deploy.sh
-```
-
----
-
-The frontend is deployed independently from the monorepo. Vercel serves the enterprise UI shell (login, dashboard, Engineering Architecture, and all placeholder modules).
-
-### Option A — Vercel CLI (Recommended)
-
-```bash
-# One-time login
+cd frontend
 npx vercel login
-
-# Deploy (builds and publishes frontend/)
-chmod +x scripts/deploy-vercel.sh
-./scripts/deploy-vercel.sh
+npx vercel --prod
 ```
 
-Or manually:
+**Verify deployment:**
 
-| Setting | Value |
-|---------|-------|
-| Root Directory | `frontend/` (if deploying from repo root via dashboard) |
-| Framework Preset | Vite |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Install Command | `npm ci` |
+- `/login` — enterprise login page
+- `/engineering` — architecture documentation portal
+- Demo: `executive@retailcorp.com` / `Enterprise2026!`
 
-### Option B — Vercel Dashboard (Git-connected)
+Optional env vars (when backend is deployed):
 
-1. Import the repository in [Vercel Dashboard](https://vercel.com/new)
-2. Set **Root Directory** to `frontend/`
-3. Framework will auto-detect **Vite**
-4. Add environment variables (optional for Phase 0 demo auth):
+| Variable | Purpose |
+|----------|---------|
+| `VITE_API_URL` | Spring Boot backend URL |
+| `VITE_DATA_SERVICE_URL` | FastAPI data service URL |
 
-| Variable | Value |
-|----------|-------|
-| `VITE_API_URL` | Your backend URL (when deployed) |
-| `VITE_DATA_SERVICE_URL` | Your data service URL (when deployed) |
+### Kubernetes (Future — Phase 12)
 
-Phase 0 uses client-side demo authentication, so the UI works on Vercel without backend services.
-
-### SPA Routing
-
-`frontend/vercel.json` configures rewrites so React Router paths (e.g. `/engineering`, `/sales`) resolve correctly.
-
-**Demo Login:** `executive@retailcorp.com` / `Enterprise2026!`
-
----
-
-## Phase 0 Deliverables
-
-- Enterprise monorepo with scalable folder structure
-- Premium SaaS UI shell with 13 navigation modules
-- Unified design system (20+ reusable components)
-- Engineering Architecture documentation portal
-- JWT authentication infrastructure
-- Health endpoints across all services
-- Docker Compose environment
-- Kubernetes-ready deployment manifests
-- CI pipeline and comprehensive documentation
+Manifests in `k8s/` provide deployment templates for frontend, backend, data service, ingress, configmaps, and secrets. Production deployment with Helm and GitOps is planned for Phase 12.
 
 ---
 
 ## Roadmap
 
-See [docs/phase-plan.md](docs/phase-plan.md) for the complete development timeline.
+| Phase | Title | Description |
+|-------|-------|-------------|
+| **0** | Enterprise Foundation | Monorepo, design system, JWT, Docker, documentation portal |
+| **1** | Enterprise Dashboard | Live KPI views and executive dashboard layouts |
+| **2** | Backend APIs | Domain REST APIs for sales, inventory, customers, suppliers |
+| **3** | Synthetic Retail Data Generator | Faker-based realistic retail dataset generation |
+| **4** | Python ETL Pipeline | Batch ingestion, validation, transformation, and load |
+| **5** | Business Analytics & Statistics | Statistical modeling and hypothesis testing |
+| **6** | Data Visualization | Interactive charts, drill-downs, and reporting |
+| **7** | Forecasting Engine | Demand forecasting with ARIMA, Prophet, and ML ensembles |
+| **8** | Pipeline Monitoring | Real-time pipeline health, logs, and metrics |
+| **9** | Airflow Integration | Scheduled workflow orchestration and dependencies |
+| **10** | Event-Driven Architecture | Kafka messaging, event sourcing, and CQRS |
+| **11** | Business Insight Engine | AI recommendations and anomaly detection |
+| **12** | Kubernetes Deployment | Production orchestration with Helm and GitOps |
+| **13** | Monitoring & Observability | Distributed tracing, logging, and SLA dashboards |
+| **14** | Portfolio Polish | Final UX, documentation, demos, and hardening |
 
-| Phase | Focus |
-|-------|-------|
-| **0** | Enterprise foundation & architecture *(current)* |
-| **1** | ETL pipelines & synthetic data generation |
-| **2** | Analytics & business intelligence |
-| **3** | Statistics engine |
-| **4** | Forecasting center |
-| **5** | AI insights & production deployment |
+**Current:** Phase 0 complete · **Next:** Phase 1 — Enterprise Dashboard
 
 ---
 
 ## Documentation
 
 - [Architecture Guide](docs/architecture.md)
-- [Phase Plan](docs/phase-plan.md)
+- [Phase Plan (legacy)](docs/phase-plan.md)
+- [Frontend README](frontend/README.md)
 
 ---
 

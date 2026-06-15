@@ -45,6 +45,7 @@ postgres_data/
 
 # Vercel
 .vercel/
+.vercel-login-out.txt
 
 # OS
 Thumbs.db

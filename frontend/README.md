@@ -1,73 +1,189 @@
-# React + TypeScript + Vite
+# Retail Intelligence — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Enterprise-grade React application for the **Enterprise Retail Intelligence & Forecasting Platform**. This is the client-facing SaaS shell that powers executive dashboards, analytics modules, and engineering documentation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Overview
 
-## React Compiler
+The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Current status:** Phase 0 complete — enterprise foundation, design system, authentication shell, and navigation for all planned modules.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Purpose
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Deliver a premium enterprise SaaS experience comparable to Snowflake, Databricks, or Microsoft Fabric
+- Provide a scalable UI foundation for 13+ intelligence modules
+- Maintain strict separation between presentation and business logic
+- Support independent deployment to Vercel while backend services run locally or in cloud
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Framework | React 19 |
+| Language | TypeScript (strict mode) |
+| Build | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| Routing | React Router v7 |
+| Server State | TanStack Query |
+| Client State | Zustand |
+| HTTP | Axios |
+| Animation | Framer Motion |
+| Icons | Lucide React |
+
+---
+
+## Folder Structure
+
+```
+frontend/
+├── public/                  # Static assets (favicon, icons)
+├── src/
+│   ├── app/                 # App shell, router, providers
+│   ├── components/
+│   │   ├── design-system/   # Reusable enterprise UI components
+│   │   └── error-boundary/  # Global error handling
+│   ├── features/            # Feature-based page modules
+│   │   ├── auth/            # Login & authentication layout
+│   │   ├── dashboard/       # Executive dashboard
+│   │   ├── engineering/     # Architecture documentation portal
+│   │   and placeholder/     # Future module placeholders
+│   ├── layouts/             # Dashboard and auth layouts
+│   ├── lib/                 # API client, constants, utilities
+│   ├── stores/              # Zustand state stores
+│   ├── styles/              # Design tokens and global CSS
+│   └── types/               # Shared TypeScript interfaces
+├── vercel.json              # Vercel deployment configuration
+├── vite.config.ts           # Vite build and proxy settings
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Design System
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Located in `src/components/design-system/`. All components follow a unified design language:
+
+| Component | Purpose |
+|-----------|---------|
+| AppShell, Sidebar, TopNav | Application layout |
+| PageHeader, SectionContainer | Page structure |
+| MetricCard, DataTable | Data presentation |
+| StatusBadge, EmptyState, ErrorState | Feedback states |
+| ThemeToggle, GlobalSearch | Global utilities |
+
+Design tokens are defined in `src/styles/tokens.css` — colors, radii, shadows, and typography scales.
+
+---
+
+## Running Locally
+
+### Prerequisites
+
+- Node.js 22+
+- npm 10+
+
+### Setup
+
+```bash
+cd frontend
+cp .env.example .env
+npm install
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173)
+
+**Demo credentials:** `executive@retailcorp.com` / `Enterprise2026!`
+
+---
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VITE_API_URL` | Spring Boot backend URL | `http://localhost:8080` |
+| `VITE_DATA_SERVICE_URL` | Python FastAPI URL | `http://localhost:8000` |
+
+Copy from `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Phase 0 uses client-side demo authentication — env vars are optional for UI-only deployment.
+
+---
+
+## Build Instructions
+
+```bash
+npm ci
+npm run build
+```
+
+Output is written to `dist/`. Preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## Vercel Deployment
+
+This frontend deploys independently from the monorepo.
+
+### Dashboard (Git-connected)
+
+1. Connect repository in [Vercel Dashboard](https://vercel.com/new)
+2. Set **Root Directory** → `frontend`
+3. Framework: **Vite** · Output: `dist` · Build: `npm run build`
+4. Deploy
+
+### CLI
+
+```bash
+cd frontend
+npx vercel login
+npx vercel --prod
+```
+
+`vercel.json` configures SPA rewrites for React Router paths (`/engineering`, `/sales`, etc.).
+
+---
+
+## Future Roadmap
+
+| Phase | Module |
+|-------|--------|
+| 1 | Enterprise Dashboard (live KPIs) |
+| 2 | Backend API integration |
+| 3–4 | Data generator & ETL UI |
+| 5–7 | Analytics, visualization, forecasting |
+| 8–11 | Pipeline monitoring, Airflow, insights |
+| 12–14 | Kubernetes, observability, polish |
+
+See the root [README](../README.md) for the complete 15-phase roadmap.
+
+---
+
+## Coding Standards
+
+- **TypeScript strict mode** — no implicit any
+- **Feature-based organization** — pages live under `features/`
+- **Design system first** — reuse components, avoid one-off styles
+- **Environment variables only** — no hardcoded API URLs
+- **Accessible markup** — semantic HTML, ARIA labels on interactive elements
+- **Consistent naming** — PascalCase components, camelCase utilities
+
+---
+
+## License
+
+Proprietary — Enterprise Retail Intelligence Platform
