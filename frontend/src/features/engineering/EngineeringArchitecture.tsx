@@ -31,6 +31,7 @@ import {
 } from '@/components/design-system'
 import type { ArchitectureSection, DifficultyLevel, StatusVariant } from '@/types'
 import {
+  CURRENT_PHASE,
   ENTERPRISE_PHASE_COUNT,
   ROADMAP_ITEM_COUNT,
   getRoadmapProgress,
@@ -375,7 +376,7 @@ export function EngineeringArchitecture() {
 
       <SectionContainer
         title="Development Roadmap"
-        description={`Complete ${ROADMAP_ITEM_COUNT}-milestone timeline (Phases 0–13 plus UX milestone 0.5). ${roadmapProgress.completed} milestones complete; Phase 2 is current.`}
+        description={`Complete ${ROADMAP_ITEM_COUNT}-milestone timeline (Phases 0–${ENTERPRISE_PHASE_COUNT} plus UX milestone 0.5). ${roadmapProgress.completed} milestones complete; Phase ${CURRENT_PHASE} is current.`}
       >
         <ArchitectureTimeline />
       </SectionContainer>

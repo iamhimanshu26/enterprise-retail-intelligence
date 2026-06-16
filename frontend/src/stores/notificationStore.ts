@@ -22,7 +22,7 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   {
     id: '2',
     title: 'ETL Pipeline Scheduled',
-    message: 'Phase 2 synthetic data generator is the next milestone.',
+    message: 'Phase 3 synthetic data generator is the next milestone.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),

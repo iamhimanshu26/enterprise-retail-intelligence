@@ -17,7 +17,7 @@ export const DASHBOARD_ERROR_PRESETS: Record<DashboardErrorType, DashboardErrorP
   },
   empty: {
     title: 'No dashboard data',
-    message: 'The response was empty. Generate synthetic retail data in Phase 2 to populate this view.',
+    message: 'The response was empty. Generate synthetic retail data in Phase 3 to populate this view.',
   },
   unauthorized: {
     title: 'Unauthorized',

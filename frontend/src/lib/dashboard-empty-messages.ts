@@ -2,19 +2,19 @@
 export const DASHBOARD_EMPTY = {
   sales: {
     title: 'No sales data available yet.',
-    description: 'Generate synthetic retail data in Phase 2 to populate this dashboard.',
+    description: 'Generate synthetic retail data in Phase 3 to populate this dashboard.',
   },
   forecast: {
     title: 'No forecast available.',
-    description: 'Forecasting will be enabled in Phase 6.',
+    description: 'Forecasting will be enabled in Phase 7.',
   },
   chart: {
     title: 'No chart data available.',
-    description: 'Connect analytics APIs in Phase 5 to populate visualizations.',
+    description: 'Connect analytics APIs in Phase 6 to populate visualizations.',
   },
   table: {
     title: 'No records found.',
-    description: 'Adjust filters or generate synthetic retail data in Phase 2.',
+    description: 'Adjust filters or generate synthetic retail data in Phase 3.',
   },
   alerts: {
     title: 'No alerts to display.',
@@ -26,15 +26,15 @@ export const DASHBOARD_EMPTY = {
   },
   regional: {
     title: 'No regional performance data.',
-    description: 'Regional analytics will populate after Phase 2 data generation.',
+    description: 'Regional analytics will populate after Phase 3 data generation.',
   },
   products: {
     title: 'No product rankings available.',
-    description: 'Product intelligence requires retail catalog data from Phase 2.',
+    description: 'Product intelligence requires retail catalog data from Phase 3.',
   },
   stores: {
     title: 'No store performance data.',
-    description: 'Store rankings will appear once retail locations are seeded in Phase 2.',
+    description: 'Store rankings will appear once retail locations are seeded in Phase 3.',
   },
   widgets: {
     title: 'No executive widgets available.',

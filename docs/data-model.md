@@ -98,7 +98,18 @@ OpenAPI documentation: `/swagger-ui.html`
 
 ---
 
-## Future Integration
+## Indexes and constraints (V2 migration)
+
+| Area | Examples |
+|------|----------|
+| **Unique business codes** | `store_code`, `product_code`, `customer_code`, `transaction_code`, etc. |
+| **Foreign keys** | inventory → store/product; sales → store/customer; line items → transaction/product |
+| **Indexes** | region, status, transaction_date, store_id, product_id for analytics queries |
+| **CHECK constraints** | enum values (region, status, payment_method), positive quantities, date ranges |
+
+JPA entity field names map to snake_case columns (e.g. `storeCode` → `store_code`). Hibernate `default_schema` is `retail`.
+
+---
 
 | Phase | Integration |
 |-------|-------------|

@@ -4,9 +4,12 @@
 
 A production-quality microservices platform demonstrating full-stack engineering, data pipelines, business intelligence, statistics, and demand forecasting — architected for Fortune 500 retail scale.
 
-[![Phase](https://img.shields.io/badge/Phase-1%20Complete-success)](/)
+[![Phase](https://img.shields.io/badge/Phase-2%20Complete-success)](/)
 [![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
+
+**Current status:** Phase 2 complete — Core Retail Domain & Database Model  
+**Next phase:** Phase 3 — Synthetic Retail Data Generator
 
 ---
 

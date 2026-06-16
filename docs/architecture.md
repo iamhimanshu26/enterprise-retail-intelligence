@@ -2,7 +2,23 @@
 
 ## Overview
 
-The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–13 roadmap (`frontend/src/lib/roadmap.ts` in the application).
+The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–14 roadmap (`frontend/src/lib/roadmap.ts` in the application).
+
+---
+
+## Phase 2 — Core Retail Domain & Database Model
+
+**Status:** Complete
+
+Phase 2 delivers the persistence and API-ready domain layer that future data and analytics phases depend on:
+
+- **PostgreSQL `retail` schema** — stores, products, customers, suppliers, inventory, sales, promotions, returns
+- **Flyway migrations** — `V1__core_retail_domain_schema.sql`, `V2__retail_indexes_and_constraints.sql`
+- **Spring Boot domain modules** — JPA entities, enums, repositories, DTOs, mappers, service/controller skeletons
+- **REST placeholders** — `/api/v1/stores`, `/products`, `/customers`, `/suppliers`, `/inventory`, `/sales`, `/promotions`, `/returns`
+- **OpenAPI** — Swagger UI for API exploration
+
+Phase 3 (Synthetic Retail Data Generator) will populate these tables. Phase 4 ETL and Phase 5+ analytics read from the same normalized schema. See [Data Model Guide](data-model.md).
 
 ---
 

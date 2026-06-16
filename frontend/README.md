@@ -8,7 +8,7 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Sprint 1.3 complete — Phase 1 executive dashboard polished, accessible, and release-ready.
+**Current status:** Sprint 1.3 complete — Phase 1 executive dashboard polished. **Phase 2 complete** — core retail domain & database model on backend.
 
 ---
 
@@ -307,14 +307,16 @@ npx vercel --prod
 |-------|--------|
 | 0–0.5 | Foundation & enterprise UX ✅ |
 | 1 | Executive Dashboard ✅ |
-| 2 | Synthetic Data Generator (current) |
-| 3–4 | ETL pipeline & statistics engine |
-| 5–6 | Visualization & forecasting |
-| 7–8 | Pipeline monitoring & Airflow |
-| 9–10 | Events & AI insights |
-| 11–13 | Kubernetes, observability, portfolio |
+| 2 | Core Retail Domain & Database Model ✅ |
+| 3 | Synthetic Retail Data Generator (current) |
+| 4 | Python ETL & Data Engineering Pipeline |
+| 5 | Business Analytics & Statistics Engine |
+| 6 | Data Visualization Platform |
+| 7–8 | Forecasting & pipeline monitoring |
+| 9–10 | Airflow orchestration & event architecture |
+| 11–14 | AI insights, Kubernetes, observability, portfolio |
 
-Roadmap source of truth: `src/lib/roadmap.ts` (14 enterprise phases, 0–13).
+Roadmap source of truth: `src/lib/roadmap.ts` (Phases 0–14 plus UX milestone 0.5).
 
 See the root [README](../README.md) and [phase plan](../docs/phase-plan.md) for the complete roadmap.
 
