@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 3
+export const CURRENT_PHASE = 4
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -68,7 +68,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Generate realistic stores, products, customers, suppliers, inventory, sales, promotions, and returns with configurable missing values, duplicates, outliers, seasonal trends, and regional distributions.',
     purpose: 'Create enterprise-scale datasets for testing and analytics.',
     technologies: ['Faker', 'Pandas', 'FastAPI', 'Python'],
-    status: 'current',
+    status: 'completed',
   },
   {
     id: '4',
@@ -78,7 +78,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Enterprise ETL for CSV, Excel, and JSON with validation, cleaning, duplicate removal, missing value handling, transformation, aggregation, and analytics-layer loading.',
     purpose: 'Create production-quality data engineering workflows.',
     technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '5',

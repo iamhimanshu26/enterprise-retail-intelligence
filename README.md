@@ -299,6 +299,7 @@ See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpo
 
 - [Architecture Guide](docs/architecture.md)
 - [Development Phase Plan](docs/phase-plan.md)
+- [Synthetic Data Generator](docs/synthetic-data-generator.md)
 - [Frontend README](frontend/README.md)
 
 ---

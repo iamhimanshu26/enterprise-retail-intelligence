@@ -98,7 +98,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/generator',
     icon: Sparkles,
     description: 'Generate realistic retail datasets',
-    phase: 2,
+    phase: 3,
   },
   {
     id: 'pipeline-monitor',

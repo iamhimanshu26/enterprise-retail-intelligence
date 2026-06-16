@@ -18,6 +18,12 @@ const EngineeringArchitecture = lazy(() =>
   })),
 )
 
+const SyntheticDataGenerator = lazy(() =>
+  import('@/features/generator/SyntheticDataGenerator').then((m) => ({
+    default: m.SyntheticDataGenerator,
+  })),
+)
+
 function DashboardFallback() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -87,7 +93,11 @@ export function AppRouter() {
         <Route path="statistics" element={<PlaceholderPage navId="statistics-lab" />} />
         <Route path="forecasting" element={<PlaceholderPage navId="forecasting-center" />} />
         <Route path="etl" element={<PlaceholderPage navId="etl-pipeline-studio" />} />
-        <Route path="generator" element={<PlaceholderPage navId="synthetic-data-generator" />} />
+        <Route path="generator" element={
+          <Suspense fallback={<DashboardFallback />}>
+            <SyntheticDataGenerator />
+          </Suspense>
+        } />
         <Route path="pipeline" element={<PlaceholderPage navId="pipeline-monitor" />} />
         <Route path="insights" element={<PlaceholderPage navId="business-insights" />} />
         <Route

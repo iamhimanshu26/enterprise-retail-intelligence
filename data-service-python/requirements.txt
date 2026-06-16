@@ -5,11 +5,14 @@ pydantic-settings==2.7.1
 python-dotenv==1.0.1
 httpx==0.28.1
 
-# Prepared for future phases (not implemented in Phase 0)
-# pandas>=2.2.0
-# numpy>=2.0.0
+# Phase 3 — Synthetic Data Generator
+pandas>=2.2.0
+numpy>=2.0.0
+faker>=33.0.0
+openpyxl>=3.1.0
+
+# Prepared for future phases
 # polars>=1.0.0
-# faker>=33.0.0
 # duckdb>=1.1.0
 # sqlalchemy>=2.0.0
 # scikit-learn>=1.6.0

@@ -17,6 +17,7 @@ import {
   Network,
   Server,
   Settings,
+  Sparkles,
   Workflow,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -92,18 +93,31 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'intermediate',
     technologies: ['FastAPI', 'Pydantic', 'Uvicorn'],
-    implementationStatus: 'Health endpoint · Module structure prepared',
+    implementationStatus: 'Health endpoint · Faker/Pandas synthetic generator · /api/v1/generator',
   },
   {
     id: 'data-flow',
     title: 'Data Flow',
-    description: 'End-to-end data movement from ingestion through transformation, analytics, and visualization layers.',
+    description: 'End-to-end data movement from synthetic generation through transformation, analytics, and visualization layers.',
     icon: 'arrow',
-    status: 'planned',
+    status: 'in-progress',
     phase: 3,
     difficulty: 'advanced',
-    technologies: ['Polars', 'DuckDB', 'PostgreSQL'],
-    implementationStatus: 'Architecture documented — implementation in Phase 3',
+    technologies: ['Faker', 'Pandas', 'PostgreSQL'],
+    implementationStatus: 'Synthetic generator live — ETL ingestion in Phase 4',
+  },
+  {
+    id: 'synthetic-generator',
+    title: 'Synthetic Data Generator',
+    description:
+      'Enterprise-scale retail dataset generation with Faker, NumPy, and Pandas — configurable entity volumes, Japanese regional distribution, seasonal demand, promotion impact, and data quality simulation.',
+    icon: 'sparkles',
+    status: 'completed',
+    phase: 3,
+    difficulty: 'advanced',
+    technologies: ['Faker', 'Pandas', 'NumPy', 'FastAPI'],
+    implementationStatus:
+      'Generator engine · /generator dashboard · CSV/JSON/Excel export · background jobs · local history',
   },
   {
     id: 'etl',
@@ -111,10 +125,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Batch and streaming ETL pipelines with validation, error handling, and pipeline orchestration.',
     icon: 'workflow',
     status: 'planned',
-    phase: 3,
+    phase: 4,
     difficulty: 'advanced',
-    technologies: ['Python', 'SQLAlchemy', 'Airflow'],
-    implementationStatus: 'Placeholder UI ready — pipeline engine pending',
+    technologies: ['Python', 'Pandas', 'Airflow'],
+    implementationStatus: 'Synthetic data export ready — pipeline engine in Phase 4',
   },
   {
     id: 'analytics',
@@ -235,7 +249,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, 1, and 2 complete`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, 1, 2, and 3 complete · Phase 4 current`,
   },
 ]
 
@@ -257,6 +271,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   monitor: Monitor,
   folderTree: FolderTree,
   settings: Settings,
+  sparkles: Sparkles,
 }
 
 function ArchitectureCard({ section }: { section: ArchitectureSection }) {
@@ -353,7 +368,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phases 0–2 Complete' }}
+        badge={{ status: 'completed', label: 'Phases 0–3 Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
