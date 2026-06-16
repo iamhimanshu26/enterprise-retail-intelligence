@@ -1,7 +1,8 @@
-import { Download, RefreshCw, Sparkles } from 'lucide-react'
+import { CalendarClock, Download, FileSpreadsheet, FileText, RefreshCw, Share2, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Breadcrumb, DateRangeSelector } from '@/components/design-system'
 import { DATE_RANGE_OPTIONS, useDashboardStore } from '@/stores/dashboardStore'
+import { showDashboardPlaceholder } from '@/stores/toastStore'
 import { cn } from '@/lib/cn'
 import type { BreadcrumbItem } from '@/types'
 
@@ -19,7 +20,7 @@ interface DashboardPageHeaderProps {
 export function DashboardPageHeader({
   title,
   description,
-  badge = 'Sprint 1.1 — Dashboard Foundation',
+  badge = 'Sprint 1.3 — Release Readiness',
   breadcrumbItems = [{ label: 'Executive Dashboard' }],
   lastUpdated,
   onRefresh,
@@ -28,6 +29,14 @@ export function DashboardPageHeader({
 }: DashboardPageHeaderProps) {
   const dateRange = useDashboardStore((s) => s.dateRange)
   const setDateRange = useDashboardStore((s) => s.setDateRange)
+
+  function handleRefresh() {
+    onRefresh?.()
+    showDashboardPlaceholder(
+      'Dashboard refreshed',
+      'Mock data reloaded. Live API refresh will be available in Phase 5.',
+    )
+  }
 
   return (
     <motion.header
@@ -38,8 +47,8 @@ export function DashboardPageHeader({
         className,
       )}
     >
-      <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-primary/5 blur-3xl" />
-      <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-accent/5 blur-2xl" />
+      <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-primary/5 blur-3xl" aria-hidden="true" />
+      <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-accent/5 blur-2xl" aria-hidden="true" />
 
       <div className="relative space-y-5">
         <Breadcrumb items={breadcrumbItems} />
@@ -54,13 +63,15 @@ export function DashboardPageHeader({
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{description}</p>
             {lastUpdated && (
               <p className="mt-2 text-xs text-muted-foreground">
-                Last updated: <time>{lastUpdated}</time>
+                Last updated: <time dateTime={lastUpdated}>{lastUpdated}</time>
               </p>
             )}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <label className="sr-only" htmlFor="header-date-range">Date range</label>
+            <label className="sr-only" htmlFor="header-date-range">
+              Date range
+            </label>
             <select
               id="header-date-range"
               value={dateRange}
@@ -69,7 +80,9 @@ export function DashboardPageHeader({
               aria-label="Date range"
             >
               {DATE_RANGE_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
               ))}
             </select>
             <DateRangeSelector
@@ -78,22 +91,57 @@ export function DashboardPageHeader({
             />
             <button
               type="button"
-              onClick={onRefresh}
+              onClick={handleRefresh}
               disabled={!onRefresh || refreshing}
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:opacity-50"
               aria-label="Refresh dashboard"
             >
-              <RefreshCw className={cn('h-4 w-4', refreshing && 'animate-spin')} />
+              <RefreshCw className={cn('h-4 w-4', refreshing && 'animate-spin')} aria-hidden="true" />
               Refresh
             </button>
             <button
               type="button"
-              disabled
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-muted-foreground opacity-60"
-              aria-label="Export dashboard (coming soon)"
-              title="Export — API integration in future sprint"
+              onClick={() => showDashboardPlaceholder('Export CSV', 'CSV export will be enabled when analytics APIs are connected.')}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Export dashboard as CSV"
             >
-              <Download className="h-4 w-4" />
+              <FileSpreadsheet className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">CSV</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => showDashboardPlaceholder('Export PDF', 'PDF report generation is planned for Phase 5.')}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Export dashboard as PDF"
+            >
+              <FileText className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">PDF</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => showDashboardPlaceholder('Schedule report', 'Scheduled reporting will be available in a future enterprise release.')}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Schedule dashboard report"
+            >
+              <CalendarClock className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden md:inline">Schedule</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => showDashboardPlaceholder('Share dashboard', 'Shareable dashboard links will be enabled with authenticated API access.')}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Share dashboard"
+            >
+              <Share2 className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden md:inline">Share</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => showDashboardPlaceholder('Export dashboard', 'Choose CSV or PDF export when analytics APIs are connected.')}
+              className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Export dashboard options"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
               Export
             </button>
           </div>

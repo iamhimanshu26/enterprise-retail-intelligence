@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { StatusBadge } from '@/components/design-system'
+import { DASHBOARD_EMPTY } from '@/lib/dashboard-empty-messages'
 import { formatCurrency, formatNumber, formatPercent } from '@/lib/formatters'
 import type { ProductRow } from '@/types/dashboard'
 import { AnalyticsTable } from './AnalyticsTable'
@@ -11,13 +12,22 @@ const PRODUCT_STATUS_MAP = {
   promoted: { status: 'foundation' as const, label: 'Promoted' },
 }
 
-export const ProductTable = memo(function ProductTable({ data }: { data: ProductRow[] }) {
+export const ProductTable = memo(function ProductTable({
+  data,
+  loading,
+}: {
+  data: ProductRow[]
+  loading?: boolean
+}) {
   return (
     <AnalyticsTable<ProductRow>
       data={data}
+      loading={loading}
       sortKey="revenue"
       searchKeys={['product', 'category']}
       searchPlaceholder="Filter products or categories..."
+      emptyTitle={DASHBOARD_EMPTY.products.title}
+      emptyDescription={DASHBOARD_EMPTY.products.description}
       columns={[
         { key: 'product', header: 'Product' },
         { key: 'category', header: 'Category' },

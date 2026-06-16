@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { SectionContainer } from '@/components/design-system/SectionContainer'
 import { SectionHeader } from './SectionHeader'
 
@@ -16,12 +17,21 @@ export function DashboardSection({
   children,
   className,
 }: DashboardSectionProps) {
+  const titleId = useMemo(
+    () => `section-${title.replace(/\s+/g, '-').toLowerCase()}`,
+    [title],
+  )
+
   return (
-    <section className={className} aria-labelledby={`section-${title.replace(/\s+/g, '-').toLowerCase()}`}>
-      <SectionContainer title={title} description={description} headerAction={headerAction}>
-        {children}
-      </SectionContainer>
-    </section>
+    <SectionContainer
+      title={title}
+      description={description}
+      headerAction={headerAction}
+      titleId={titleId}
+      className={className}
+    >
+      {children}
+    </SectionContainer>
   )
 }
 

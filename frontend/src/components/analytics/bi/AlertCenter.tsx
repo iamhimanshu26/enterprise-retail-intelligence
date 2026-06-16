@@ -1,4 +1,8 @@
-import { useMemo, useState } from 'react'
+import { memo, useMemo, useState } from 'react'
+import { Bell } from 'lucide-react'
+import { AlertListSkeleton } from '@/components/design-system/LoadingSkeleton'
+import { EmptyState } from '@/components/design-system/EmptyState'
+import { DASHBOARD_EMPTY } from '@/lib/dashboard-empty-messages'
 import { cn } from '@/lib/cn'
 import type { AlertSeverity, BusinessAlert } from '@/types/dashboard'
 import { AlertCard } from '../AlertCard'
@@ -13,16 +17,32 @@ const FILTER_OPTIONS: { value: AlertSeverity | 'all'; label: string }[] = [
 
 interface AlertCenterProps {
   alerts: BusinessAlert[]
+  loading?: boolean
   className?: string
 }
 
-export function AlertCenter({ alerts, className }: AlertCenterProps) {
+export const AlertCenter = memo(function AlertCenter({ alerts, loading, className }: AlertCenterProps) {
   const [severity, setSeverity] = useState<AlertSeverity | 'all'>('all')
 
   const filtered = useMemo(() => {
     if (severity === 'all') return alerts
     return alerts.filter((a) => a.severity === severity)
   }, [alerts, severity])
+
+  if (loading) {
+    return <AlertListSkeleton className={className} />
+  }
+
+  if (alerts.length === 0) {
+    return (
+      <EmptyState
+        icon={Bell}
+        title={DASHBOARD_EMPTY.alerts.title}
+        description={DASHBOARD_EMPTY.alerts.description}
+        compact
+      />
+    )
+  }
 
   return (
     <div className={cn('space-y-4', className)}>
@@ -47,11 +67,17 @@ export function AlertCenter({ alerts, className }: AlertCenterProps) {
       </div>
       <div className="space-y-3" role="list" aria-label="Filtered business alerts">
         {filtered.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No alerts match this filter.</p>
+          <EmptyState
+            icon={Bell}
+            title="No alerts match this filter."
+            description="Try a different severity filter or reset dashboard filters."
+            compact
+            className="border-solid bg-card"
+          />
         ) : (
           filtered.map((alert) => <AlertCard key={alert.id} alert={alert} />)
         )}
       </div>
     </div>
   )
-}
+})

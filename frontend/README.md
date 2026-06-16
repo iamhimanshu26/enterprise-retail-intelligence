@@ -8,7 +8,50 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Sprint 1.2 complete — business intelligence modules with sales, regional, customer, inventory, and executive widgets.
+**Current status:** Sprint 1.3 complete — Phase 1 executive dashboard polished, accessible, and release-ready.
+
+---
+
+## Sprint 1.3 — Enterprise Dashboard Polish & Release Readiness ✅
+
+Final Phase 1 sprint. Presentation-ready executive dashboard with enterprise UX polish — no backend integration.
+
+### Deliverables
+
+- **Loading skeletons** — KPI, chart, table, timeline, alert, regional, and ranking placeholders
+- **Empty states** — Phase-aware guidance for every dashboard widget
+- **Error states** — Reusable presets: network, empty response, unauthorized, unavailable, retry
+- **Placeholder actions** — Refresh, Export CSV/PDF, Schedule report, Share dashboard (toast notifications)
+- **Filter toolbar** — Visual active-state styling, active count badge, reset filters
+- **Accessibility** — Semantic headings, ARIA labels, keyboard focus rings, scrollable tables
+- **Performance** — Lazy-loaded BI modules and chart section, memoized containers, stable mock imports
+- **Responsive QA** — Card stacking, table horizontal scroll, action toolbar wrapping
+
+### Reusable component library
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `KpiCard` | `analytics/` | KPI metrics with trend and skeleton |
+| `ChartContainer` | `analytics/` | Chart wrapper with export/refresh placeholders |
+| `AnalyticsTable` / `RankingTable` | `analytics/` | Sortable, searchable tables |
+| `MetricWidget`, `RegionCard`, `RankingCard` | `analytics/bi/` | BI metric and ranking cards |
+| `AlertCenter`, `ActivityTimeline` | `analytics/` | Alerts and activity feed |
+| `FilterToolbar` | `analytics/` | Date, region, store, category filters |
+| `EmptyState`, `ErrorState` | `design-system/` | Guided empty and error feedback |
+| `LoadingSkeleton` variants | `design-system/` | Reusable skeleton primitives |
+| `PageHeader` / `DashboardPageHeader` | `design-system/` / `dashboard/` | Page and dashboard headers |
+| `SectionHeader` / `DashboardSection` | `analytics/` | Section layout wrappers |
+
+### Mock data strategy
+
+`fetchExecutiveDashboard()` in `src/data/mock/dashboard.ts` simulates API latency (~450ms) and accepts filter params. Replace with REST in Phase 5 — UI consumes `useExecutiveDashboard()` only.
+
+### Future backend integration
+
+1. Swap `fetchExecutiveDashboard` for authenticated REST call
+2. Map API errors to `resolveDashboardErrorType()` presets
+3. Wire export/refresh actions to real endpoints
+4. Enable server-side pagination in `AnalyticsTable`
 
 ---
 

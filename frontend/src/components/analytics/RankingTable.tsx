@@ -1,6 +1,9 @@
 import { useMemo, useState } from 'react'
 import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react'
 import { DataTable } from '@/components/design-system/DataTable'
+import { EmptyState } from '@/components/design-system/EmptyState'
+import { TableSkeleton } from '@/components/design-system/LoadingSkeleton'
+import { DASHBOARD_EMPTY } from '@/lib/dashboard-empty-messages'
 import { cn } from '@/lib/cn'
 import type { TableColumn } from '@/types'
 
@@ -13,7 +16,9 @@ interface RankingTableProps<T extends object> {
   className?: string
   searchKeys?: (keyof T & string)[]
   searchPlaceholder?: string
-  emptyMessage?: string
+  emptyTitle?: string
+  emptyDescription?: string
+  loading?: boolean
 }
 
 export function RankingTable<T extends object>({
@@ -23,7 +28,9 @@ export function RankingTable<T extends object>({
   className,
   searchKeys = [],
   searchPlaceholder = 'Search...',
-  emptyMessage,
+  emptyTitle = DASHBOARD_EMPTY.table.title,
+  emptyDescription = DASHBOARD_EMPTY.table.description,
+  loading = false,
 }: RankingTableProps<T>) {
   const [sortKey, setSortKey] = useState<string | undefined>(defaultSortKey)
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc')
@@ -67,6 +74,21 @@ export function RankingTable<T extends object>({
   const SortIcon =
     sortDirection === 'asc' ? ArrowUp : sortDirection === 'desc' ? ArrowDown : ArrowUpDown
 
+  if (loading) {
+    return <TableSkeleton rows={6} className={className} />
+  }
+
+  if (data.length === 0) {
+    return (
+      <EmptyState
+        title={emptyTitle}
+        description={emptyDescription}
+        compact
+        className={className}
+      />
+    )
+  }
+
   return (
     <div className={cn('space-y-3', className)}>
       {searchKeys.length > 0 && (
@@ -85,7 +107,7 @@ export function RankingTable<T extends object>({
 
       <div className="overflow-hidden rounded-xl border border-border/80 bg-card shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[640px] text-sm" aria-label="Sortable analytics table">
             <thead>
               <tr className="border-b border-border bg-muted/30">
                 {columns.map((col) => {
@@ -121,11 +143,13 @@ export function RankingTable<T extends object>({
             <tbody>
               {filteredData.length === 0 ? (
                 <tr>
-                  <td
-                    colSpan={columns.length}
-                    className="px-6 py-12 text-center text-muted-foreground"
-                  >
-                    {emptyMessage ?? 'No matching records'}
+                  <td colSpan={columns.length} className="px-6 py-8">
+                    <EmptyState
+                      title="No matching records"
+                      description="Try adjusting your search or reset dashboard filters."
+                      compact
+                      className="border-0 bg-transparent"
+                    />
                   </td>
                 </tr>
               ) : (

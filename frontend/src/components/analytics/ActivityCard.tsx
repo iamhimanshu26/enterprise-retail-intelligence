@@ -1,3 +1,8 @@
+import { memo } from 'react'
+import { Activity } from 'lucide-react'
+import { TimelineSkeleton } from '@/components/design-system/LoadingSkeleton'
+import { EmptyState } from '@/components/design-system/EmptyState'
+import { DASHBOARD_EMPTY } from '@/lib/dashboard-empty-messages'
 import { cn } from '@/lib/cn'
 import { formatRelativeTime } from '@/lib/formatters'
 import type { ActivityEvent, ActivityIconKey } from '@/types/dashboard'
@@ -59,10 +64,26 @@ export function ActivityCard({ activity, isLast, className }: ActivityCardProps)
 
 interface ActivityFeedProps {
   activities: ActivityEvent[]
+  loading?: boolean
   className?: string
 }
 
-export function ActivityFeed({ activities, className }: ActivityFeedProps) {
+export function ActivityFeed({ activities, loading, className }: ActivityFeedProps) {
+  if (loading) {
+    return <TimelineSkeleton className={className} />
+  }
+
+  if (activities.length === 0) {
+    return (
+      <EmptyState
+        icon={Activity}
+        title={DASHBOARD_EMPTY.activity.title}
+        description={DASHBOARD_EMPTY.activity.description}
+        compact
+      />
+    )
+  }
+
   return (
     <div className={cn('pt-1', className)} role="feed" aria-label="Recent activity">
       {activities.map((activity, index) => (
@@ -75,3 +96,17 @@ export function ActivityFeed({ activities, className }: ActivityFeedProps) {
     </div>
   )
 }
+
+interface ActivityTimelineProps {
+  activities: ActivityEvent[]
+  loading?: boolean
+  className?: string
+}
+
+export const ActivityTimeline = memo(function ActivityTimeline({
+  activities,
+  loading,
+  className,
+}: ActivityTimelineProps) {
+  return <ActivityFeed activities={activities} loading={loading} className={className} />
+})

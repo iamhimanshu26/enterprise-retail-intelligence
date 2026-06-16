@@ -15,6 +15,7 @@ The Enterprise Retail Intelligence & Forecasting Platform is a microservices-bas
 - Theme management and workspace switching
 - API communication via Axios with JWT interceptors
 - TanStack Query for server state (prepared for Phase 2+)
+- **Executive Dashboard (Phase 1)** — mock-driven BI with reusable analytics components, lazy-loaded chart/BI modules, and API-ready filter/query hooks
 
 **Port:** 5173 (dev) / 80 (production)
 

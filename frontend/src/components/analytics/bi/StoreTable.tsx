@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { StatusBadge } from '@/components/design-system'
+import { DASHBOARD_EMPTY } from '@/lib/dashboard-empty-messages'
 import { formatCurrency, formatNumber, formatPercent } from '@/lib/formatters'
 import type { StoreRow } from '@/types/dashboard'
 import { AnalyticsTable } from './AnalyticsTable'
@@ -11,13 +12,22 @@ const STORE_PERFORMANCE_MAP = {
   underperforming: { status: 'planned' as const, label: 'Below Target' },
 }
 
-export const StoreTable = memo(function StoreTable({ data }: { data: StoreRow[] }) {
+export const StoreTable = memo(function StoreTable({
+  data,
+  loading,
+}: {
+  data: StoreRow[]
+  loading?: boolean
+}) {
   return (
     <AnalyticsTable<StoreRow>
       data={data}
+      loading={loading}
       sortKey="rank"
       searchKeys={['storeName', 'region']}
       searchPlaceholder="Filter stores..."
+      emptyTitle={DASHBOARD_EMPTY.stores.title}
+      emptyDescription={DASHBOARD_EMPTY.stores.description}
       columns={[
         { key: 'rank', header: 'Rank' },
         { key: 'storeName', header: 'Store Name' },

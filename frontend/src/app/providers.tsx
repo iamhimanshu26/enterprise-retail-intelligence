@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { ErrorBoundary } from '@/components/error-boundary/ErrorBoundary'
 import { AppSplash } from '@/components/design-system/AppSplash'
+import { ToastContainer } from '@/components/design-system/ToastContainer'
 import { useThemeStore } from '@/stores/themeStore'
 
 const queryClient = new QueryClient({
@@ -49,7 +50,10 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
       <BrowserRouter>
         <ThemeInitializer>
           <ErrorBoundary>
-            <SplashGate>{children}</SplashGate>
+            <SplashGate>
+              {children}
+              <ToastContainer />
+            </SplashGate>
           </ErrorBoundary>
         </ThemeInitializer>
       </BrowserRouter>
