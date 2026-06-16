@@ -8,7 +8,47 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Phase 1 complete — executive dashboard with live mock KPIs, charts, rankings, alerts, and workspace-aware filters.
+**Current status:** Sprint 1.1 complete — scalable executive dashboard framework with reusable components and API-ready mock layer.
+
+---
+
+## Sprint 1.1 — Executive Dashboard Foundation ✅
+
+Modular dashboard operating system (not analytics logic). Future ETL, statistics, forecasting, and AI modules plug into this framework without UI redesign.
+
+### Dashboard architecture
+
+```text
+DashboardPageHeader → FilterToolbar → KPI Grid → SummaryCard
+  → Charts Grid → Business Widgets → QuickActionPanel
+  → Alerts → ActivityTimeline → SystemHealth → Footer
+```
+
+### Reusable component library (`src/components/analytics/`)
+
+| Component | Purpose |
+|-----------|---------|
+| `KpiCard` | KPI metrics with trend, tooltip, loading skeleton |
+| `DashboardSection` / `DashboardGrid` | Section layout + responsive 1–4 column grids |
+| `ChartContainer` + chart card wrappers | Line, bar, pie, area containers with export/refresh placeholders |
+| `SummaryCard` | Executive summary with tags and recommendations |
+| `QuickActionCard` / `QuickActionPanel` | Navigation action cards |
+| `AlertCard` / `AlertPanel` | Severity-coded business alerts |
+| `ActivityTimeline` | Enterprise activity feed |
+| `FilterToolbar` | Centralized dashboard filters |
+
+### Mock data strategy (`src/data/mock/`)
+
+| File | Data |
+|------|------|
+| `dashboard.ts` | Aggregator — `fetchExecutiveDashboard()` simulates API |
+| `kpis.ts` | KPI definitions and values |
+| `alerts.ts` | Business alert fixtures |
+| `activity.ts` | Operational + foundation timeline events |
+| `charts.ts` | Chart dataset builders |
+| `summary.ts` | Executive summary and business widgets |
+
+**Future API integration:** Replace `fetchExecutiveDashboard` in `dashboard.ts` with a REST call. UI components consume `useExecutiveDashboard()` — no component changes required.
 
 ---
 

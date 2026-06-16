@@ -96,6 +96,8 @@ export interface QuickAction {
 export interface ExecutiveSummary {
   summary: string
   highlights: string[]
+  tags?: string[]
+  recommendation?: string
 }
 
 export interface ExecutiveDashboardData {

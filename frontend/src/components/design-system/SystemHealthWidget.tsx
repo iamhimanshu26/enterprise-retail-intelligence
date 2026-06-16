@@ -45,23 +45,22 @@ export function SystemHealthWidget() {
   const services: ServiceItem[] = [
     { name: 'Frontend', status: 'operational', detail: 'Vercel / local nginx' },
     {
-      name: 'Spring Boot API',
+      name: 'Backend',
       status: backendUp ? 'operational' : 'degraded',
-      detail: backendUp ? 'Health check passed' : 'Unavailable — start Docker backend',
+      detail: backendUp ? 'Spring Boot health check passed' : 'Unavailable — start Docker backend',
     },
     {
-      name: 'Python Data Service',
+      name: 'Python Service',
       status: pythonUp ? 'operational' : 'degraded',
-      detail: pythonUp ? 'Health check passed' : 'Unavailable — start Docker service',
+      detail: pythonUp ? 'FastAPI health check passed' : 'Unavailable — start Docker service',
     },
     {
       name: 'PostgreSQL',
       status: backendUp ? 'operational' : 'degraded',
       detail: backendUp ? 'Connected via backend' : 'Requires Docker Compose',
     },
-    { name: 'ETL Pipeline', status: 'future', detail: 'Available in future phase.', phase: 4 },
-    { name: 'Forecast Engine', status: 'future', detail: 'Available in future phase.', phase: 7 },
-    { name: 'Analytics Engine', status: 'future', detail: 'Available in future phase.', phase: 5 },
+    { name: 'ETL Engine', status: 'future', detail: 'Available in future phase.', phase: 3 },
+    { name: 'Forecast Engine', status: 'future', detail: 'Available in future phase.', phase: 6 },
   ]
 
   const operational = services.filter((s) => s.status === 'operational').length
