@@ -1,5 +1,9 @@
 package com.retail.intelligence.common.enums;
 
 public enum StockStatus {
-    IN_STOCK,\n    LOW_STOCK,\n    OUT_OF_STOCK,\n    OVERSTOCK,\n    ON_ORDER
+    IN_STOCK,
+    LOW_STOCK,
+    OUT_OF_STOCK,
+    OVERSTOCK,
+    ON_ORDER
 }

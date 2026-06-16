@@ -1,5 +1,8 @@
 package com.retail.intelligence.common.enums;
 
 public enum ProductStatus {
-    ACTIVE,\n    DISCONTINUED,\n    SEASONAL,\n    PENDING
+    ACTIVE,
+    DISCONTINUED,
+    SEASONAL,
+    PENDING
 }
