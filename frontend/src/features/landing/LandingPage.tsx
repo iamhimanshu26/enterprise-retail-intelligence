@@ -12,7 +12,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import { APP_NAME, APP_TAGLINE } from '@/lib/constants'
-import { PROJECT_ROADMAP } from '@/lib/roadmap'
+import { ENTERPRISE_PHASE_COUNT, PROJECT_ROADMAP, formatPhaseLabel } from '@/lib/roadmap'
 
 const TECH_STACK = [
   { icon: Sparkles, label: 'React 19' },
@@ -180,14 +180,16 @@ export function LandingPage() {
       <section className="border-t border-border/60 bg-muted/20 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl font-semibold tracking-tight">Roadmap Preview</h2>
-          <p className="mt-2 text-muted-foreground">15 phases from foundation to portfolio polish.</p>
+          <p className="mt-2 text-muted-foreground">
+            {ENTERPRISE_PHASE_COUNT} enterprise development phases from foundation to portfolio presentation.
+          </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {previewPhases.map((phase) => (
               <div
-                key={phase.phase}
+                key={phase.id}
                 className="rounded-lg border border-border/80 bg-card px-4 py-3 shadow-sm"
               >
-                <span className="text-xs font-semibold text-primary">Phase {phase.phase}</span>
+                <span className="text-xs font-semibold text-primary">{formatPhaseLabel(phase.phase)}</span>
                 <p className="mt-1 text-sm font-medium">{phase.title}</p>
               </div>
             ))}

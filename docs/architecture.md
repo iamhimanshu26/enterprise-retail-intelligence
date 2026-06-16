@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation that all future phases build upon without requiring redesign.
+The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–13 roadmap (`frontend/src/lib/roadmap.ts` in the application).
 
 ---
 
@@ -90,7 +90,7 @@ Frontend (React)
 
 ---
 
-## Future ETL Architecture (Phase 1)
+## Future ETL Architecture (Phase 3)
 
 ```
 Data Sources ──► Ingestion Layer ──► Validation ──► Transformation ──► Load ──► PostgreSQL
@@ -107,7 +107,7 @@ Data Sources ──► Ingestion Layer ──► Validation ──► Transforma
 
 ---
 
-## Future Analytics Engine (Phase 2)
+## Future Analytics Engine (Phase 4–5)
 
 ```
 PostgreSQL ──► OLAP Layer ──► Analytics API ──► Frontend Dashboards
@@ -124,7 +124,7 @@ PostgreSQL ──► OLAP Layer ──► Analytics API ──► Frontend Dashb
 
 ---
 
-## Future Forecasting Engine (Phase 4)
+## Future Forecasting Engine (Phase 6)
 
 ```
 Historical Data ──► Feature Engineering ──► Model Selection ──► Forecast API
@@ -136,11 +136,11 @@ Historical Data ──► Feature Engineering ──► Model Selection ──�
 - Time series models: ARIMA, Prophet, exponential smoothing
 - ML ensembles: Random Forest, Gradient Boosting
 - Confidence intervals and scenario comparison
-- Integration with Statistics Lab (Phase 3)
+- Integration with Statistics Lab (Phase 4)
 
 ---
 
-## Future Kubernetes Deployment (Phase 5)
+## Future Kubernetes Deployment (Phase 11)
 
 ```
                     ┌─────────────────┐

@@ -198,14 +198,18 @@ npx vercel --prod
 
 | Phase | Module |
 |-------|--------|
-| 1 | Enterprise Dashboard (live KPIs) |
-| 2 | Backend API integration |
-| 3–4 | Data generator & ETL UI |
-| 5–7 | Analytics, visualization, forecasting |
-| 8–11 | Pipeline monitoring, Airflow, insights |
-| 12–14 | Kubernetes, observability, polish |
+| 0–0.5 | Foundation & enterprise UX ✅ |
+| 1 | Executive Dashboard ✅ |
+| 2 | Synthetic Data Generator (current) |
+| 3–4 | ETL pipeline & statistics engine |
+| 5–6 | Visualization & forecasting |
+| 7–8 | Pipeline monitoring & Airflow |
+| 9–10 | Events & AI insights |
+| 11–13 | Kubernetes, observability, portfolio |
 
-See the root [README](../README.md) for the complete 15-phase roadmap.
+Roadmap source of truth: `src/lib/roadmap.ts` (14 enterprise phases, 0–13).
+
+See the root [README](../README.md) and [phase plan](../docs/phase-plan.md) for the complete roadmap.
 
 ---
 

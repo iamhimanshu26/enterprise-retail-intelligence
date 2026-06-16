@@ -30,6 +30,11 @@ import {
   TechBadge,
 } from '@/components/design-system'
 import type { ArchitectureSection, DifficultyLevel, StatusVariant } from '@/types'
+import {
+  ENTERPRISE_PHASE_COUNT,
+  ROADMAP_ITEM_COUNT,
+  getRoadmapProgress,
+} from '@/lib/roadmap'
 import { cn } from '@/lib/cn'
 
 const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
@@ -94,10 +99,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'End-to-end data movement from ingestion through transformation, analytics, and visualization layers.',
     icon: 'arrow',
     status: 'planned',
-    phase: 4,
+    phase: 3,
     difficulty: 'advanced',
     technologies: ['Polars', 'DuckDB', 'PostgreSQL'],
-    implementationStatus: 'Architecture documented — implementation in Phase 4',
+    implementationStatus: 'Architecture documented — implementation in Phase 3',
   },
   {
     id: 'etl',
@@ -105,7 +110,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Batch and streaming ETL pipelines with validation, error handling, and pipeline orchestration.',
     icon: 'workflow',
     status: 'planned',
-    phase: 4,
+    phase: 3,
     difficulty: 'advanced',
     technologies: ['Python', 'SQLAlchemy', 'Airflow'],
     implementationStatus: 'Placeholder UI ready — pipeline engine pending',
@@ -119,7 +124,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 5,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Star Schema', 'OLAP'],
-    implementationStatus: 'Module shell created — analytics engine pending',
+    implementationStatus: 'Module shell created — visualization platform in Phase 5',
   },
   {
     id: 'statistics',
@@ -127,10 +132,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Hypothesis testing, regression analysis, time series decomposition, and statistical modeling.',
     icon: 'activity',
     status: 'planned',
-    phase: 5,
+    phase: 4,
     difficulty: 'expert',
     technologies: ['Statsmodels', 'Scikit-learn', 'SciPy'],
-    implementationStatus: 'Statistics Lab placeholder — engine in Phase 5',
+    implementationStatus: 'Statistics Lab placeholder — engine in Phase 4',
   },
   {
     id: 'forecasting',
@@ -138,10 +143,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Demand forecasting with ARIMA, Prophet, ML ensembles, and scenario planning capabilities.',
     icon: 'lineChart',
     status: 'planned',
-    phase: 7,
+    phase: 6,
     difficulty: 'expert',
     technologies: ['Prophet', 'ARIMA', 'XGBoost'],
-    implementationStatus: 'Forecasting Center placeholder — models in Phase 7',
+    implementationStatus: 'Forecasting Center placeholder — models in Phase 6',
   },
   {
     id: 'database',
@@ -149,10 +154,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Normalized retail data model with star schema for analytics, audit trails, and temporal tables.',
     icon: 'database',
     status: 'planned',
-    phase: 3,
+    phase: 2,
     difficulty: 'intermediate',
     technologies: ['PostgreSQL', 'Flyway', 'Star Schema'],
-    implementationStatus: 'Bootstrap schema only — business tables in Phase 3',
+    implementationStatus: 'Bootstrap schema only — business tables in Phase 2',
   },
   {
     id: 'microservices',
@@ -182,10 +187,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Container orchestration with Helm charts, auto-scaling, service mesh, and GitOps deployment.',
     icon: 'cloud',
     status: 'planned',
-    phase: 12,
+    phase: 11,
     difficulty: 'advanced',
     technologies: ['Kubernetes', 'Helm', 'ArgoCD'],
-    implementationStatus: 'K8s manifests prepared — production deploy in Phase 12',
+    implementationStatus: 'K8s manifests prepared — production deploy in Phase 11',
   },
   {
     id: 'monitoring',
@@ -193,10 +198,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Distributed tracing, metrics collection, log aggregation, and alerting with Prometheus and Grafana.',
     icon: 'monitor',
     status: 'planned',
-    phase: 13,
+    phase: 12,
     difficulty: 'advanced',
     technologies: ['Prometheus', 'Grafana', 'Jaeger'],
-    implementationStatus: 'Pipeline Monitor placeholder — observability in Phase 13',
+    implementationStatus: 'Pipeline Monitor placeholder — observability in Phase 12',
   },
   {
     id: 'folder-structure',
@@ -212,13 +217,13 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
   {
     id: 'timeline',
     title: 'Development Timeline',
-    description: 'Fifteen-phase roadmap from foundation through portfolio polish with incremental delivery.',
+    description: 'Enterprise roadmap from foundation through portfolio presentation with incremental delivery.',
     icon: 'settings',
     status: 'completed',
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: '15-phase roadmap defined — Phase 0 complete',
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, and 1 complete`,
   },
 ]
 
@@ -329,13 +334,14 @@ function ArchitectureCard({ section }: { section: ArchitectureSection }) {
 
 export function EngineeringArchitecture() {
   const completedCount = ARCHITECTURE_SECTIONS.filter((s) => s.status === 'completed').length
+  const roadmapProgress = getRoadmapProgress()
 
   return (
     <div className="space-y-10">
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phase 0 Complete' }}
+        badge={{ status: 'completed', label: 'Phases 0–1 Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
@@ -344,7 +350,7 @@ export function EngineeringArchitecture() {
         {[
           { label: 'Sections Documented', value: String(ARCHITECTURE_SECTIONS.length) },
           { label: 'Implemented', value: String(completedCount) },
-          { label: 'Total Phases', value: '15' },
+          { label: 'Enterprise Phases', value: String(ENTERPRISE_PHASE_COUNT) },
         ].map((stat) => (
           <div
             key={stat.label}
@@ -358,7 +364,7 @@ export function EngineeringArchitecture() {
 
       <SectionContainer
         title="Development Roadmap"
-        description="Complete project timeline from enterprise foundation through portfolio polish. Phase 0 is complete; future phases are locked until prior dependencies are delivered."
+        description={`Complete ${ROADMAP_ITEM_COUNT}-milestone timeline (Phases 0–13 plus UX milestone 0.5). ${roadmapProgress.completed} milestones complete; Phase 2 is current.`}
       >
         <ArchitectureTimeline />
       </SectionContainer>

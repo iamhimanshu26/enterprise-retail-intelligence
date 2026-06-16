@@ -42,7 +42,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/sales',
     icon: TrendingUp,
     description: 'Revenue analytics and sales performance',
-    phase: 2,
+    phase: 5,
   },
   {
     id: 'inventory-intelligence',
@@ -50,7 +50,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/inventory',
     icon: Package,
     description: 'Stock levels, turnover, and optimization',
-    phase: 2,
+    phase: 5,
   },
   {
     id: 'customer-analytics',
@@ -58,7 +58,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/customers',
     icon: Users,
     description: 'Customer segmentation and behavior',
-    phase: 2,
+    phase: 5,
   },
   {
     id: 'supplier-analytics',
@@ -66,7 +66,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/suppliers',
     icon: Building2,
     description: 'Supplier performance and risk analysis',
-    phase: 2,
+    phase: 5,
   },
   {
     id: 'statistics-lab',
@@ -74,7 +74,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/statistics',
     icon: FlaskConical,
     description: 'Statistical modeling and hypothesis testing',
-    phase: 3,
+    phase: 4,
   },
   {
     id: 'forecasting-center',
@@ -82,7 +82,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/forecasting',
     icon: LineChart,
     description: 'Demand forecasting and scenario planning',
-    phase: 4,
+    phase: 6,
   },
   {
     id: 'etl-pipeline-studio',
@@ -90,7 +90,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/etl',
     icon: Workflow,
     description: 'Design and manage data pipelines',
-    phase: 1,
+    phase: 3,
   },
   {
     id: 'synthetic-data-generator',
@@ -98,7 +98,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/generator',
     icon: Sparkles,
     description: 'Generate realistic retail datasets',
-    phase: 1,
+    phase: 2,
   },
   {
     id: 'pipeline-monitor',
@@ -106,7 +106,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/pipeline',
     icon: Activity,
     description: 'Real-time pipeline health and metrics',
-    phase: 1,
+    phase: 7,
   },
   {
     id: 'business-insights',
@@ -114,7 +114,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/insights',
     icon: BarChart3,
     description: 'AI-powered business recommendations',
-    phase: 5,
+    phase: 10,
   },
   {
     id: 'engineering-architecture',

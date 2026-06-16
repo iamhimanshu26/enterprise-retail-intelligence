@@ -1,119 +1,184 @@
 export type PhaseStatus = 'completed' | 'current' | 'locked'
 
 export interface ProjectPhase {
-  phase: number
+  id: string
+  phase: number | string
   title: string
   description: string
+  purpose: string
   technologies: string[]
   status: PhaseStatus
 }
 
+/** Integer phases 0–13 (14 enterprise development phases). Phase 0.5 is a UX milestone between 0 and 1. */
+export const ENTERPRISE_PHASE_COUNT = 14
+
+/** Total roadmap entries including Phase 0.5 UX milestone. */
+export const ROADMAP_ITEM_COUNT = 15
+
+/** Next phase under active development. */
+export const CURRENT_PHASE = 2
+
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
+    id: '0',
     phase: 0,
-    title: 'Enterprise Foundation',
-    description: 'Monorepo architecture, design system, JWT infrastructure, Docker, and documentation portal.',
+    title: 'Enterprise Foundation & System Architecture',
+    description:
+      'Production-ready monorepo, enterprise UI shell, React, Spring Boot, FastAPI, PostgreSQL, Docker, Engineering Architecture module, and scalable project structure.',
+    purpose: 'Establish the architectural foundation for all future phases without redesign.',
     technologies: ['React 19', 'Spring Boot 3', 'FastAPI', 'PostgreSQL', 'Docker'],
     status: 'completed',
   },
   {
-    phase: 1,
-    title: 'Enterprise Dashboard',
-    description: 'Executive KPI views, workspace switching, and premium dashboard layouts.',
-    technologies: ['React', 'TanStack Query', 'Recharts'],
+    id: '0.5',
+    phase: 0.5,
+    title: 'Enterprise UX & SaaS Experience',
+    description:
+      'Landing page, demo mode, command palette, global search, enterprise design system, interactive Engineering Architecture, premium login, and UX polish.',
+    purpose: 'Transform the platform into a premium enterprise SaaS experience.',
+    technologies: ['React', 'Framer Motion', 'Design System', 'TanStack Query'],
     status: 'completed',
   },
   {
+    id: '1',
+    phase: 1,
+    title: 'Executive Dashboard & Retail Intelligence Foundation',
+    description:
+      'KPI cards, executive summary, sales overview, store and product rankings, business alerts, regional performance, recent activity, mock data layer, and reusable analytics components.',
+    purpose: 'Provide executives with a centralized business overview.',
+    technologies: ['React', 'TanStack Query', 'Recharts', 'Zustand'],
+    status: 'completed',
+  },
+  {
+    id: '2',
     phase: 2,
-    title: 'Backend APIs',
-    description: 'RESTful domain APIs for sales, inventory, customers, and suppliers.',
-    technologies: ['Spring Boot', 'JPA', 'OpenAPI'],
+    title: 'Synthetic Retail Data Generator',
+    description:
+      'Generate realistic stores, products, customers, suppliers, inventory, sales, promotions, and returns with configurable missing values, duplicates, outliers, seasonal trends, and regional distributions.',
+    purpose: 'Create enterprise-scale datasets for testing and analytics.',
+    technologies: ['Faker', 'Pandas', 'FastAPI', 'Python'],
     status: 'current',
   },
   {
+    id: '3',
     phase: 3,
-    title: 'Synthetic Retail Data Generator',
-    description: 'Realistic retail datasets for development, testing, and demos.',
-    technologies: ['Faker', 'Pandas', 'FastAPI'],
+    title: 'Python ETL & Data Engineering Pipeline',
+    description:
+      'Enterprise ETL for CSV, Excel, and JSON with validation, cleaning, duplicate removal, missing value handling, transformation, aggregation, and analytics-layer loading.',
+    purpose: 'Create production-quality data engineering workflows.',
+    technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB'],
     status: 'locked',
   },
   {
+    id: '4',
     phase: 4,
-    title: 'Python ETL Pipeline',
-    description: 'Batch ingestion, transformation, validation, and load into PostgreSQL.',
-    technologies: ['Polars', 'DuckDB', 'SQLAlchemy'],
+    title: 'Business Analytics & Statistics Engine',
+    description:
+      'Revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin calculations.',
+    purpose: 'Provide business intelligence and statistical analysis.',
+    technologies: ['NumPy', 'SciPy', 'Statsmodels', 'Pandas'],
     status: 'locked',
   },
   {
+    id: '5',
     phase: 5,
-    title: 'Business Analytics & Statistics',
-    description: 'Statistical modeling, hypothesis testing, and analytics computation.',
-    technologies: ['Scikit-learn', 'Statsmodels', 'NumPy'],
-    status: 'locked',
-  },
-  {
-    phase: 6,
-    title: 'Data Visualization',
-    description: 'Interactive charts, drill-downs, and executive reporting views.',
+    title: 'Data Visualization Platform',
+    description:
+      'Revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts.',
+    purpose: 'Transform raw data into business insights.',
     technologies: ['Recharts', 'D3.js', 'TanStack Table'],
     status: 'locked',
   },
   {
+    id: '6',
+    phase: 6,
+    title: 'Forecasting & Predictive Analytics',
+    description:
+      'Forecast revenue, sales, demand, inventory, seasonal trends, and store performance using statistical and ML models.',
+    purpose: 'Enable data-driven planning.',
+    technologies: ['Scikit-learn', 'Statsmodels', 'Prophet'],
+    status: 'locked',
+  },
+  {
+    id: '7',
     phase: 7,
-    title: 'Forecasting Engine',
-    description: 'Demand forecasting with time-series models and scenario planning.',
-    technologies: ['Prophet', 'ARIMA', 'XGBoost'],
+    title: 'Pipeline Monitoring & Data Quality',
+    description:
+      'Pipeline status, success/failure, runtime, quality score, validation reports, and execution history.',
+    purpose: 'Monitor ETL health and reliability.',
+    technologies: ['WebSocket', 'Prometheus', 'FastAPI'],
     status: 'locked',
   },
   {
+    id: '8',
     phase: 8,
-    title: 'Pipeline Monitoring',
-    description: 'Real-time pipeline health, logs, metrics, and alerting.',
-    technologies: ['WebSocket', 'Prometheus', 'Grafana'],
-    status: 'locked',
-  },
-  {
-    phase: 9,
-    title: 'Airflow Integration',
-    description: 'Orchestrated workflows for scheduled and dependency-driven pipelines.',
+    title: 'Airflow Workflow Orchestration',
+    description:
+      'Scheduled ETL, retry logic, DAG monitoring, and workflow history via Apache Airflow.',
+    purpose: 'Automate enterprise data pipelines.',
     technologies: ['Apache Airflow', 'Celery', 'Redis'],
     status: 'locked',
   },
   {
-    phase: 10,
+    id: '9',
+    phase: 9,
     title: 'Event-Driven Architecture',
-    description: 'Async messaging, event sourcing, and microservice decoupling.',
-    technologies: ['Kafka', 'RabbitMQ', 'CQRS'],
+    description:
+      'Kafka/Redpanda events for data generated, ETL started/completed, forecast completed, and insight generated.',
+    purpose: 'Build scalable event-driven microservices.',
+    technologies: ['Kafka', 'Redpanda', 'Event Sourcing'],
     status: 'locked',
   },
   {
-    phase: 11,
-    title: 'Business Insight Engine',
-    description: 'AI-powered recommendations and anomaly detection for retail KPIs.',
+    id: '10',
+    phase: 10,
+    title: 'AI Business Insight Engine',
+    description:
+      'Executive insights including revenue explanation, demand anomalies, inventory warnings, growth opportunities, and business recommendations.',
+    purpose: 'Convert analytics into actionable insights.',
     technologies: ['LLM APIs', 'Embeddings', 'RAG'],
     status: 'locked',
   },
   {
+    id: '11',
+    phase: 11,
+    title: 'Kubernetes & Cloud-Native Deployment',
+    description:
+      'Docker, Kubernetes, ConfigMaps, Secrets, health checks, and service discovery for cloud-native deployment.',
+    purpose: 'Demonstrate cloud-native architecture.',
+    technologies: ['Kubernetes', 'Helm', 'Docker'],
+    status: 'locked',
+  },
+  {
+    id: '12',
     phase: 12,
-    title: 'Kubernetes Deployment',
-    description: 'Production container orchestration with Helm and GitOps.',
-    technologies: ['Kubernetes', 'Helm', 'ArgoCD'],
-    status: 'locked',
-  },
-  {
-    phase: 13,
     title: 'Monitoring & Observability',
-    description: 'Distributed tracing, centralized logging, and SLA dashboards.',
-    technologies: ['Jaeger', 'ELK', 'Datadog'],
+    description:
+      'Prometheus, Grafana, Spring Boot Actuator, FastAPI metrics, service health, and performance monitoring.',
+    purpose: 'Enterprise production monitoring.',
+    technologies: ['Prometheus', 'Grafana', 'Actuator'],
     status: 'locked',
   },
   {
-    phase: 14,
-    title: 'Portfolio Polish',
-    description: 'Final UX refinement, documentation, demos, and production hardening.',
-    technologies: ['Storybook', 'E2E Tests', 'Performance'],
+    id: '13',
+    phase: 13,
+    title: 'Portfolio & Enterprise Presentation',
+    description:
+      'Architecture walkthrough, documentation, GitHub polish, landing page, screenshots, resume bullets, and presentation mode.',
+    purpose:
+      'Create a flagship portfolio project demonstrating full stack, data engineering, BI, statistics, forecasting, microservices, and cloud-native architecture.',
+    technologies: ['Storybook', 'E2E Tests', 'Documentation'],
     status: 'locked',
   },
 ]
 
-export const CURRENT_PHASE = 1
+export function formatPhaseLabel(phase: number | string): string {
+  return `Phase ${phase}`
+}
+
+export function getRoadmapProgress(): { completed: number; total: number; percent: number } {
+  const completed = PROJECT_ROADMAP.filter((p) => p.status === 'completed').length
+  const total = PROJECT_ROADMAP.length
+  return { completed, total, percent: Math.round((completed / total) * 100) }
+}

@@ -226,40 +226,44 @@ Optional env vars (when backend is deployed):
 | `VITE_API_URL` | Spring Boot backend URL |
 | `VITE_DATA_SERVICE_URL` | FastAPI data service URL |
 
-### Kubernetes (Future — Phase 12)
+### Kubernetes (Future — Phase 11)
 
-Manifests in `k8s/` provide deployment templates for frontend, backend, data service, ingress, configmaps, and secrets. Production deployment with Helm and GitOps is planned for Phase 12.
+Manifests in `k8s/` provide deployment templates for frontend, backend, data service, ingress, configmaps, and secrets. Production deployment with Helm and GitOps is planned for Phase 11.
 
 ---
 
 ## Roadmap
 
-| Phase | Title | Description |
-|-------|-------|-------------|
-| **0** | Enterprise Foundation | Monorepo, design system, JWT, Docker, documentation portal |
-| **1** | Enterprise Dashboard | Live KPI views and executive dashboard layouts |
-| **2** | Backend APIs | Domain REST APIs for sales, inventory, customers, suppliers |
-| **3** | Synthetic Retail Data Generator | Faker-based realistic retail dataset generation |
-| **4** | Python ETL Pipeline | Batch ingestion, validation, transformation, and load |
-| **5** | Business Analytics & Statistics | Statistical modeling and hypothesis testing |
-| **6** | Data Visualization | Interactive charts, drill-downs, and reporting |
-| **7** | Forecasting Engine | Demand forecasting with ARIMA, Prophet, and ML ensembles |
-| **8** | Pipeline Monitoring | Real-time pipeline health, logs, and metrics |
-| **9** | Airflow Integration | Scheduled workflow orchestration and dependencies |
-| **10** | Event-Driven Architecture | Kafka messaging, event sourcing, and CQRS |
-| **11** | Business Insight Engine | AI recommendations and anomaly detection |
-| **12** | Kubernetes Deployment | Production orchestration with Helm and GitOps |
-| **13** | Monitoring & Observability | Distributed tracing, logging, and SLA dashboards |
-| **14** | Portfolio Polish | Final UX, documentation, demos, and hardening |
+Single source of truth: `frontend/src/lib/roadmap.ts`
 
-**Current:** Phase 1 complete · **Next:** Phase 2 — Backend APIs
+| Phase | Title | Status |
+|-------|-------|--------|
+| **0** | Enterprise Foundation & System Architecture | ✅ Complete |
+| **0.5** | Enterprise UX & SaaS Experience | ✅ Complete |
+| **1** | Executive Dashboard & Retail Intelligence Foundation | ✅ Complete |
+| **2** | Synthetic Retail Data Generator | 🚀 Current |
+| **3** | Python ETL & Data Engineering Pipeline | Planned |
+| **4** | Business Analytics & Statistics Engine | Planned |
+| **5** | Data Visualization Platform | Planned |
+| **6** | Forecasting & Predictive Analytics | Planned |
+| **7** | Pipeline Monitoring & Data Quality | Planned |
+| **8** | Airflow Workflow Orchestration | Planned |
+| **9** | Event-Driven Architecture | Planned |
+| **10** | AI Business Insight Engine | Planned |
+| **11** | Kubernetes & Cloud-Native Deployment | Planned |
+| **12** | Monitoring & Observability | Planned |
+| **13** | Portfolio & Enterprise Presentation | Planned |
+
+**Current:** Phases 0, 0.5, and 1 complete · **Next:** Phase 2 — Synthetic Retail Data Generator
+
+See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
 
 ---
 
 ## Documentation
 
 - [Architecture Guide](docs/architecture.md)
-- [Phase Plan (legacy)](docs/phase-plan.md)
+- [Development Phase Plan](docs/phase-plan.md)
 - [Frontend README](frontend/README.md)
 
 ---

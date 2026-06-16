@@ -1,184 +1,201 @@
 # Development Phase Plan
 
-Complete roadmap from enterprise foundation through production release.
+Official enterprise roadmap for the **Enterprise Retail Intelligence & Forecasting Platform**.
+
+> **Single source of truth (application):** `frontend/src/lib/roadmap.ts`  
+> Phases **0–13** (14 enterprise development phases) plus **Phase 0.5** UX milestone.
 
 ---
 
-## Phase 0 — Enterprise Foundation & System Architecture
+## ✅ Phase 0 — Enterprise Foundation & System Architecture
 
 **Status:** Complete
 
-**Objective:** Production-ready foundation capable of supporting all future phases without architectural redesign.
-
-### Deliverables
-
-- [x] Enterprise monorepo structure
-- [x] React frontend with design system (20+ components)
-- [x] Premium SaaS UI shell with 13 navigation modules
-- [x] Engineering Architecture documentation portal
-- [x] Spring Boot backend with JWT infrastructure
-- [x] FastAPI data service foundation
-- [x] PostgreSQL with initialization scripts
-- [x] Docker Compose environment
-- [x] Kubernetes deployment manifests
-- [x] CI/CD pipeline
-- [x] Architecture documentation
-
-### Not in Scope
-
-- ETL, analytics, statistics, forecasting, AI, data generation, business logic
+Establish the production-ready monorepo, enterprise UI shell, React foundation, Spring Boot foundation, FastAPI foundation, PostgreSQL configuration, Docker environment, Engineering Architecture module, documentation, and scalable project structure.
 
 ---
 
-## Phase 1 — Data Engineering & ETL Pipelines
+## ✅ Phase 0.5 — Enterprise UX & SaaS Experience
+
+**Status:** Complete
+
+Transform the project into a premium enterprise SaaS platform:
+
+- Landing page
+- Demo mode
+- Command palette
+- Global search
+- Enterprise design system
+- Interactive Engineering Architecture
+- Premium login experience
+- Documentation improvements
+- Enterprise UX polish
+
+---
+
+## ✅ Phase 1 — Executive Dashboard & Retail Intelligence Foundation
+
+**Status:** Complete
+
+Build the first functional enterprise dashboard:
+
+- KPI cards
+- Executive summary
+- Sales overview
+- Store ranking
+- Product ranking
+- Business alerts
+- Regional performance
+- Recent activity
+- Mock data layer
+- Reusable analytics components
+
+**Purpose:** Provide executives with a centralized business overview.
+
+---
+
+## 🚀 Phase 2 — Synthetic Retail Data Generator
+
+**Status:** Current
+
+Develop an advanced retail data generator for realistic stores, products, customers, suppliers, inventory, sales transactions, promotions, and returns.
+
+Support configurable missing values, duplicates, outliers, seasonal trends, and regional distributions.
+
+**Purpose:** Create enterprise-scale datasets for testing and analytics.
+
+---
+
+## Phase 3 — Python ETL & Data Engineering Pipeline
 
 **Status:** Planned
 
-**Objective:** Build data ingestion, transformation, and synthetic data generation capabilities.
+Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validation, cleaning, duplicate removal, missing value handling, transformation, aggregation, and loading into the analytics layer.
 
-### Deliverables
+**Libraries:** Pandas, NumPy, Polars, DuckDB
 
-- ETL Pipeline Studio (visual pipeline designer)
-- Synthetic Data Generator (Faker-based retail datasets)
-- Pipeline Monitor (real-time status and metrics)
-- Database schema (normalized retail data model)
-- Batch ingestion pipelines
-- Data validation framework
-- Error handling and retry mechanisms
-- Audit trail logging
-
-### Technology Additions
-
-- Pandas, Polars, Faker, DuckDB, SQLAlchemy
+**Purpose:** Create production-quality data engineering workflows.
 
 ---
 
-## Phase 2 — Analytics & Business Intelligence
+## Phase 4 — Business Analytics & Statistics Engine
 
 **Status:** Planned
 
-**Objective:** Enable sales, inventory, customer, and supplier analytics with interactive dashboards.
+Calculate revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin.
 
-### Deliverables
-
-- Sales Intelligence module with revenue analytics
-- Inventory Intelligence with stock optimization
-- Customer Analytics with segmentation
-- Supplier Analytics with performance scoring
-- Interactive charts and visualizations
-- Dimensional modeling (star schema)
-- Filter, drill-down, and export capabilities
-- Scheduled report generation
-
-### Technology Additions
-
-- Chart libraries, OLAP queries, aggregation engine
+**Purpose:** Provide business intelligence and statistical analysis.
 
 ---
 
-## Phase 3 — Statistics Engine
+## Phase 5 — Data Visualization Platform
 
 **Status:** Planned
 
-**Objective:** Statistical modeling, hypothesis testing, and advanced analytics laboratory.
+Develop enterprise visualization modules: revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts.
 
-### Deliverables
-
-- Statistics Lab module
-- Descriptive statistics and distribution analysis
-- Hypothesis testing (t-test, chi-square, ANOVA)
-- Regression analysis (linear, logistic, multivariate)
-- Time series decomposition
-- Correlation and covariance analysis
-- Statistical report generation
-
-### Technology Additions
-
-- Scikit-learn, Statsmodels, SciPy
+**Purpose:** Transform raw data into business insights.
 
 ---
 
-## Phase 4 — Forecasting Center
+## Phase 6 — Forecasting & Predictive Analytics
 
 **Status:** Planned
 
-**Objective:** Demand forecasting with multiple models and scenario planning.
+Build prediction models for revenue, sales, demand, inventory, seasonal trends, and store performance.
 
-### Deliverables
+**Future libraries:** Scikit-learn, Statsmodels
 
-- Forecasting Center module
-- ARIMA and exponential smoothing models
-- Prophet integration for seasonal forecasting
-- ML ensemble models (Random Forest, XGBoost)
-- Confidence intervals and prediction bands
-- Scenario comparison and what-if analysis
-- Forecast accuracy metrics (MAPE, RMSE, MAE)
-- Automated model selection
-
-### Technology Additions
-
-- Statsmodels, Prophet, advanced scikit-learn pipelines
+**Purpose:** Enable data-driven planning.
 
 ---
 
-## Phase 5 — AI Insights & Production Deployment
+## Phase 7 — Pipeline Monitoring & Data Quality
 
 **Status:** Planned
 
-**Objective:** AI-powered business insights and full production deployment on Kubernetes.
+Display pipeline status, success/failure, runtime, quality score, validation reports, and execution history.
 
-### Deliverables
-
-- Business Insights module with AI recommendations
-- Anomaly detection across retail metrics
-- Natural language query interface
-- Event-driven architecture (message queues)
-- Kubernetes production deployment
-- Monitoring & observability (Prometheus, Grafana)
-- Distributed tracing (Jaeger)
-- Load testing and performance optimization
-- Security hardening and penetration testing
-- Production runbooks and SLA documentation
-
-### Technology Additions
-
-- Message queues (Kafka/RabbitMQ), Prometheus, Grafana, Helm
+**Purpose:** Monitor ETL health and reliability.
 
 ---
 
-## Phase 6 — Production Release & Enterprise Hardening
+## Phase 8 — Airflow Workflow Orchestration
 
 **Status:** Planned
 
-**Objective:** Final production release with enterprise compliance and multi-tenancy.
+Integrate Apache Airflow for scheduled ETL, retry logic, DAG monitoring, and workflow history.
 
-### Deliverables
-
-- Multi-tenant workspace isolation
-- Role-based access control (RBAC)
-- SSO/OAuth2 integration (Azure AD, Okta)
-- Data encryption at rest and in transit
-- Compliance reporting (SOC 2, GDPR)
-- Disaster recovery and backup automation
-- Performance benchmarking documentation
-- Customer onboarding documentation
-- SLA monitoring and alerting
+**Purpose:** Automate enterprise data pipelines.
 
 ---
 
-## Timeline Estimate
+## Phase 9 — Event-Driven Architecture
 
-| Phase | Duration | Cumulative |
-|-------|----------|------------|
-| Phase 0 — Foundation | 2–3 weeks | 3 weeks |
-| Phase 1 — ETL & Data | 3–4 weeks | 7 weeks |
-| Phase 2 — Analytics | 3–4 weeks | 11 weeks |
-| Phase 3 — Statistics | 2–3 weeks | 14 weeks |
-| Phase 4 — Forecasting | 3–4 weeks | 18 weeks |
-| Phase 5 — AI & K8s | 3–4 weeks | 22 weeks |
-| Phase 6 — Production | 2–3 weeks | 25 weeks |
+**Status:** Planned
 
-*Estimates assume a senior engineering team working full-time.*
+Implement Kafka/Redpanda for events: data generated, ETL started/completed, forecast completed, insight generated.
+
+**Purpose:** Build scalable event-driven microservices.
+
+---
+
+## Phase 10 — AI Business Insight Engine
+
+**Status:** Planned
+
+Generate executive business insights: revenue explanation, demand anomalies, inventory warnings, growth opportunities, and business recommendations.
+
+**Purpose:** Convert analytics into actionable insights.
+
+---
+
+## Phase 11 — Kubernetes & Cloud-Native Deployment
+
+**Status:** Planned
+
+Deploy using Docker, Kubernetes, ConfigMaps, Secrets, health checks, and service discovery.
+
+**Purpose:** Demonstrate cloud-native architecture.
+
+---
+
+## Phase 12 — Monitoring & Observability
+
+**Status:** Planned
+
+Implement Prometheus, Grafana, Spring Boot Actuator, FastAPI metrics, service health, and performance monitoring.
+
+**Purpose:** Enterprise production monitoring.
+
+---
+
+## Phase 13 — Portfolio & Enterprise Presentation
+
+**Status:** Planned
+
+Prepare the platform for interviews and portfolio presentation: architecture walkthrough, documentation, GitHub polish, landing page, screenshots, resume bullets, and presentation mode.
+
+**Purpose:** Flagship portfolio demonstrating Full Stack, Data Engineering, BI, Statistics, Forecasting, Microservices, and Cloud-Native Architecture.
+
+---
+
+## Platform Vision
+
+This roadmap represents a **complete Enterprise Retail Intelligence & Forecasting Platform**, not a dashboard-only application. Capabilities span:
+
+- Full Stack Development
+- Python Engineering
+- Data Engineering & ETL
+- Business Intelligence
+- Statistics
+- Data Visualization
+- Predictive Analytics
+- AI Insights
+- Event-Driven Architecture
+- Kubernetes
+- Enterprise Monitoring
+- Cloud-Native Architecture
 
 ---
 

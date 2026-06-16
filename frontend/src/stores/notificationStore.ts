@@ -14,7 +14,7 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   {
     id: '1',
     title: 'Platform Foundation Complete',
-    message: 'Phase 0 enterprise architecture is ready for development.',
+    message: 'Phase 1 executive dashboard is live with mock enterprise data.',
     type: 'success',
     read: false,
     timestamp: new Date().toISOString(),
@@ -22,7 +22,7 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   {
     id: '2',
     title: 'ETL Pipeline Scheduled',
-    message: 'Phase 1 ETL modules will be available in the next release.',
+    message: 'Phase 2 synthetic data generator is the next milestone.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),
