@@ -158,14 +158,19 @@ Direct PostgreSQL bulk insert from the generator API is planned as an optional P
 
 ## Local Development
 
-```bash
-# Data service with generator dependencies
-cd data-service-python
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+**Python:** 3.12 recommended (matches Docker). Use `pyenv` or see `.python-version`.
 
-# Frontend
-cd frontend && npm run dev
+```bash
+# Install & verify (from repo root)
+chmod +x scripts/verify-generator.sh
+./scripts/verify-generator.sh
+
+# Or manually
+cd data-service-python
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/verify_generator.py
+uvicorn app.main:app --reload --port 8000
 ```
 
 Open http://localhost:5173/generator (login required). Ensure `VITE_DATA_SERVICE_URL` points to `http://localhost:8000`.

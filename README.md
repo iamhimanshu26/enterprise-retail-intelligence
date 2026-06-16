@@ -213,7 +213,9 @@ cd backend-springboot && mvn spring-boot:run
 
 # Python
 cd data-service-python && python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt && uvicorn app.main:app --reload
+pip install -r requirements.txt
+python scripts/verify_generator.py
+uvicorn app.main:app --reload
 
 # Database only
 docker compose up postgres -d
