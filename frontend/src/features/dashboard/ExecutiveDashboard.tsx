@@ -11,27 +11,21 @@ import {
   Users,
   Warehouse,
 } from 'lucide-react'
-import { ErrorState, StatusBadge, SystemHealthWidget } from '@/components/design-system'
+import { ErrorState, SystemHealthWidget } from '@/components/design-system'
 import {
   ActivityTimeline,
-  AlertPanel,
   DashboardGrid,
   DashboardSection,
   FilterToolbar,
   KpiCard,
   QuickActionPanel,
-  RankingTable,
   SummaryCard,
 } from '@/components/analytics'
+import { AlertCenter } from '@/components/analytics/bi'
 import { useExecutiveDashboard } from '@/hooks/useExecutiveDashboard'
 import { useWorkspaceStore } from '@/stores/workspaceStore'
-import { formatCurrency, formatNumber, formatPercent } from '@/lib/formatters'
-import type { ProductRow, StoreRow } from '@/types/dashboard'
+import { BusinessIntelligenceModules } from './components/BusinessIntelligenceModules'
 import { DashboardPageHeader } from './components/DashboardPageHeader'
-import {
-  BusinessSummaryGrid,
-  RegionalPerformanceGrid,
-} from './components/DashboardSections'
 import {
   CustomerGrowthChart,
   InventoryDistributionChart,
@@ -51,20 +45,6 @@ const KPI_ICONS: Record<string, React.ReactNode> = {
   margin: <Percent className="h-4 w-4" />,
   inventory: <Warehouse className="h-4 w-4" />,
   growth: <TrendingUp className="h-4 w-4" />,
-}
-
-const PRODUCT_STATUS_MAP = {
-  active: { status: 'completed' as const, label: 'Active' },
-  'low-stock': { status: 'in-progress' as const, label: 'Low Stock' },
-  discontinued: { status: 'planned' as const, label: 'Discontinued' },
-  promoted: { status: 'foundation' as const, label: 'Promoted' },
-}
-
-const STORE_PERFORMANCE_MAP = {
-  excellent: { status: 'completed' as const, label: 'Excellent' },
-  good: { status: 'foundation' as const, label: 'Good' },
-  average: { status: 'in-progress' as const, label: 'Average' },
-  underperforming: { status: 'planned' as const, label: 'Below Target' },
 }
 
 export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
@@ -94,7 +74,8 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
     <div className="space-y-10">
       <DashboardPageHeader
         title="Executive Dashboard"
-        description={`Enterprise business overview for retail executives — ${workspace.label} workspace. Modular dashboard framework with API-ready sections.`}
+        description={`Enterprise business intelligence for retail executives — ${workspace.label} workspace.`}
+        badge="Sprint 1.2 — Business Intelligence"
         lastUpdated={lastUpdated}
         onRefresh={() => refetch()}
         refreshing={isFetching}
@@ -148,9 +129,11 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
         />
       )}
 
+      {data && <BusinessIntelligenceModules data={data} loading={loading} />}
+
       <DashboardSection
         title="Analytics Overview"
-        description="Chart framework with reusable containers — data layer ready for REST API swap."
+        description="Chart framework with reusable containers — API-ready visualization layer."
       >
         {data && (
           <DashboardGrid columns={2}>
@@ -165,108 +148,15 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
         )}
       </DashboardSection>
 
-      <DashboardSection
-        title="Business Widgets"
-        description="Operational summaries, regional performance, and ranking tables."
-      >
-        {data && (
-          <div className="space-y-8">
-            <BusinessSummaryGrid items={data.businessSummary} />
-            <RegionalPerformanceGrid highlights={data.regionalHighlights} />
-            <DashboardGrid columns={2}>
-              <div>
-                <h3 className="mb-4 text-sm font-semibold text-foreground">Top Products</h3>
-                <RankingTable<ProductRow>
-                  data={data.topProducts}
-                  sortKey="revenue"
-                  searchKeys={['product', 'category']}
-                  searchPlaceholder="Search products or categories..."
-                  columns={[
-                    { key: 'product', header: 'Product' },
-                    { key: 'category', header: 'Category' },
-                    {
-                      key: 'revenue',
-                      header: 'Revenue',
-                      render: (row) => formatCurrency(row.revenue, true),
-                    },
-                    {
-                      key: 'unitsSold',
-                      header: 'Units Sold',
-                      render: (row) => formatNumber(row.unitsSold),
-                    },
-                    {
-                      key: 'growth',
-                      header: 'Growth',
-                      render: (row) => (
-                        <span className={row.growth >= 0 ? 'text-success' : 'text-destructive'}>
-                          {formatPercent(row.growth)}
-                        </span>
-                      ),
-                    },
-                    {
-                      key: 'status',
-                      header: 'Status',
-                      render: (row) => {
-                        const config = PRODUCT_STATUS_MAP[row.status]
-                        return <StatusBadge status={config.status} label={config.label} />
-                      },
-                    },
-                  ]}
-                />
-              </div>
-              <div>
-                <h3 className="mb-4 text-sm font-semibold text-foreground">Store Rankings</h3>
-                <RankingTable<StoreRow>
-                  data={data.storeRankings}
-                  sortKey="rank"
-                  searchKeys={['storeName', 'region']}
-                  searchPlaceholder="Search stores..."
-                  columns={[
-                    { key: 'rank', header: 'Rank' },
-                    { key: 'storeName', header: 'Store Name' },
-                    { key: 'region', header: 'Region' },
-                    {
-                      key: 'revenue',
-                      header: 'Revenue',
-                      render: (row) => formatCurrency(row.revenue, true),
-                    },
-                    {
-                      key: 'orders',
-                      header: 'Orders',
-                      render: (row) => formatNumber(row.orders),
-                    },
-                    {
-                      key: 'growth',
-                      header: 'Growth',
-                      render: (row) => (
-                        <span className="text-success">{formatPercent(row.growth)}</span>
-                      ),
-                    },
-                    {
-                      key: 'performance',
-                      header: 'Performance',
-                      render: (row) => {
-                        const config = STORE_PERFORMANCE_MAP[row.performance]
-                        return <StatusBadge status={config.status} label={config.label} />
-                      },
-                    },
-                  ]}
-                />
-              </div>
-            </DashboardGrid>
-          </div>
-        )}
-      </DashboardSection>
-
-      <DashboardSection title="Quick Actions" description="Navigate to platform modules — actions only, no backend execution.">
+      <DashboardSection title="Quick Actions" description="Navigate to platform modules.">
         {data && <QuickActionPanel actions={data.quickActions} />}
       </DashboardSection>
 
-      <DashboardSection title="Business Alerts" description="Operational alerts requiring executive attention.">
-        {data && <AlertPanel alerts={data.alerts} />}
+      <DashboardSection title="Business Alert Center" description="Priority-filtered operational alerts.">
+        {data && <AlertCenter alerts={data.alerts} />}
       </DashboardSection>
 
-      <DashboardSection title="Recent Activity" description="Enterprise timeline — foundation and operational events.">
+      <DashboardSection title="Activity Center" description="Enterprise events with icons and timestamps.">
         {data && <ActivityTimeline activities={data.activities} />}
       </DashboardSection>
 
@@ -275,7 +165,7 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
       </DashboardSection>
 
       <p className="text-center text-xs text-muted-foreground">
-        Sprint 1.1 dashboard framework — mock data via{' '}
+        Sprint 1.2 business intelligence — mock data via{' '}
         <code className="text-foreground">src/data/mock/</code>.{' '}
         <Link to="/engineering" className="font-medium text-primary hover:underline">
           View architecture

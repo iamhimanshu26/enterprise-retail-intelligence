@@ -8,7 +8,31 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Sprint 1.1 complete — scalable executive dashboard framework with reusable components and API-ready mock layer.
+**Current status:** Sprint 1.2 complete — business intelligence modules with sales, regional, customer, inventory, and executive widgets.
+
+---
+
+## Sprint 1.2 — Business Intelligence Modules ✅
+
+Mock-only BI layer on the Sprint 1.1 framework. Replace `fetchExecutiveDashboard()` with REST — UI unchanged.
+
+### BI modules
+
+- **Sales Intelligence** — daily / weekly / monthly / quarterly / yearly revenue
+- **Regional Performance** — Tokyo, Osaka, Kanagawa, Hokkaido, Fukuoka
+- **Product & Store tables** — sort, filter, pagination placeholder
+- **Customer & Inventory overview** — metric widget grids
+- **Executive Widgets** — categories, suppliers, segments, distributions
+- **Alert Center** — priority filter tabs
+- **Activity Center** — icon-based timeline
+
+### BI components (`src/components/analytics/bi/`)
+
+`MetricWidget`, `BusinessWidget`, `AnalyticsTable`, `ProductTable`, `StoreTable`, `RegionCard`, `AlertCenter`
+
+### Mock files added
+
+`sales-bi.ts`, `regions.ts`, `inventory.ts`, `widgets.ts`, `customers-bi.ts`
 
 ---
 

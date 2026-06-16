@@ -1,8 +1,8 @@
-import type {
-  DashboardQueryParams,
-  ExecutiveDashboardData,
-  QuickAction,
-} from '@/types/dashboard'
+import { buildCustomerOverview } from './customers-bi'
+import { buildInventoryOverview } from './inventory'
+import { buildRegionPerformance } from './regions'
+import { buildSalesRevenuePeriods } from './sales-bi'
+import { buildExecutiveWidgets } from './widgets'
 import { getActivityEvents } from './activity'
 import { MOCK_ALERTS } from './alerts'
 import { buildChartDatasets } from './charts'
@@ -15,6 +15,12 @@ import {
   MOCK_EXECUTIVE_SUMMARY,
   MOCK_REGIONAL_HIGHLIGHTS,
 } from './summary'
+import type {
+  DashboardQueryParams,
+  ExecutiveDashboardData,
+  QuickAction,
+  StoreRow,
+} from '@/types/dashboard'
 
 const WORKSPACE_MULTIPLIERS: Record<string, number> = {
   'north-america': 1.0,
@@ -52,7 +58,7 @@ function filterProducts(category: string) {
   return BASE_TOP_PRODUCTS.filter((p) => p.category === category)
 }
 
-function filterStores(region: string) {
+function filterStores(region: string): StoreRow[] {
   if (region === 'all') return BASE_STORE_RANKINGS
   const regionMap: Record<string, string> = {
     'North America': 'North America',
@@ -63,6 +69,15 @@ function filterStores(region: string) {
   }
   const mapped = regionMap[region] ?? region
   return BASE_STORE_RANKINGS.filter((s) => s.region === mapped)
+}
+
+function scaleStoreRows(rows: StoreRow[], multiplier: number): StoreRow[] {
+  return rows.map((row) => ({
+    ...row,
+    revenue: Math.round(row.revenue * multiplier),
+    orders: Math.round(row.orders * multiplier),
+    profit: Math.round(row.profit * multiplier),
+  }))
 }
 
 export async function fetchExecutiveDashboard(
@@ -86,10 +101,15 @@ export async function fetchExecutiveDashboard(
     revenueByRegion: charts.revenueByRegion,
     inventoryDistribution: charts.inventoryDistribution,
     topProducts: filterProducts(params.category),
-    storeRankings: filterStores(params.region).slice(0, 10),
+    storeRankings: scaleStoreRows(filterStores(params.region).slice(0, 10), multiplier),
     alerts: MOCK_ALERTS,
     activities: getActivityEvents(),
     quickActions: MOCK_QUICK_ACTIONS,
+    salesRevenue: buildSalesRevenuePeriods(multiplier),
+    regionPerformance: buildRegionPerformance(multiplier),
+    customerOverview: buildCustomerOverview(multiplier),
+    inventoryOverview: buildInventoryOverview(multiplier),
+    executiveWidgets: buildExecutiveWidgets(multiplier),
   }
 }
 

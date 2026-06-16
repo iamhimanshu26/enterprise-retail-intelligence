@@ -1,4 +1,15 @@
 export { ActivityCard, ActivityFeed } from './ActivityCard'
+export { AlertCenter } from './bi/AlertCenter'
+export {
+  AnalyticsTable,
+  BusinessWidget,
+  DistributionCard,
+  MetricWidget,
+  ProductTable,
+  RankingCard,
+  RegionCard,
+  StoreTable,
+} from './bi'
 export { ActivityTimeline } from './ActivityTimeline'
 export { AlertCard, AlertPanel } from './AlertCard'
 export { AnalyticsCard } from './AnalyticsCard'

@@ -1,6 +1,56 @@
 import type { ActivityEvent } from '@/types/dashboard'
 
-/** Sprint 1.1 foundation timeline placeholders — API-ready event feed. */
+export const BI_ACTIVITY_EVENTS: ActivityEvent[] = [
+  {
+    id: 'bi-1',
+    title: 'Dashboard refreshed',
+    description: 'Executive dashboard metrics updated from mock intelligence layer.',
+    category: 'Dashboard',
+    timestamp: new Date(Date.now() - 8 * 60_000).toISOString(),
+    icon: 'refresh',
+  },
+  {
+    id: 'bi-2',
+    title: 'Sales data imported',
+    description: 'Weekly sales batch imported — 892K orders processed.',
+    category: 'Sales',
+    timestamp: new Date(Date.now() - 45 * 60_000).toISOString(),
+    icon: 'upload',
+  },
+  {
+    id: 'bi-3',
+    title: 'ETL job scheduled',
+    description: 'Nightly retail ETL pipeline scheduled for 02:00 UTC.',
+    category: 'ETL',
+    timestamp: new Date(Date.now() - 2 * 3600_000).toISOString(),
+    icon: 'calendar',
+  },
+  {
+    id: 'bi-4',
+    title: 'Forecast requested',
+    description: 'Q2 demand forecast run requested by executive workspace.',
+    category: 'Forecasting',
+    timestamp: new Date(Date.now() - 4 * 3600_000).toISOString(),
+    icon: 'chart',
+  },
+  {
+    id: 'bi-5',
+    title: 'Data generation completed',
+    description: 'Synthetic retail dataset batch completed for APAC region.',
+    category: 'Data',
+    timestamp: new Date(Date.now() - 10 * 3600_000).toISOString(),
+    icon: 'database',
+  },
+  {
+    id: 'bi-6',
+    title: 'User login',
+    description: 'Executive user authenticated via enterprise demo session.',
+    category: 'Security',
+    timestamp: new Date(Date.now() - 12 * 3600_000).toISOString(),
+    icon: 'login',
+  },
+]
+
 export const FOUNDATION_ACTIVITY_EVENTS: ActivityEvent[] = [
   {
     id: 'foundation-1',
@@ -8,34 +58,7 @@ export const FOUNDATION_ACTIVITY_EVENTS: ActivityEvent[] = [
     description: 'Executive dashboard layout, KPI grid, and reusable section components initialized.',
     category: 'Platform',
     timestamp: new Date(Date.now() - 2 * 24 * 3600_000).toISOString(),
-  },
-  {
-    id: 'foundation-2',
-    title: 'Architecture documentation updated',
-    description: 'Engineering Architecture module synchronized with enterprise roadmap.',
-    category: 'Architecture',
-    timestamp: new Date(Date.now() - 3 * 24 * 3600_000).toISOString(),
-  },
-  {
-    id: 'foundation-3',
-    title: 'Data generation pending',
-    description: 'Synthetic retail data generator module scheduled for Phase 2.',
-    category: 'Data',
-    timestamp: new Date(Date.now() - 4 * 24 * 3600_000).toISOString(),
-  },
-  {
-    id: 'foundation-4',
-    title: 'ETL pipeline pending',
-    description: 'Python ETL workflows will connect when Phase 3 is delivered.',
-    category: 'ETL',
-    timestamp: new Date(Date.now() - 5 * 24 * 3600_000).toISOString(),
-  },
-  {
-    id: 'foundation-5',
-    title: 'Forecast module pending',
-    description: 'Forecasting Center awaits predictive analytics in Phase 6.',
-    category: 'Forecasting',
-    timestamp: new Date(Date.now() - 6 * 24 * 3600_000).toISOString(),
+    icon: 'default',
   },
 ]
 
@@ -46,27 +69,7 @@ export const OPERATIONAL_ACTIVITY_EVENTS: ActivityEvent[] = [
     description: 'Weekly executive sales summary exported to PDF.',
     category: 'Reporting',
     timestamp: new Date(Date.now() - 20 * 60_000).toISOString(),
-  },
-  {
-    id: 'act2',
-    title: 'New store added',
-    description: 'Singapore Marina Bay location activated in APAC workspace.',
-    category: 'Operations',
-    timestamp: new Date(Date.now() - 3 * 3600_000).toISOString(),
-  },
-  {
-    id: 'act3',
-    title: 'Forecast completed',
-    description: 'Q1 demand forecast model run completed with 94.2% accuracy.',
-    category: 'Forecasting',
-    timestamp: new Date(Date.now() - 6 * 3600_000).toISOString(),
-  },
-  {
-    id: 'act4',
-    title: 'Pipeline executed',
-    description: 'Daily ETL pipeline ingested 2.4M transaction records.',
-    category: 'ETL',
-    timestamp: new Date(Date.now() - 12 * 3600_000).toISOString(),
+    icon: 'chart',
   },
   {
     id: 'act5',
@@ -74,9 +77,10 @@ export const OPERATIONAL_ACTIVITY_EVENTS: ActivityEvent[] = [
     description: 'Stock levels synchronized across 847 active stores.',
     category: 'Inventory',
     timestamp: new Date(Date.now() - 18 * 3600_000).toISOString(),
+    icon: 'database',
   },
 ]
 
 export function getActivityEvents(): ActivityEvent[] {
-  return [...OPERATIONAL_ACTIVITY_EVENTS, ...FOUNDATION_ACTIVITY_EVENTS]
+  return [...BI_ACTIVITY_EVENTS, ...OPERATIONAL_ACTIVITY_EVENTS, ...FOUNDATION_ACTIVITY_EVENTS]
 }

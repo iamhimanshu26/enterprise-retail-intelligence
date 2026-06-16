@@ -1,7 +1,25 @@
 import { cn } from '@/lib/cn'
 import { formatRelativeTime } from '@/lib/formatters'
-import type { ActivityEvent } from '@/types/dashboard'
-import { Circle } from 'lucide-react'
+import type { ActivityEvent, ActivityIconKey } from '@/types/dashboard'
+import {
+  BarChart3,
+  Calendar,
+  Circle,
+  Database,
+  LogIn,
+  RefreshCw,
+  Upload,
+} from 'lucide-react'
+
+const ACTIVITY_ICONS: Record<ActivityIconKey, React.ComponentType<{ className?: string }>> = {
+  refresh: RefreshCw,
+  upload: Upload,
+  calendar: Calendar,
+  chart: BarChart3,
+  database: Database,
+  login: LogIn,
+  default: Circle,
+}
 
 interface ActivityCardProps {
   activity: ActivityEvent
@@ -10,16 +28,18 @@ interface ActivityCardProps {
 }
 
 export function ActivityCard({ activity, isLast, className }: ActivityCardProps) {
+  const Icon = ACTIVITY_ICONS[activity.icon ?? 'default']
+
   return (
     <article className={cn('relative flex gap-4 pb-6', className)} aria-label={activity.title}>
       {!isLast && (
         <span
-          className="absolute left-[7px] top-4 h-full w-px bg-border"
+          className="absolute left-[11px] top-4 h-full w-px bg-border"
           aria-hidden="true"
         />
       )}
-      <div className="relative z-10 mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background">
-        <Circle className="h-2 w-2 fill-primary text-primary" />
+      <div className="relative z-10 mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background text-primary">
+        <Icon className="h-3 w-3" aria-hidden="true" />
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">

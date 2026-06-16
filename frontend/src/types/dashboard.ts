@@ -67,9 +67,65 @@ export interface StoreRow {
   region: string
   revenue: number
   orders: number
+  profit: number
   growth: number
   performance: StorePerformance
 }
+
+export interface SalesRevenuePeriod {
+  id: string
+  label: string
+  revenue: number
+  previousRevenue: number
+  growth: number
+  trend: TrendDirection
+  comparisonLabel: string
+}
+
+export interface RegionPerformanceRow {
+  id: string
+  rank: number
+  region: string
+  revenue: number
+  orders: number
+  growth: number
+  profit: number
+  performanceScore: number
+  trend: TrendDirection
+}
+
+export interface CustomerOverviewMetrics {
+  totalCustomers: number
+  newCustomers: number
+  returningCustomers: number
+  customerGrowth: number
+  averageOrderValue: number
+  retentionRate: number
+}
+
+export interface InventoryOverviewMetrics {
+  inventoryValue: number
+  lowStockCount: number
+  overstockCount: number
+  outOfStockCount: number
+  fastMovingCount: number
+}
+
+export interface ExecutiveWidget {
+  id: string
+  title: string
+  description: string
+  items: ChartDataPoint[]
+}
+
+export type ActivityIconKey =
+  | 'refresh'
+  | 'upload'
+  | 'calendar'
+  | 'chart'
+  | 'database'
+  | 'login'
+  | 'default'
 
 export interface BusinessAlert {
   id: string
@@ -85,6 +141,7 @@ export interface ActivityEvent {
   description: string
   category: string
   timestamp: string
+  icon?: ActivityIconKey
 }
 
 export interface QuickAction {
@@ -117,4 +174,9 @@ export interface ExecutiveDashboardData {
   alerts: BusinessAlert[]
   activities: ActivityEvent[]
   quickActions: QuickAction[]
+  salesRevenue: SalesRevenuePeriod[]
+  regionPerformance: RegionPerformanceRow[]
+  customerOverview: CustomerOverviewMetrics
+  inventoryOverview: InventoryOverviewMetrics
+  executiveWidgets: ExecutiveWidget[]
 }
