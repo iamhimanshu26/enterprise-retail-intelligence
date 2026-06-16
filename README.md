@@ -241,20 +241,21 @@ Single source of truth: `frontend/src/lib/roadmap.ts`
 | **0** | Enterprise Foundation & System Architecture | ✅ Complete |
 | **0.5** | Enterprise UX & SaaS Experience | ✅ Complete |
 | **1** | Executive Dashboard & Retail Intelligence Foundation | ✅ Complete |
-| **2** | Synthetic Retail Data Generator | 🚀 Current |
-| **3** | Python ETL & Data Engineering Pipeline | Planned |
-| **4** | Business Analytics & Statistics Engine | Planned |
-| **5** | Data Visualization Platform | Planned |
-| **6** | Forecasting & Predictive Analytics | Planned |
-| **7** | Pipeline Monitoring & Data Quality | Planned |
-| **8** | Airflow Workflow Orchestration | Planned |
-| **9** | Event-Driven Architecture | Planned |
-| **10** | AI Business Insight Engine | Planned |
-| **11** | Kubernetes & Cloud-Native Deployment | Planned |
-| **12** | Monitoring & Observability | Planned |
-| **13** | Portfolio & Enterprise Presentation | Planned |
+| **2** | Core Retail Domain & Database Model | ✅ Complete |
+| **3** | Synthetic Retail Data Generator | 🚀 Current |
+| **4** | Python ETL & Data Engineering Pipeline | Planned |
+| **5** | Business Analytics & Statistics Engine | Planned |
+| **6** | Data Visualization Platform | Planned |
+| **7** | Forecasting & Predictive Analytics | Planned |
+| **8** | Pipeline Monitoring & Data Quality | Planned |
+| **9** | Airflow Workflow Orchestration | Planned |
+| **10** | Event-Driven Architecture | Planned |
+| **11** | AI Business Insight Engine | Planned |
+| **12** | Kubernetes & Cloud-Native Deployment | Planned |
+| **13** | Monitoring & Observability | Planned |
+| **14** | Portfolio & Enterprise Presentation | Planned |
 
-**Current:** Phases 0, 0.5, and 1 complete · **Next:** Phase 2 — Synthetic Retail Data Generator
+**Current:** Phases 0, 0.5, 1, and 2 complete · **Next:** Phase 3 — Synthetic Retail Data Generator
 
 See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
 

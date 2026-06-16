@@ -10,14 +10,14 @@ export interface ProjectPhase {
   status: PhaseStatus
 }
 
-/** Integer phases 0–13 (14 enterprise development phases). Phase 0.5 is a UX milestone between 0 and 1. */
-export const ENTERPRISE_PHASE_COUNT = 14
+/** Integer phases 0–14 (15 enterprise development phases). Phase 0.5 is a UX milestone between 0 and 1. */
+export const ENTERPRISE_PHASE_COUNT = 15
 
 /** Total roadmap entries including Phase 0.5 UX milestone. */
-export const ROADMAP_ITEM_COUNT = 15
+export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 2
+export const CURRENT_PHASE = 3
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -53,6 +53,16 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
     id: '2',
     phase: 2,
+    title: 'Core Retail Domain & Database Model',
+    description:
+      'Retail domain entities, PostgreSQL schema, JPA models, repositories, DTOs, Flyway migrations, and API-ready service skeletons for stores, products, customers, suppliers, inventory, sales, promotions, and returns.',
+    purpose: 'Establish the backend and database foundation for data generation, ETL, analytics, and forecasting.',
+    technologies: ['Spring Data JPA', 'PostgreSQL', 'Flyway', 'OpenAPI'],
+    status: 'completed',
+  },
+  {
+    id: '3',
+    phase: 3,
     title: 'Synthetic Retail Data Generator',
     description:
       'Generate realistic stores, products, customers, suppliers, inventory, sales, promotions, and returns with configurable missing values, duplicates, outliers, seasonal trends, and regional distributions.',
@@ -61,8 +71,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'current',
   },
   {
-    id: '3',
-    phase: 3,
+    id: '4',
+    phase: 4,
     title: 'Python ETL & Data Engineering Pipeline',
     description:
       'Enterprise ETL for CSV, Excel, and JSON with validation, cleaning, duplicate removal, missing value handling, transformation, aggregation, and analytics-layer loading.',
@@ -71,8 +81,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '4',
-    phase: 4,
+    id: '5',
+    phase: 5,
     title: 'Business Analytics & Statistics Engine',
     description:
       'Revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin calculations.',
@@ -81,8 +91,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '5',
-    phase: 5,
+    id: '6',
+    phase: 6,
     title: 'Data Visualization Platform',
     description:
       'Revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts.',
@@ -91,8 +101,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '6',
-    phase: 6,
+    id: '7',
+    phase: 7,
     title: 'Forecasting & Predictive Analytics',
     description:
       'Forecast revenue, sales, demand, inventory, seasonal trends, and store performance using statistical and ML models.',
@@ -101,8 +111,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '7',
-    phase: 7,
+    id: '8',
+    phase: 8,
     title: 'Pipeline Monitoring & Data Quality',
     description:
       'Pipeline status, success/failure, runtime, quality score, validation reports, and execution history.',
@@ -111,8 +121,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '8',
-    phase: 8,
+    id: '9',
+    phase: 9,
     title: 'Airflow Workflow Orchestration',
     description:
       'Scheduled ETL, retry logic, DAG monitoring, and workflow history via Apache Airflow.',
@@ -121,8 +131,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '9',
-    phase: 9,
+    id: '10',
+    phase: 10,
     title: 'Event-Driven Architecture',
     description:
       'Kafka/Redpanda events for data generated, ETL started/completed, forecast completed, and insight generated.',
@@ -131,8 +141,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '10',
-    phase: 10,
+    id: '11',
+    phase: 11,
     title: 'AI Business Insight Engine',
     description:
       'Executive insights including revenue explanation, demand anomalies, inventory warnings, growth opportunities, and business recommendations.',
@@ -141,8 +151,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '11',
-    phase: 11,
+    id: '12',
+    phase: 12,
     title: 'Kubernetes & Cloud-Native Deployment',
     description:
       'Docker, Kubernetes, ConfigMaps, Secrets, health checks, and service discovery for cloud-native deployment.',
@@ -151,8 +161,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '12',
-    phase: 12,
+    id: '13',
+    phase: 13,
     title: 'Monitoring & Observability',
     description:
       'Prometheus, Grafana, Spring Boot Actuator, FastAPI metrics, service health, and performance monitoring.',
@@ -161,8 +171,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     status: 'locked',
   },
   {
-    id: '13',
-    phase: 13,
+    id: '14',
+    phase: 14,
     title: 'Portfolio & Enterprise Presentation',
     description:
       'Architecture walkthrough, documentation, GitHub polish, landing page, screenshots, resume bullets, and presentation mode.',

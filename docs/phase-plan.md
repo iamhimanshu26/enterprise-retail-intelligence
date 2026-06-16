@@ -3,7 +3,7 @@
 Official enterprise roadmap for the **Enterprise Retail Intelligence & Forecasting Platform**.
 
 > **Single source of truth (application):** `frontend/src/lib/roadmap.ts`  
-> Phases **0–13** (14 enterprise development phases) plus **Phase 0.5** UX milestone.
+> Phases **0–14** (15 enterprise development phases) plus **Phase 0.5** UX milestone.
 
 ---
 
@@ -63,7 +63,23 @@ Build the first functional enterprise dashboard:
 
 ---
 
-## 🚀 Phase 2 — Synthetic Retail Data Generator
+## ✅ Phase 2 — Core Retail Domain & Database Model
+
+**Status:** Complete
+
+Establish the backend and database foundation:
+
+- Retail domain entities (Store, Product, Customer, Supplier, Inventory, Sales, Promotions, Returns)
+- PostgreSQL schema with Flyway migrations (`V1`, `V2`)
+- Spring Boot JPA entities, repositories, DTOs, mappers
+- API-ready service and controller skeletons (`/api/v1/*`)
+- Documentation: `docs/data-model.md`
+
+**Purpose:** Support synthetic data generation, ETL, analytics, statistics, and forecasting.
+
+---
+
+## 🚀 Phase 3 — Synthetic Retail Data Generator
 
 **Status:** Current
 
@@ -75,7 +91,7 @@ Support configurable missing values, duplicates, outliers, seasonal trends, and 
 
 ---
 
-## Phase 3 — Python ETL & Data Engineering Pipeline
+## Phase 4 — Python ETL & Data Engineering Pipeline
 
 **Status:** Planned
 
@@ -87,7 +103,7 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ---
 
-## Phase 4 — Business Analytics & Statistics Engine
+## Phase 5 — Business Analytics & Statistics Engine
 
 **Status:** Planned
 
@@ -97,7 +113,7 @@ Calculate revenue, profit, growth, mean, median, variance, standard deviation, c
 
 ---
 
-## Phase 5 — Data Visualization Platform
+## Phase 6 — Data Visualization Platform
 
 **Status:** Planned
 
@@ -107,7 +123,7 @@ Develop enterprise visualization modules: revenue trends, sales trends, product 
 
 ---
 
-## Phase 6 — Forecasting & Predictive Analytics
+## Phase 7 — Forecasting & Predictive Analytics
 
 **Status:** Planned
 
@@ -119,7 +135,7 @@ Build prediction models for revenue, sales, demand, inventory, seasonal trends, 
 
 ---
 
-## Phase 7 — Pipeline Monitoring & Data Quality
+## Phase 8 — Pipeline Monitoring & Data Quality
 
 **Status:** Planned
 
@@ -129,7 +145,7 @@ Display pipeline status, success/failure, runtime, quality score, validation rep
 
 ---
 
-## Phase 8 — Airflow Workflow Orchestration
+## Phase 9 — Airflow Workflow Orchestration
 
 **Status:** Planned
 
@@ -139,7 +155,7 @@ Integrate Apache Airflow for scheduled ETL, retry logic, DAG monitoring, and wor
 
 ---
 
-## Phase 9 — Event-Driven Architecture
+## Phase 10 — Event-Driven Architecture
 
 **Status:** Planned
 
@@ -149,7 +165,7 @@ Implement Kafka/Redpanda for events: data generated, ETL started/completed, fore
 
 ---
 
-## Phase 10 — AI Business Insight Engine
+## Phase 11 — AI Business Insight Engine
 
 **Status:** Planned
 
@@ -159,7 +175,7 @@ Generate executive business insights: revenue explanation, demand anomalies, inv
 
 ---
 
-## Phase 11 — Kubernetes & Cloud-Native Deployment
+## Phase 12 — Kubernetes & Cloud-Native Deployment
 
 **Status:** Planned
 
@@ -169,7 +185,7 @@ Deploy using Docker, Kubernetes, ConfigMaps, Secrets, health checks, and service
 
 ---
 
-## Phase 12 — Monitoring & Observability
+## Phase 13 — Monitoring & Observability
 
 **Status:** Planned
 
@@ -179,7 +195,7 @@ Implement Prometheus, Grafana, Spring Boot Actuator, FastAPI metrics, service he
 
 ---
 
-## Phase 13 — Portfolio & Enterprise Presentation
+## Phase 14 — Portfolio & Enterprise Presentation
 
 **Status:** Planned
 

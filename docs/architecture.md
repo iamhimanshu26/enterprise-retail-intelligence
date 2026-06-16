@@ -38,6 +38,21 @@ sales/ inventory/ analytics/ statistics/ forecasting/
 generator/ etl/ pipeline/ insights/ audit/ exception/
 ```
 
+**Phase 2 — Core Retail Domain (`domain/`):**
+
+```
+domain/store/ product/ customer/ supplier/ inventory/
+sales/ promotion/ returns/
+  entity/ repository/ dto/ mapper/ service/ controller/
+common/enums/ common/entity/BaseEntity.java
+```
+
+Flyway migrations: `V1__core_retail_domain_schema.sql`, `V2__retail_indexes_and_constraints.sql`
+
+REST placeholders: `/api/v1/stores`, `/products`, `/customers`, `/suppliers`, `/inventory`, `/sales`, `/promotions`, `/returns`
+
+See [Data Model Guide](data-model.md) for entity relationships and schema details.
+
 ### Data Service (FastAPI)
 
 - Python-based data processing service

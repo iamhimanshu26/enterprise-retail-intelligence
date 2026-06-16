@@ -16,6 +16,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        default_schema: retail
+
+  flyway:
+    enabled: true
+    schemas: retail
+    default-schema: retail
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
 
   jackson:
     serialization:

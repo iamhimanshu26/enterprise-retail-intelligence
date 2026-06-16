@@ -151,13 +151,24 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
   {
     id: 'database',
     title: 'Database Schema',
-    description: 'Normalized retail data model with star schema for analytics, audit trails, and temporal tables.',
+    description: 'Normalized retail domain model in PostgreSQL with Flyway migrations, UUID keys, indexes, and CHECK constraints for analytics readiness.',
     icon: 'database',
-    status: 'planned',
+    status: 'completed',
     phase: 2,
     difficulty: 'intermediate',
-    technologies: ['PostgreSQL', 'Flyway', 'Star Schema'],
-    implementationStatus: 'Bootstrap schema only — business tables in Phase 2',
+    technologies: ['PostgreSQL', 'Flyway', 'JPA'],
+    implementationStatus: 'Core retail schema deployed — stores, products, customers, suppliers, inventory, sales, promotions, returns',
+  },
+  {
+    id: 'retail-domain',
+    title: 'Core Retail Domain Model',
+    description: 'Enterprise domain layer with JPA entities, repositories, DTOs, mappers, and API-ready service skeletons for the Japan retail footprint.',
+    icon: 'folderTree',
+    status: 'completed',
+    phase: 2,
+    difficulty: 'intermediate',
+    technologies: ['Spring Data JPA', 'DTOs', 'OpenAPI'],
+    implementationStatus: '9 domain modules · /api/v1 readiness endpoints · docs/data-model.md',
   },
   {
     id: 'microservices',
@@ -223,7 +234,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, and 1 complete`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, 1, and 2 complete`,
   },
 ]
 
@@ -341,7 +352,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phases 0–1 Complete' }}
+        badge={{ status: 'completed', label: 'Phases 0–2 Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

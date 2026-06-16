@@ -9,7 +9,7 @@ CREATE SCHEMA IF NOT EXISTS audit;
 -- Application schema
 CREATE SCHEMA IF NOT EXISTS retail;
 
-COMMENT ON SCHEMA retail IS 'Core retail data schema - populated in Phase 1+';
+COMMENT ON SCHEMA retail IS 'Core retail data schema — Phase 2 domain model';
 COMMENT ON SCHEMA audit IS 'Audit trail schema - populated in Phase 1+';
 
 -- Health check table for connectivity verification
