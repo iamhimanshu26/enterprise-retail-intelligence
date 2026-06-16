@@ -8,8 +8,17 @@ A production-quality microservices platform demonstrating full-stack engineering
 [![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
 
-**Current status:** Phase 2 complete — Core Retail Domain & Database Model  
-**Next phase:** Phase 3 — Synthetic Retail Data Generator
+## Current Status
+
+✅ **Phase 0** — Enterprise Foundation & System Architecture
+
+✅ **Phase 0.5** — Enterprise UX & SaaS Experience
+
+✅ **Phase 1** — Executive Dashboard & Retail Intelligence Foundation
+
+✅ **Phase 2** — Core Retail Domain & Database Model
+
+🚀 **Next Phase:** Phase 3 — Synthetic Retail Data Generator
 
 ---
 
@@ -33,6 +42,30 @@ The platform delivers a comprehensive suite of enterprise retail capabilities:
 ---
 
 ## Architecture Overview
+
+The platform evolves from a deployed UI and API foundation toward a full retail data and intelligence pipeline:
+
+```text
+React
+↓
+Spring Boot
+↓
+PostgreSQL
+↓
+FastAPI
+↓
+Synthetic Data Generator
+↓
+ETL Pipeline
+↓
+Analytics Engine
+↓
+Forecast Engine
+↓
+Business Insights
+```
+
+**Deployment topology (Phases 0–2 live locally via Docker Compose):**
 
 ```
                          ┌─────────────────────────────────────┐
@@ -62,32 +95,26 @@ The platform delivers a comprehensive suite of enterprise retail capabilities:
                          └─────────────────────────────────────┘
 ```
 
-All services are independently deployable. Phase 0 establishes the foundation; future phases add orchestration, events, and observability layers.
+All services are independently deployable. Phases 0–2 establish the foundation, domain model, and executive dashboard; later phases add synthetic data, ETL, analytics, forecasting, and observability layers.
 
 ---
 
 ## Tech Stack
 
-### Frontend
-React 19 · TypeScript · Vite · Tailwind CSS · TanStack Query · Zustand · Framer Motion · React Router
+### Current (Phases 0–2)
 
-### Backend
-Java 21 · Spring Boot 3 · Spring Security · JWT · Spring Data JPA · OpenAPI / Swagger
+| Layer | Technologies |
+|-------|----------------|
+| **Frontend** | React 19 · TypeScript · Vite · Tailwind CSS · TanStack Query · Zustand · Framer Motion · React Router |
+| **Backend** | Java 21 · Spring Boot 3 · Spring Security · JWT · Spring Data JPA · OpenAPI / Swagger · Flyway |
+| **Python** | Python 3.12 · FastAPI · Pydantic |
+| **Database** | PostgreSQL 16 · Schema-separated (`retail`, `audit`) · Flyway migrations |
+| **Infrastructure** | Docker · Docker Compose · Kubernetes manifests · Nginx reverse proxy |
+| **DevOps** | GitHub Actions CI · Vercel (frontend) · Helm charts (planned) |
 
-### Python
-Python 3.12 · FastAPI · Pydantic · (planned: Pandas, Polars, Scikit-learn, Statsmodels)
+### Planned (Phases 3–14)
 
-### Database
-PostgreSQL 16 · Schema-separated (`retail`, `audit`) · Flyway migrations (planned)
-
-### Infrastructure
-Docker · Docker Compose · Kubernetes manifests · Nginx reverse proxy
-
-### DevOps
-GitHub Actions CI · Vercel (frontend) · Helm charts (planned)
-
-### Future ML Libraries
-Prophet · XGBoost · Scikit-learn · Statsmodels · DuckDB · Faker
+Java 21 · Spring Boot · React · TypeScript · FastAPI · PostgreSQL · Docker · Kubernetes · Pandas · NumPy · Polars · DuckDB · Faker · Airflow · Kafka · Scikit-learn · Statsmodels · Prophet · XGBoost
 
 ---
 
@@ -117,7 +144,7 @@ enterprise-retail-intelligence/
 ├── data-service-python/      # FastAPI — ETL, statistics, forecasting (planned)
 ├── database/
 │   ├── init/                 # Docker PostgreSQL bootstrap scripts
-│   └── migrations/           # Future schema migrations
+│   └── migrations/           # Flyway SQL migrations (Phase 2 domain schema)
 ├── docker/                   # Shared Docker configs (nginx, etc.)
 ├── k8s/                      # Kubernetes deployment manifests
 ├── docs/                     # Architecture guides and phase documentation
@@ -229,36 +256,40 @@ Optional env vars (when backend is deployed):
 | `VITE_API_URL` | Spring Boot backend URL |
 | `VITE_DATA_SERVICE_URL` | FastAPI data service URL |
 
-### Kubernetes (Future — Phase 11)
+### Kubernetes (Future — Phase 12)
 
-Manifests in `k8s/` provide deployment templates for frontend, backend, data service, ingress, configmaps, and secrets. Production deployment with Helm and GitOps is planned for Phase 11.
+Manifests in `k8s/` provide deployment templates for frontend, backend, data service, ingress, configmaps, and secrets. Production deployment with Helm and GitOps is planned for Phase 12.
 
 ---
 
 ## Roadmap
 
-Single source of truth: `frontend/src/lib/roadmap.ts`
+Official phase sequence (application source of truth: `frontend/src/lib/roadmap.ts`):
 
-| Phase | Title | Status |
-|-------|-------|--------|
-| **0** | Enterprise Foundation & System Architecture | ✅ Complete |
-| **0.5** | Enterprise UX & SaaS Experience | ✅ Complete |
-| **1** | Executive Dashboard & Retail Intelligence Foundation | ✅ Complete |
-| **2** | Core Retail Domain & Database Model | ✅ Complete |
-| **3** | Synthetic Retail Data Generator | 🚀 Current |
-| **4** | Python ETL & Data Engineering Pipeline | Planned |
-| **5** | Business Analytics & Statistics Engine | Planned |
-| **6** | Data Visualization Platform | Planned |
-| **7** | Forecasting & Predictive Analytics | Planned |
-| **8** | Pipeline Monitoring & Data Quality | Planned |
-| **9** | Airflow Workflow Orchestration | Planned |
-| **10** | Event-Driven Architecture | Planned |
-| **11** | AI Business Insight Engine | Planned |
-| **12** | Kubernetes & Cloud-Native Deployment | Planned |
-| **13** | Monitoring & Observability | Planned |
-| **14** | Portfolio & Enterprise Presentation | Planned |
+```text
+Phase 0    Enterprise Foundation & System Architecture
+Phase 0.5  Enterprise UX & SaaS Experience
+Phase 1    Executive Dashboard & Retail Intelligence Foundation
+Phase 2    Core Retail Domain & Database Model
+Phase 3    Synthetic Retail Data Generator
+Phase 4    Python ETL & Data Engineering Pipeline
+Phase 5    Business Analytics & Statistics Engine
+Phase 6    Data Visualization Platform
+Phase 7    Forecasting & Predictive Analytics
+Phase 8    Pipeline Monitoring & Data Quality
+Phase 9    Airflow Workflow Orchestration
+Phase 10   Event-Driven Architecture
+Phase 11   AI Business Insight Engine
+Phase 12   Kubernetes & Cloud-Native Deployment
+Phase 13   Monitoring & Observability
+Phase 14   Portfolio & Enterprise Presentation
+```
 
-**Current:** Phases 0, 0.5, 1, and 2 complete · **Next:** Phase 3 — Synthetic Retail Data Generator
+| Phase | Status |
+|-------|--------|
+| 0, 0.5, 1, 2 | ✅ Complete |
+| 3 | 🚀 Current — Synthetic Retail Data Generator |
+| 4–14 | Planned |
 
 See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
 
