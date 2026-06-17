@@ -206,18 +206,20 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 5,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Star Schema', 'OLAP'],
-    implementationStatus: 'Phase 5 current — statistics and BI on analytics warehouse',
+    implementationStatus: 'Phase 5.1 statistics engine complete · BI dashboards in Phase 5.2+',
   },
   {
     id: 'statistics',
     title: 'Statistics Engine',
-    description: 'Hypothesis testing, regression analysis, time series decomposition, and statistical modeling.',
+    description:
+      'Enterprise statistics on warehouse-ready data: descriptive, business, distribution, time-series, regional, and dataset health metrics.',
     icon: 'activity',
-    status: 'planned',
+    status: 'completed',
     phase: 5,
     difficulty: 'expert',
-    technologies: ['Statsmodels', 'Scikit-learn', 'SciPy'],
-    implementationStatus: 'Statistics Lab placeholder — engine in Phase 5',
+    technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB', 'Pydantic'],
+    implementationStatus:
+      'Sprint 5.1 complete · app/statistics · /api/v1/statistics · Statistics Lab UI · formula reference',
   },
   {
     id: 'forecasting',

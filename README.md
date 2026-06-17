@@ -314,6 +314,7 @@ See [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md) for the post-
 - [Data Cleaning Engine](docs/data-cleaning-engine.md)
 - [Analytics Warehouse](docs/analytics-warehouse.md)
 - [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md)
+- [Statistics Engine](docs/statistics-engine.md)
 - [Frontend README](frontend/README.md)
 
 ---

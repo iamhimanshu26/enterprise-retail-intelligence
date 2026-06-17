@@ -105,9 +105,11 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ## 🚀 Phase 5 — Business Analytics & Statistics Engine
 
-**Status:** Current
+**Status:** Current (Sprint 5.1 complete)
 
 Calculate revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin.
+
+**Sprint 5.1:** Enterprise Statistics Engine foundation — descriptive, business, distribution, time-series, regional, and dataset health modules with `/api/v1/statistics` and Statistics Lab UI.
 
 **Purpose:** Provide business intelligence and statistical analysis.
 

@@ -103,3 +103,17 @@ export async function runEtlSample(): Promise<import('@/types/etl').EtlRunResult
   )
   return response.data.data
 }
+
+export async function getStatisticsOverview(): Promise<import('@/types/statistics').StatisticsOverview> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/statistics').StatisticsOverview>
+  >('/statistics/overview')
+  return response.data.data
+}
+
+export async function runStatisticsSample(): Promise<import('@/types/statistics').UnifiedStatisticsReport> {
+  const response = await dataServiceClient.post<
+    DataServiceApiResponse<import('@/types/statistics').UnifiedStatisticsReport>
+  >('/statistics/run-sample')
+  return response.data.data
+}

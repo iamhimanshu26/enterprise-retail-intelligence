@@ -85,7 +85,7 @@ See [Data Model Guide](data-model.md) for entity relationships and schema detail
 **Implemented modules:**
 
 ```
-app/generator/   app/etl/   app/api/v1/generator.py   app/api/v1/etl.py
+app/generator/   app/etl/   app/statistics/   app/api/v1/generator.py   app/api/v1/etl.py   app/api/v1/statistics.py
 ```
 
 ### Database (PostgreSQL)

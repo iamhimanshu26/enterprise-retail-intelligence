@@ -73,8 +73,8 @@ export const NAVIGATION: NavItem[] = [
     label: 'Statistics Lab',
     path: '/statistics',
     icon: FlaskConical,
-    description: 'Statistical modeling and hypothesis testing',
-    phase: 4,
+    description: 'Descriptive, business, distribution, time-series, and regional statistics on warehouse data',
+    phase: 5,
   },
   {
     id: 'forecasting-center',

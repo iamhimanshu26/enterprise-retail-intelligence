@@ -24,6 +24,12 @@ const SyntheticDataGenerator = lazy(() =>
   })),
 )
 
+const StatisticsLab = lazy(() =>
+  import('@/features/statistics/StatisticsLab').then((m) => ({
+    default: m.StatisticsLab,
+  })),
+)
+
 const EtlPipelineStudio = lazy(() =>
   import('@/features/etl/EtlPipelineStudio').then((m) => ({
     default: m.EtlPipelineStudio,
@@ -96,7 +102,11 @@ export function AppRouter() {
         <Route path="inventory" element={<PlaceholderPage navId="inventory-intelligence" />} />
         <Route path="customers" element={<PlaceholderPage navId="customer-analytics" />} />
         <Route path="suppliers" element={<PlaceholderPage navId="supplier-analytics" />} />
-        <Route path="statistics" element={<PlaceholderPage navId="statistics-lab" />} />
+        <Route path="statistics" element={
+          <Suspense fallback={<DashboardFallback />}>
+            <StatisticsLab />
+          </Suspense>
+        } />
         <Route path="forecasting" element={<PlaceholderPage navId="forecasting-center" />} />
         <Route path="etl" element={
           <Suspense fallback={<DashboardFallback />}>
