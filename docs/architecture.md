@@ -155,14 +155,19 @@ Executive Intelligence Engine (Sprint 5.3)
         ↓
 Executive Dashboard + Intelligence Pages
         ↓
-Forecasting (Phase 7) · Visualization Framework (Phase 6 — Sprint 6.1)
+Visualization Framework (Sprint 6.1)
+        ↓
+Interactive Analytics Dashboards (Sprint 6.2)
+        ↓
+Forecasting (Phase 7)
 ```
 
 - **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
-- **Executive Intelligence (Sprint 5.3)** — summaries, KPI status, trends, benchmarks, anomalies, recommendations, scorecard
-- Sales, inventory, customer, and supplier intelligence pages
+- **Visualization Framework (Sprint 6.1)** — reusable Recharts components, theme, adapters, Visualization Studio at `/visualization`
+- **Interactive Analytics Dashboards (Sprint 6.2)** — eight enterprise BI dashboards with shared layout, adapter layer, and API-ready filters
+- Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
 - API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, and `/api/v1/intelligence/*`
-- See [Business Analytics Engine](business-analytics-engine.md), [Executive Intelligence](executive-intelligence.md), and [Statistics Engine](statistics-engine.md)
+- See [Business Analytics Engine](business-analytics-engine.md), [Executive Intelligence](executive-intelligence.md), [Visualization Framework](visualization-framework.md), [Interactive Analytics Dashboards](interactive-analytics-dashboards.md), and [Statistics Engine](statistics-engine.md)
 
 ---
 

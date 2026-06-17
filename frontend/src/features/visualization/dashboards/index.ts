@@ -1,0 +1,8 @@
+export { SalesAnalyticsDashboard } from './SalesAnalyticsDashboard'
+export { InventoryAnalyticsDashboard } from './InventoryAnalyticsDashboard'
+export { CustomerAnalyticsDashboard } from './CustomerAnalyticsDashboard'
+export { SupplierAnalyticsDashboard } from './SupplierAnalyticsDashboard'
+export { ProductAnalyticsDashboard } from './ProductAnalyticsDashboard'
+export { RegionalAnalyticsDashboard } from './RegionalAnalyticsDashboard'
+export { EtlQualityDashboard } from './EtlQualityDashboard'
+export { ExecutiveIntelligenceDashboardView } from './ExecutiveIntelligenceDashboardView'

@@ -104,7 +104,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 4,
     difficulty: 'advanced',
     technologies: ['Faker', 'Pandas', 'PostgreSQL', 'DuckDB'],
-    implementationStatus: 'Synthetic generator → ETL (4.1) → cleaning (4.2) → analytics warehouse (4.3) · Phase 4 complete',
+    implementationStatus: 'Synthetic generator → ETL (4.1) → cleaning (4.2) → analytics warehouse (4.3) → statistics → analytics → intelligence → visualization adapters → interactive dashboards',
   },
   {
     id: 'synthetic-generator',
@@ -240,12 +240,25 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description:
       'Reusable enterprise chart infrastructure — line, bar, area, pie, donut, stacked bar, heat map, scatter plot with centralized theming and data adapters.',
     icon: 'barChart',
-    status: 'in-progress',
+    status: 'completed',
     phase: 6,
     difficulty: 'advanced',
     technologies: ['Recharts', 'React', 'TanStack Query'],
     implementationStatus:
-      'Sprint 6.1 · features/visualization · Visualization Studio · chart adapters · enterprise theme system',
+      'Sprint 6.1 complete · features/visualization · Visualization Studio · chart adapters · enterprise theme system',
+  },
+  {
+    id: 'interactive-analytics-dashboards',
+    title: 'Interactive Analytics Dashboards',
+    description:
+      'Eight enterprise BI dashboards — sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence — with shared layout, filters, and adapter layer.',
+    icon: 'monitor',
+    status: 'completed',
+    phase: 6,
+    difficulty: 'advanced',
+    technologies: ['Recharts', 'React', 'TanStack Query', 'Zustand'],
+    implementationStatus:
+      'Sprint 6.2 complete · dashboard adapters · AnalyticsDashboardLayout · 8 interactive dashboards · filter/export placeholders',
   },
   {
     id: 'statistics',
@@ -476,7 +489,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'in-progress', label: 'Phase 6 · Sprint 6.1' }}
+        badge={{ status: 'in-progress', label: 'Phase 6 · Sprint 6.2' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

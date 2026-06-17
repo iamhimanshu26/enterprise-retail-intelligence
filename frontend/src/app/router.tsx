@@ -66,6 +66,30 @@ const SupplierAnalyticsPage = lazy(() =>
   })),
 )
 
+const ProductAnalyticsPage = lazy(() =>
+  import('@/features/analytics/ProductAnalyticsPage').then((m) => ({
+    default: m.ProductAnalyticsPage,
+  })),
+)
+
+const RegionalAnalyticsPage = lazy(() =>
+  import('@/features/analytics/RegionalAnalyticsPage').then((m) => ({
+    default: m.RegionalAnalyticsPage,
+  })),
+)
+
+const EtlQualityDashboardPage = lazy(() =>
+  import('@/features/analytics/EtlQualityDashboardPage').then((m) => ({
+    default: m.EtlQualityDashboardPage,
+  })),
+)
+
+const ExecutiveIntelligenceDashboardPage = lazy(() =>
+  import('@/features/analytics/ExecutiveIntelligenceDashboardPage').then((m) => ({
+    default: m.ExecutiveIntelligenceDashboardPage,
+  })),
+)
+
 function DashboardFallback() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -157,6 +181,38 @@ export function AppRouter() {
           element={
             <Suspense fallback={<DashboardFallback />}>
               <SupplierAnalyticsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="products"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <ProductAnalyticsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="regional"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <RegionalAnalyticsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="etl-quality"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <EtlQualityDashboardPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="executive-intelligence"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <ExecutiveIntelligenceDashboardPage />
             </Suspense>
           }
         />

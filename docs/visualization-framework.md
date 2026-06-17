@@ -17,6 +17,8 @@ Executive Intelligence
         ↓
 Visualization Framework (Sprint 6.1)
         ↓
+Interactive Analytics Dashboards (Sprint 6.2)
+        ↓
 Forecasting (Phase 7)
         ↓
 AI Insights (Phase 11)
@@ -28,8 +30,10 @@ AI Insights (Phase 11)
 frontend/src/features/visualization/
 ├── charts/           # Recharts-based chart primitives
 ├── containers/       # ChartCard, toolbar, legend, section wrappers
-├── hooks/            # useChartData — API adapter hook
-├── adapters/         # Statistics / analytics → chart data mappers
+├── dashboard/        # Shared analytics dashboard layout (Sprint 6.2)
+├── dashboards/       # Eight interactive dashboard views (Sprint 6.2)
+├── hooks/            # useChartData, useInteractiveDashboardData
+├── adapters/         # chartAdapters, dashboardAdapters, filterChartData
 ├── utils/            # chartTheme, chartFormatter
 └── pages/            # VisualizationStudio
 ```
@@ -96,12 +100,14 @@ UI remains independent of backend shape. Adapters in `adapters/chartAdapters.ts`
 
 `useChartData` composes `runAnalyticsSample()` + `runStatisticsSample()` for Visualization Studio.
 
+`useInteractiveDashboardData` composes analytics, statistics, intelligence, and ETL quality for interactive dashboards. See [Interactive Analytics Dashboards](interactive-analytics-dashboards.md).
+
 ---
 
 ## Visualization Strategy
 
-1. **Sprint 6.1** — Framework, theme, adapters, Visualization Studio
-2. **Sprint 6.2+** — Wire executive dashboard and intelligence pages to framework charts
+1. **Sprint 6.1** — Framework, theme, adapters, Visualization Studio ✅
+2. **Sprint 6.2** — Interactive analytics dashboards across sales, inventory, customer, supplier, product, regional, ETL, executive ✅
 3. **Sprint 6.3+** — Advanced interactions, export, fullscreen
 4. **Phase 7** — Forecasting overlays on trend charts
 
@@ -112,6 +118,14 @@ UI remains independent of backend shape. Adapters in `adapters/chartAdapters.ts`
 | Route | Page |
 |-------|------|
 | `/visualization` | Visualization Studio |
+| `/sales` | Sales Analytics Dashboard |
+| `/inventory` | Inventory Analytics Dashboard |
+| `/customers` | Customer Analytics Dashboard |
+| `/suppliers` | Supplier Analytics Dashboard |
+| `/products` | Product Analytics Dashboard |
+| `/regional` | Regional Analytics Dashboard |
+| `/etl-quality` | ETL Quality Dashboard |
+| `/executive-intelligence` | Executive Intelligence Dashboard |
 
 Sections: Revenue, Customer, Product, Inventory, Regional, Time-Series, KPI charts.
 
@@ -129,6 +143,7 @@ Forecasting (Phase 7) will:
 
 ## Related Documentation
 
+- [Interactive Analytics Dashboards](interactive-analytics-dashboards.md)
 - [Business Analytics Engine](business-analytics-engine.md)
 - [Executive Intelligence Platform](executive-intelligence.md)
 - [Statistics Engine](statistics-engine.md)

@@ -1,6 +1,6 @@
 # Development Phase Plan
 
-> **Phase status:** Phases 0–5 complete · **Phase 6 current** (Sprint 6.1 Visualization Framework)
+> **Phase status:** Phases 0–5 complete · **Phase 6 current** (Sprint 6.2 Interactive Analytics Dashboards)
 
 > **Single source of truth (application):** `frontend/src/lib/roadmap.ts`  
 > Phases **0–14** (15 enterprise development phases) plus **Phase 0.5** UX milestone.
@@ -119,9 +119,11 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ## 🚀 Phase 6 — Enterprise Data Visualization Platform
 
-**Status:** Current (Sprint 6.1)
+**Status:** Current (Sprint 6.2)
 
 **Sprint 6.1:** Enterprise visualization framework — reusable charts, theme system, adapters, Visualization Studio. See `docs/visualization-framework.md`.
+
+**Sprint 6.2:** Interactive analytics dashboards — eight BI dashboards, shared layout, dashboard adapters, filter/export placeholders. See `docs/interactive-analytics-dashboards.md`.
 
 **Purpose:** Transform raw data into business insights.
 
