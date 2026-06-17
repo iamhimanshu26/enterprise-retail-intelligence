@@ -21,8 +21,8 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   },
   {
     id: '2',
-    title: 'Phase 4 ETL Complete',
-    message: 'Analytics warehouse, lineage, and quality dashboard are live. Phase 5 analytics begins next.',
+    title: 'Phase 5 Complete',
+    message: 'Statistics, business analytics, and executive intelligence APIs are live. Phase 6 visualization begins next.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),

@@ -4,7 +4,8 @@
 
 A production-quality microservices platform demonstrating full-stack engineering, data pipelines, business intelligence, statistics, and demand forecasting — architected for Fortune 500 retail scale.
 
-[![Phase](https://img.shields.io/badge/Phase-4%20Complete-success)](/)
+[![Phase](https://img.shields.io/badge/Phase-5%20Complete-success)](/)
+[![Next](https://img.shields.io/badge/Next-Phase%206%20Visualization-blue)](/)
 [![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
 
@@ -22,9 +23,9 @@ A production-quality microservices platform demonstrating full-stack engineering
 
 ✅ **Phase 4** — Python ETL & Data Engineering Pipeline
 
-**Status:** Complete (Sprint 5.1 Statistics · Sprint 5.2 Business Analytics · Sprint 5.3 Executive Intelligence)
+✅ **Phase 5** — Business Analytics & Statistics Engine (Sprints 5.1–5.3)
 
-🚀 **Next Phase:** Phase 6 — Enterprise Data Visualization Platform
+🚀 **Next Phase:** Phase 6 — Enterprise Data Visualization Platform (Sprint 6.1 complete)
 
 The platform now supports synthetic data generation, modular Python ETL processing, data cleaning, transformation, quality scoring, analytics warehouse preparation, lineage tracking, execution reporting, enterprise statistics, business analytics KPIs, and executive intelligence (summaries, benchmarks, anomalies, recommendations, scorecard).
 
@@ -297,9 +298,9 @@ Phase 14   Portfolio & Enterprise Presentation
 
 | Phase | Status |
 |-------|--------|
-| 0, 0.5, 1, 2, 3, 4 | ✅ Complete |
-| 5 | 🚀 Current — Business Analytics & Statistics Engine |
-| 6–14 | 🔒 Planned |
+| 0, 0.5, 1, 2, 3, 4, 5 | ✅ Complete |
+| 6 | 🚀 Current — Visualization Framework (Sprint 6.1) |
+| 7–14 | 🔒 Planned |
 
 See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
 
@@ -319,6 +320,7 @@ See [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md) for the post-
 - [Statistics Engine](docs/statistics-engine.md)
 - [Business Analytics Engine](docs/business-analytics-engine.md)
 - [Executive Intelligence Platform](docs/executive-intelligence.md)
+- [Visualization Framework](docs/visualization-framework.md)
 - [Frontend README](frontend/README.md)
 
 ---

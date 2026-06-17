@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { APP_NAME, NAVIGATION } from '@/lib/constants'
+import { CURRENT_PHASE } from '@/lib/roadmap'
 import { cn } from '@/lib/cn'
 import { StatusBadge } from './StatusBadge'
 import { BarChart3, X } from 'lucide-react'
@@ -97,9 +98,11 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onMobileClose }
         {!collapsed && (
           <div className="border-t border-sidebar-border p-4">
             <div className="rounded-lg bg-sidebar-accent/50 p-3">
-              <p className="text-xs font-medium text-sidebar-foreground">Phase 5 — Analytics & Statistics</p>
+              <p className="text-xs font-medium text-sidebar-foreground">
+                Phase {CURRENT_PHASE} — Data Visualization Platform
+              </p>
               <p className="mt-1 text-[10px] text-sidebar-muted">
-                Phase 4 ETL complete — analytics warehouse ready for BI
+                Phase 5 complete — statistics, analytics, and executive intelligence live
               </p>
             </div>
           </div>

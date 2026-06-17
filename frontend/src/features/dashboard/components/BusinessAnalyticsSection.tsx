@@ -24,7 +24,7 @@ export function BusinessAnalyticsSection() {
   return (
     <DashboardSection
       title="Business Analytics Engine"
-      description="Live KPIs from Sprint 5.2 analytics service — falls back to mock when API is offline."
+      description="Live KPIs from Phase 5 business analytics — falls back to mock when API is offline."
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard

@@ -77,6 +77,14 @@ export const NAVIGATION: NavItem[] = [
     phase: 5,
   },
   {
+    id: 'visualization-studio',
+    label: 'Visualization Studio',
+    path: '/visualization',
+    icon: BarChart3,
+    description: 'Enterprise chart framework — reusable visualization components',
+    phase: 6,
+  },
+  {
     id: 'forecasting-center',
     label: 'Forecasting Center',
     path: '/forecasting',

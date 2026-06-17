@@ -63,7 +63,7 @@ export function StatisticsLab() {
       <PageHeader
         title="Statistics Lab"
         description="Enterprise statistics engine — descriptive, business, distribution, time-based, regional, and dataset health metrics from warehouse-ready retail data."
-        badge={{ status: 'in-progress', label: 'Sprint 5.1' }}
+        badge={{ status: 'completed', label: 'Phase 5 · Sprint 5.1' }}
       />
 
       <Breadcrumb items={[{ label: 'Statistics Lab' }]} />

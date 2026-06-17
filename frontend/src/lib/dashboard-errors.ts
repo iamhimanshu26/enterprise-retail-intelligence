@@ -17,7 +17,7 @@ export const DASHBOARD_ERROR_PRESETS: Record<DashboardErrorType, DashboardErrorP
   },
   empty: {
     title: 'No dashboard data',
-    message: 'The response was empty. Run ETL on generated data or wait for Phase 5 analytics APIs.',
+    message: 'The response was empty. Start the data service or run ETL sample data. Analytics and intelligence APIs are live from Phase 5.',
   },
   unauthorized: {
     title: 'Unauthorized',

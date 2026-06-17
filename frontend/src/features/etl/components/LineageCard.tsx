@@ -40,7 +40,7 @@ export function LineageCard({ lineage }: LineageCardProps) {
           </div>
         )}
         <p className="text-xs text-muted-foreground">
-          Interactive lineage graph — available in Phase 5 analytics dashboard.
+          Interactive lineage graph — available in Phase 6 visualization platform.
         </p>
       </div>
     </GeneratorCard>

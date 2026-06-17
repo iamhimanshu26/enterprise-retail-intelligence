@@ -36,6 +36,12 @@ const EtlPipelineStudio = lazy(() =>
   })),
 )
 
+const VisualizationStudio = lazy(() =>
+  import('@/features/visualization/pages/VisualizationStudio').then((m) => ({
+    default: m.VisualizationStudio,
+  })),
+)
+
 const SalesIntelligence = lazy(() =>
   import('@/features/analytics/SalesIntelligence').then((m) => ({
     default: m.SalesIntelligence,
@@ -159,6 +165,14 @@ export function AppRouter() {
             <StatisticsLab />
           </Suspense>
         } />
+        <Route
+          path="visualization"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <VisualizationStudio />
+            </Suspense>
+          }
+        />
         <Route path="forecasting" element={<PlaceholderPage navId="forecasting-center" />} />
         <Route path="etl" element={
           <Suspense fallback={<DashboardFallback />}>

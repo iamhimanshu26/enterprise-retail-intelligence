@@ -206,7 +206,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 5,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Star Schema', 'OLAP'],
-    implementationStatus: 'Sprint 5.1 statistics + Sprint 5.2 business analytics engine complete',
+    implementationStatus: 'Phase 5 complete · Sprints 5.1–5.3 · statistics + business analytics + executive intelligence',
   },
   {
     id: 'business-analytics',
@@ -233,6 +233,19 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     technologies: ['Pandas', 'Pydantic', 'FastAPI', 'Statistics'],
     implementationStatus:
       'Sprint 5.3 complete · app/intelligence · /api/v1/intelligence · executive dashboard intelligence sections',
+  },
+  {
+    id: 'visualization-framework',
+    title: 'Visualization Framework',
+    description:
+      'Reusable enterprise chart infrastructure — line, bar, area, pie, donut, stacked bar, heat map, scatter plot with centralized theming and data adapters.',
+    icon: 'barChart',
+    status: 'in-progress',
+    phase: 6,
+    difficulty: 'advanced',
+    technologies: ['Recharts', 'React', 'TanStack Query'],
+    implementationStatus:
+      'Sprint 6.1 · features/visualization · Visualization Studio · chart adapters · enterprise theme system',
   },
   {
     id: 'statistics',
@@ -463,7 +476,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phase 5 Complete · Sprint 5.3' }}
+        badge={{ status: 'in-progress', label: 'Phase 6 · Sprint 6.1' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

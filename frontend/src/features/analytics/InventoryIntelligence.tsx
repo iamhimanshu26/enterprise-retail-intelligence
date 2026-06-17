@@ -34,7 +34,7 @@ export function InventoryIntelligence() {
       <PageHeader
         title="Inventory Intelligence"
         description="Stock risk, reorder candidates, and inventory value analytics."
-        badge={{ status: 'completed', label: 'Sprint 5.2' }}
+        badge={{ status: 'completed', label: 'Phase 5 Complete' }}
       />
       <Breadcrumb items={[{ label: 'Inventory Intelligence' }]} />
 

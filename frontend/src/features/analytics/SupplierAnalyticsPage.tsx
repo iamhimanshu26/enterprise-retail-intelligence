@@ -34,7 +34,7 @@ export function SupplierAnalyticsPage() {
       <PageHeader
         title="Supplier Analytics"
         description="Supplier reliability, contribution ranking, risk scores, and promotion impact."
-        badge={{ status: 'completed', label: 'Sprint 5.2' }}
+        badge={{ status: 'completed', label: 'Phase 5 Complete' }}
       />
       <Breadcrumb items={[{ label: 'Supplier Analytics' }]} />
 

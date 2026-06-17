@@ -39,7 +39,7 @@ export const ChartContainer = memo(function ChartContainer({
     if (onRefresh) {
       onRefresh()
     } else {
-      showDashboardPlaceholder('Chart refreshed', 'Live chart refresh will connect to analytics APIs in Phase 5.')
+      showDashboardPlaceholder('Chart refreshed', 'Live chart refresh will connect to Phase 6 visualization APIs.')
     }
   }
 

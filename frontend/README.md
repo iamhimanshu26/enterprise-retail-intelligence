@@ -8,7 +8,7 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** Sprint 1.3 complete — Phase 1 executive dashboard polished. **Phase 2 complete** — core retail domain & database model on backend.
+**Current status:** **Phase 5 complete** — statistics engine, business analytics, and executive intelligence APIs integrated. **Phase 6 current** — enterprise data visualization platform.
 
 ---
 
@@ -44,7 +44,7 @@ Final Phase 1 sprint. Presentation-ready executive dashboard with enterprise UX 
 
 ### Mock data strategy
 
-`fetchExecutiveDashboard()` in `src/data/mock/dashboard.ts` simulates API latency (~450ms) and accepts filter params. Replace with REST in Phase 5 — UI consumes `useExecutiveDashboard()` only.
+`fetchExecutiveDashboard()` in `src/data/mock/dashboard.ts` simulates API latency (~450ms) for legacy BI widgets. Phase 5 adds live analytics via `/api/v1/analytics/*` and executive intelligence via `/api/v1/intelligence/*`. Phase 6 will expand interactive chart visualization.
 
 ### Future backend integration
 

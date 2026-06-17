@@ -142,7 +142,7 @@ Data Sources ──► Ingestion Layer ──► Validation ──► Transforma
 
 ---
 
-## Analytics Engine (Phase 5 — Sprint 5.2 Complete)
+## Analytics Engine (Phase 5 — Complete)
 
 ```text
 Analytics Warehouse
@@ -155,18 +155,18 @@ Executive Intelligence Engine (Sprint 5.3)
         ↓
 Executive Dashboard + Intelligence Pages
         ↓
-Forecasting (Phase 7) · Visualization (Phase 6)
+Forecasting (Phase 7) · Visualization Framework (Phase 6 — Sprint 6.1)
 ```
 
 - **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
 - **Executive Intelligence (Sprint 5.3)** — summaries, KPI status, trends, benchmarks, anomalies, recommendations, scorecard
 - Sales, inventory, customer, and supplier intelligence pages
-- API: `/api/v1/statistics/*` and `/api/v1/analytics/*`
+- API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, and `/api/v1/intelligence/*`
 - See [Business Analytics Engine](business-analytics-engine.md), [Executive Intelligence](executive-intelligence.md), and [Statistics Engine](statistics-engine.md)
 
 ---
 
-## Future Forecasting Engine (Phase 6)
+## Future Forecasting Engine (Phase 7)
 
 ```
 Historical Data ──► Feature Engineering ──► Model Selection ──► Forecast API

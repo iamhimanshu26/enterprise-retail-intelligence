@@ -34,7 +34,7 @@ export function DashboardPageHeader({
     onRefresh?.()
     showDashboardPlaceholder(
       'Dashboard refreshed',
-      'Mock data reloaded. Live API refresh will be available in Phase 5.',
+      'Mock data reloaded. Live intelligence refresh uses /api/v1/intelligence when the data service is running.',
     )
   }
 
@@ -110,7 +110,7 @@ export function DashboardPageHeader({
             </button>
             <button
               type="button"
-              onClick={() => showDashboardPlaceholder('Export PDF', 'PDF report generation is planned for Phase 5.')}
+              onClick={() => showDashboardPlaceholder('Export PDF', 'PDF report generation is planned for Phase 6.')}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
               aria-label="Export dashboard as PDF"
             >

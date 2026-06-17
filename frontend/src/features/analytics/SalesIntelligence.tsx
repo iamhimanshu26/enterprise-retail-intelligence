@@ -34,7 +34,7 @@ export function SalesIntelligence() {
       <PageHeader
         title="Sales Intelligence"
         description="Revenue analytics, growth trends, and dimensional breakdowns from the Business Analytics Engine."
-        badge={{ status: 'completed', label: 'Sprint 5.2' }}
+        badge={{ status: 'completed', label: 'Phase 5 Complete' }}
       />
       <Breadcrumb items={[{ label: 'Sales Intelligence' }]} />
 

@@ -40,7 +40,7 @@ export function ExecutiveIntelligencePlatform() {
     <div className="space-y-8">
       <DashboardSection
         title="Executive Summary"
-        description="Deterministic business narrative from analytics — Sprint 5.3 intelligence engine."
+        description="Deterministic business narrative from Phase 5 executive intelligence engine."
       >
         <SummaryCard
           title="Executive Intelligence Summary"

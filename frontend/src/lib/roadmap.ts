@@ -85,9 +85,9 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     phase: 5,
     title: 'Business Analytics & Statistics Engine',
     description:
-      'Revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin calculations.',
+      'Statistics engine, business analytics KPIs, executive intelligence, and intelligence pages — Sprints 5.1–5.3 complete.',
     purpose: 'Provide business intelligence and statistical analysis.',
-    technologies: ['NumPy', 'SciPy', 'Statsmodels', 'Pandas'],
+    technologies: ['NumPy', 'SciPy', 'Statsmodels', 'Pandas', 'FastAPI'],
     status: 'completed',
   },
   {
@@ -95,8 +95,8 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     phase: 6,
     title: 'Data Visualization Platform',
     description:
-      'Revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts.',
-    purpose: 'Transform raw data into business insights.',
+      'Interactive revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts on top of the intelligence layer.',
+    purpose: 'Transform analytics and intelligence outputs into rich visual insights.',
     technologies: ['Recharts', 'D3.js', 'TanStack Table'],
     status: 'current',
   },

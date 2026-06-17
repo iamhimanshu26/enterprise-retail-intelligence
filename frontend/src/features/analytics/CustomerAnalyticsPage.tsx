@@ -33,7 +33,7 @@ export function CustomerAnalyticsPage() {
       <PageHeader
         title="Customer Analytics"
         description="Segmentation, membership tiers, revenue contribution, and CLV placeholder."
-        badge={{ status: 'completed', label: 'Sprint 5.2' }}
+        badge={{ status: 'completed', label: 'Phase 5 Complete' }}
       />
       <Breadcrumb items={[{ label: 'Customer Analytics' }]} />
 

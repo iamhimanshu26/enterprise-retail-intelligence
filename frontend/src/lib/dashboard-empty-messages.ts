@@ -1,11 +1,11 @@
 export const DASHBOARD_EMPTY = {
   sales: {
     title: 'No sales data',
-    description: 'Sales overview will connect to warehouse analytics APIs in Phase 5.',
+    description: 'Use Sales Intelligence (/sales) or Phase 6 chart modules when filters return no rows.',
   },
   chart: {
     title: 'Chart awaiting data',
-    description: 'Connect analytics APIs in Phase 5 or run the ETL pipeline on generated datasets.',
+    description: 'Interactive charts will expand in Phase 6. Connect /api/v1/analytics or run ETL sample data.',
   },
   table: {
     title: 'No rows to display',
@@ -13,26 +13,26 @@ export const DASHBOARD_EMPTY = {
   },
   regional: {
     title: 'Regional data pending',
-    description: 'Regional analytics will use warehouse dimensions in Phase 5.',
+    description: 'Regional visualizations will enhance in Phase 6. Analytics APIs are available now.',
   },
   products: {
     title: 'Product data pending',
-    description: 'Product intelligence will query dim_product after Phase 5 analytics APIs.',
+    description: 'Product rankings are available via /api/v1/analytics/products and Sales Intelligence.',
   },
   stores: {
     title: 'Store data pending',
-    description: 'Store rankings will use dim_store from the analytics warehouse in Phase 5.',
+    description: 'Store rankings are available via /api/v1/analytics/stores and intelligence pages.',
   },
   widgets: {
     title: 'Widgets awaiting data',
-    description: 'BI widgets will use live analytics from the warehouse in Phase 5.',
+    description: 'BI widgets will connect to Phase 6 visualization components.',
   },
   activity: {
     title: 'No recent activity',
-    description: 'Activity feed will reflect pipeline runs and analytics events in Phase 5.',
+    description: 'Activity feed will reflect pipeline runs and analytics events in Phase 6.',
   },
   alerts: {
     title: 'No active alerts',
-    description: 'Business alerts will use warehouse quality and anomaly rules in Phase 5.',
+    description: 'Anomaly alerts are available via /api/v1/intelligence/anomalies on the executive dashboard.',
   },
 } as const
