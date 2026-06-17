@@ -1,4 +1,5 @@
 import { MetricCard, SectionContainer } from '@/components/design-system'
+import { cn } from '@/lib/cn'
 import type { AccuracyMetrics } from '@/types/forecasting'
 import {
   ACCURACY_METHODOLOGY,
@@ -14,7 +15,7 @@ function MetricTooltip({ label, description }: { label: string; description: str
     <span className="group relative">
       <span className="cursor-help underline decoration-dotted underline-offset-2">{label}</span>
       <span
-        className="pointer-events-none absolute bottom-full left-0 z-10 mb-2 hidden w-48 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-md group-hover:block"
+        className="pointer-events-none absolute bottom-full left-0 z-10 mb-2 hidden w-52 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-md group-hover:block"
         role="tooltip"
       >
         {description}
@@ -23,8 +24,47 @@ function MetricTooltip({ label, description }: { label: string; description: str
   )
 }
 
+function AccuracyGauge({
+  label,
+  value,
+  percent,
+  tone = 'primary',
+}: {
+  label: string
+  value: string
+  percent: number
+  tone?: 'primary' | 'success' | 'warning'
+}) {
+  const width = Math.min(100, Math.max(0, percent))
+  return (
+    <div className="rounded-lg border border-border/60 bg-muted/20 px-3 py-3">
+      <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <MetricTooltip
+          label={label}
+          description={ACCURACY_METHODOLOGY.find((m) => m.name === label)?.description ?? ''}
+        />
+        <span className="font-semibold text-foreground">{value}</span>
+      </div>
+      <div className="mt-2 h-2 rounded-full bg-muted">
+        <div
+          className={cn(
+            'h-2 rounded-full transition-all',
+            tone === 'success' && 'bg-success',
+            tone === 'warning' && 'bg-amber-500',
+            tone === 'primary' && 'bg-primary',
+          )}
+          style={{ width: `${width}%` }}
+        />
+      </div>
+    </div>
+  )
+}
+
 export function ForecastAccuracyCard({ metric }: ForecastAccuracyCardProps) {
-  const methodology = ACCURACY_METHODOLOGY.find((m) => m.name === 'MAE')
+  const accuracyScore = metric.accuracy_score
+  const mapeInverse = Math.max(0, 100 - metric.mape)
+  const smapeValue = metric.smape ?? metric.mape
+  const smapeInverse = Math.max(0, 100 - smapeValue)
 
   return (
     <article className="rounded-xl border border-border/80 bg-card p-5 shadow-sm">
@@ -35,47 +75,44 @@ export function ForecastAccuracyCard({ metric }: ForecastAccuracyCardProps) {
           </h3>
           <p className="text-xs text-muted-foreground">Model: {metric.model_name.replace(/_/g, ' ')}</p>
         </div>
-        <MetricCard
+        <AccuracyGauge
           label="Accuracy Score"
           value={formatAccuracyMetric(metric, 'accuracy_score')}
-          trend="up"
-          className="border-0 p-0 shadow-none"
+          percent={accuracyScore}
+          tone="success"
         />
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg border border-border/60 bg-muted/20 px-3 py-2">
-          <p className="text-xs text-muted-foreground">
-            <MetricTooltip label="MAE" description={methodology?.description ?? ''} />
-          </p>
-          <p className="text-sm font-semibold">{formatAccuracyMetric(metric, 'mae')}</p>
-        </div>
-        <div className="rounded-lg border border-border/60 bg-muted/20 px-3 py-2">
-          <p className="text-xs text-muted-foreground">
-            <MetricTooltip
-              label="RMSE"
-              description={ACCURACY_METHODOLOGY.find((m) => m.name === 'RMSE')?.description ?? ''}
-            />
-          </p>
-          <p className="text-sm font-semibold">{formatAccuracyMetric(metric, 'rmse')}</p>
-        </div>
-        <div className="rounded-lg border border-border/60 bg-muted/20 px-3 py-2">
-          <p className="text-xs text-muted-foreground">
-            <MetricTooltip
-              label="MAPE"
-              description={ACCURACY_METHODOLOGY.find((m) => m.name === 'MAPE')?.description ?? ''}
-            />
-          </p>
-          <p className="text-sm font-semibold">{formatAccuracyMetric(metric, 'mape')}</p>
-        </div>
-        <div className="rounded-lg border border-border/60 bg-muted/20 px-3 py-2">
-          <p className="text-xs text-muted-foreground">
-            <MetricTooltip
-              label="Bias"
-              description={ACCURACY_METHODOLOGY.find((m) => m.name === 'Bias')?.description ?? ''}
-            />
-          </p>
-          <p className="text-sm font-semibold">{formatAccuracyMetric(metric, 'bias')}</p>
-        </div>
+        <AccuracyGauge
+          label="MAE"
+          value={formatAccuracyMetric(metric, 'mae')}
+          percent={Math.min(100, (metric.mae / 200000) * 100)}
+          tone="warning"
+        />
+        <AccuracyGauge
+          label="RMSE"
+          value={formatAccuracyMetric(metric, 'rmse')}
+          percent={Math.min(100, (metric.rmse / 250000) * 100)}
+          tone="warning"
+        />
+        <AccuracyGauge
+          label="MAPE"
+          value={formatAccuracyMetric(metric, 'mape')}
+          percent={mapeInverse}
+          tone="primary"
+        />
+        <AccuracyGauge
+          label="SMAPE"
+          value={formatAccuracyMetric(metric, 'smape')}
+          percent={smapeInverse}
+          tone="primary"
+        />
+        <AccuracyGauge
+          label="Bias"
+          value={formatAccuracyMetric(metric, 'bias')}
+          percent={Math.min(100, Math.abs(metric.bias) * 10)}
+          tone="warning"
+        />
       </div>
     </article>
   )
@@ -94,20 +131,28 @@ export function ForecastAccuracyDashboard({
 }: ForecastAccuracyDashboardProps) {
   return (
     <SectionContainer
-      title="Forecast Accuracy Dashboard"
-      description="Backtest accuracy metrics with methodology tooltips for MAE, RMSE, MAPE, and bias."
+      title="Forecast Accuracy"
+      description="Backtest accuracy metrics with visual gauges and methodology explanations."
     >
       {loading ? (
         <div className="h-32 animate-pulse rounded-xl bg-muted" />
       ) : (
         <>
-          <MetricCard
-            label="Overall Accuracy Score"
-            value={`${overallScore.toFixed(1)}%`}
-            trend="up"
-            change="Holdout validation"
-            className="mb-4"
-          />
+          <div className="mb-4 rounded-xl border border-border/80 bg-card p-5 shadow-sm">
+            <MetricCard
+              label="Overall Accuracy Score"
+              value={`${overallScore.toFixed(1)}%`}
+              trend="up"
+              change="Holdout validation"
+              className="border-0 p-0 shadow-none"
+            />
+            <div className="mt-3 h-3 rounded-full bg-muted">
+              <div
+                className="h-3 rounded-full bg-success transition-all"
+                style={{ width: `${Math.min(100, overallScore)}%` }}
+              />
+            </div>
+          </div>
           <div className="grid gap-4 lg:grid-cols-2">
             {metrics.map((metric) => (
               <ForecastAccuracyCard key={`${metric.metric_name}-${metric.model_name}`} metric={metric} />
@@ -115,7 +160,7 @@ export function ForecastAccuracyDashboard({
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
             MAE measures average absolute error. RMSE penalizes larger errors. MAPE shows percentage error.
-            Bias shows over/under prediction tendency.
+            SMAPE balances percentage error for low-volume series. Bias shows over/under prediction tendency.
           </p>
         </>
       )}

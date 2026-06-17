@@ -136,8 +136,9 @@ export interface ForecastOverviewKpi {
 
 export interface ScenarioControls {
   demandIncreasePct: number
-  discountImpactPct: number
-  seasonalBoostPct: number
+  promotionPct: number
+  seasonalityPct: number
+  growthPct: number
   inventoryConstraintPct: number
 }
 
@@ -148,7 +149,11 @@ export interface ForecastingCenterBundle {
   revenueHistoricalVsForecast: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
   salesHistoricalVsForecast: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
   monthlyRevenueForecast: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
+  quarterlyRevenueForecast: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
   weeklySalesForecast: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
+  productDemandChart: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
   categoryDemandChart: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
   demandGrowthChart: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
+  inventoryRiskChart: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
+  storePerformanceChart: import('@/features/visualization/adapters/chartAdapters').ChartSeriesPoint[]
 }

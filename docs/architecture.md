@@ -174,11 +174,11 @@ Pipeline Monitoring (Phase 8)
 - **Visualization Framework (Sprint 6.1)** — reusable Recharts components, theme, adapters, Visualization Studio at `/visualization`
 - **Interactive Analytics Dashboards (Sprint 6.2)** — eight enterprise BI dashboards with shared layout, adapter layer, and API-ready filters
 - **Executive Visualization Studio (Sprint 6.3)** — KPI board, target vs actual, business health, anomalies, gallery at `/executive-visualization`
-- **Forecasting Engine (Sprint 7.1)** — `/api/v1/forecasting` — sales, revenue, demand, inventory, store forecasts, accuracy, scenarios
-- **Forecasting Center (Sprint 7.2)** — `/forecasting` — overview KPIs, charts, scenario planner, accuracy dashboard
+- **Forecasting Engine (Phase 7)** — `/api/v1/forecasting` — sales, revenue, demand, inventory, store forecasts, accuracy, scenarios
+- **Forecasting Center (Phase 7)** — `/forecasting` — executive summary, charts, accuracy dashboard, scenario planner
 - API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, `/api/v1/intelligence/*`, and `/api/v1/forecasting/*`
 - Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
-- See [Forecasting Engine](forecasting-engine.md) for Phase 7.1 API details
+- See [Forecasting Engine](forecasting-engine.md) and [Forecasting Center](forecasting-center.md)
 
 ---
 

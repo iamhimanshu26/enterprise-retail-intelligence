@@ -31,7 +31,7 @@ const ARCHITECTURE_PREVIEW = [
 ]
 
 export function LandingPage() {
-  const previewPhases = PROJECT_ROADMAP.slice(0, 6)
+  const previewPhases = PROJECT_ROADMAP.filter((phase) => phase.status !== 'locked').slice(0, 8)
 
   return (
     <div className="min-h-screen bg-background">

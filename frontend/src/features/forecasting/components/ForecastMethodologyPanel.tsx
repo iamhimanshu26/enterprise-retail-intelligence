@@ -4,38 +4,51 @@ import { SectionContainer } from '@/components/design-system'
 const METHODOLOGY_ITEMS = [
   {
     title: 'Moving Average',
+    formula: 'F_t = (Y_{t-1} + Y_{t-2} + … + Y_{t-n}) / n',
     description:
       'Smooths short-term noise using rolling windows — baseline for stable demand and weekly sales patterns.',
   },
   {
     title: 'Linear Regression',
+    formula: 'Y = β₀ + β₁X + ε',
     description:
       'Fits a trend line to monthly revenue and category demand — explainable slope for growth outlook.',
   },
   {
-    title: 'Seasonal Naive Baseline',
-    description:
-      'Uses prior seasonal periods as forecast anchors — strong baseline for quarterly revenue cycles.',
-  },
-  {
     title: 'Exponential Smoothing',
+    formula: 'S_t = α·Y_t + (1-α)·S_{t-1}',
     description:
       'Weights recent observations more heavily — responsive daily revenue and sales volume forecasts.',
   },
   {
+    title: 'Seasonal Naive Baseline',
+    formula: 'F_t = Y_{t-m} (seasonal period m)',
+    description:
+      'Uses prior seasonal periods as forecast anchors — strong baseline for quarterly revenue cycles.',
+  },
+  {
     title: 'Feature Engineering',
+    formula: 'X = [date_features, region, category, promotion_flag, aggregates]',
     description:
       'Date features, promotion flags, region/category dummies, and warehouse-derived aggregates feed models.',
   },
   {
-    title: 'Lag Features & Rolling Averages',
+    title: 'Lag Features',
+    formula: 'lag_k = Y_{t-k}',
     description:
-      'Prior-period lags and rolling means capture momentum without black-box complexity.',
+      'Prior-period lags capture momentum and autocorrelation without black-box complexity.',
+  },
+  {
+    title: 'Rolling Average',
+    formula: 'roll_n = mean(Y_{t-n+1}…Y_t)',
+    description:
+      'Rolling means stabilize volatile series before model fitting and scenario planning.',
   },
   {
     title: 'Scenario Planning',
+    formula: 'Adjusted = Base × (1 + scenario_band + control_delta)',
     description:
-      'Optimistic, realistic, and pessimistic branches adjust base forecasts for executive what-if analysis.',
+      'Optimistic, expected, and pessimistic branches adjust base forecasts for executive what-if analysis.',
   },
 ]
 
@@ -43,7 +56,7 @@ export function ForecastMethodologyPanel() {
   return (
     <SectionContainer
       title="Forecast Methodology"
-      description="Explainable model strategy for interviews and executive trust — no black-box ensembles in Phase 7."
+      description="Formulas and business explanations for interview-ready predictive analytics."
     >
       <div className="space-y-3">
         {METHODOLOGY_ITEMS.map((item, index) => (
@@ -54,7 +67,8 @@ export function ForecastMethodologyPanel() {
               </span>
               <div>
                 <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                <p className="mt-1 font-mono text-xs text-primary">{item.formula}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
               </div>
             </div>
             {index < METHODOLOGY_ITEMS.length - 1 && (

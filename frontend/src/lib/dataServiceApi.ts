@@ -261,3 +261,52 @@ export async function runForecastingSample(): Promise<import('@/types/forecastin
   >('/forecasting/run-sample')
   return response.data.data
 }
+
+export async function getForecastingSales(): Promise<import('@/types/forecasting').SalesForecast> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').SalesForecast>
+  >('/forecasting/sales')
+  return response.data.data
+}
+
+export async function getForecastingRevenue(): Promise<import('@/types/forecasting').RevenueForecast> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').RevenueForecast>
+  >('/forecasting/revenue')
+  return response.data.data
+}
+
+export async function getForecastingDemand(): Promise<import('@/types/forecasting').DemandForecast> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').DemandForecast>
+  >('/forecasting/demand')
+  return response.data.data
+}
+
+export async function getForecastingInventory(): Promise<import('@/types/forecasting').InventoryForecast> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').InventoryForecast>
+  >('/forecasting/inventory')
+  return response.data.data
+}
+
+export async function getForecastingStores(): Promise<import('@/types/forecasting').StoreForecast> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').StoreForecast>
+  >('/forecasting/stores')
+  return response.data.data
+}
+
+export async function getForecastingAccuracy(): Promise<import('@/types/forecasting').AccuracyReport> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').AccuracyReport>
+  >('/forecasting/accuracy')
+  return response.data.data
+}
+
+export async function getForecastingScenarios(): Promise<import('@/types/forecasting').ScenarioOutputs> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').ScenarioOutputs>
+  >('/forecasting/scenarios')
+  return response.data.data
+}

@@ -1,4 +1,4 @@
-"""Forecasting API — Phase 7.1."""
+"""Forecasting API — Phase 7."""
 
 from fastapi import APIRouter
 

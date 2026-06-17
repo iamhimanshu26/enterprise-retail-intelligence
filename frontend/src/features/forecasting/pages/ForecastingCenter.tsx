@@ -14,6 +14,7 @@ import { ForecastChart } from '../components/ForecastChart'
 import { ForecastMethodologyPanel } from '../components/ForecastMethodologyPanel'
 import { ForecastOverview } from '../components/ForecastOverview'
 import { InventoryRiskForecast } from '../components/InventoryRiskForecast'
+import { ModelInformationPanel } from '../components/ModelInformationPanel'
 import { ScenarioPlanner } from '../components/ScenarioPlanner'
 import { StoreForecastTable } from '../components/StoreForecastTable'
 import { useForecastingData } from '../hooks/useForecastingData'
@@ -28,7 +29,7 @@ export function ForecastingCenterPage() {
       <PageHeader
         title="Forecasting Center"
         description="Enterprise predictive analytics — revenue, sales, demand, inventory, and store forecasts with accuracy dashboard and scenario planning."
-        badge={{ status: 'completed', label: 'Phase 7 · Complete' }}
+        badge={{ status: 'completed', label: 'Forecasting Platform Operational' }}
         actions={
           <button
             type="button"
@@ -44,10 +45,7 @@ export function ForecastingCenterPage() {
       <Breadcrumb items={[{ label: 'Forecasting Center' }]} />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <MetricCard
-          label="Data source"
-          value={report?.overview.data_source ?? '—'}
-        />
+        <MetricCard label="Data source" value={report?.overview.data_source ?? '—'} />
         <MetricCard
           label="Execution time"
           value={report ? `${report.execution_time_seconds}s` : '—'}
@@ -61,30 +59,23 @@ export function ForecastingCenterPage() {
             status={data?.source === 'api' ? 'completed' : 'in-progress'}
             label={data?.source === 'api' ? 'Live API' : 'Mock fallback'}
           />
-          <span className="text-sm text-muted-foreground">Forecast data source</span>
+          <span className="text-sm text-muted-foreground">Phase 7 Complete</span>
         </div>
       </div>
 
       <ForecastOverview kpis={data?.overviewKpis ?? []} loading={isLoading} />
 
       <SectionContainer
-        title="Revenue & Sales Forecasts"
-        description="Historical vs forecast charts using the Phase 6 visualization framework."
+        title="Revenue Forecast"
+        description="Historical vs projected revenue with monthly and quarterly forecast horizons."
       >
         <div className="grid gap-4 lg:grid-cols-2">
           <ForecastChart
-            title="Revenue — Historical vs Forecast"
+            title="Historical vs Forecast Revenue"
             subtitle="Monthly revenue baseline vs projected"
             data={data?.revenueHistoricalVsForecast ?? []}
             loading={isLoading}
             valueFormat="currency"
-            onRefresh={() => refetch()}
-          />
-          <ForecastChart
-            title="Sales — Historical vs Forecast"
-            subtitle="Weekly sales volume baseline vs projected"
-            data={data?.salesHistoricalVsForecast ?? []}
-            loading={isLoading}
             onRefresh={() => refetch()}
           />
           <TrendChartCard
@@ -101,6 +92,34 @@ export function ForecastingCenterPage() {
               showLegend
             />
           </TrendChartCard>
+          <TrendChartCard
+            title="Quarterly Revenue Forecast"
+            subtitle="Seasonal naive quarterly projection"
+            data={data?.quarterlyRevenueForecast ?? []}
+            loading={isLoading}
+            onRefresh={() => refetch()}
+          >
+            <EnterpriseBarChart
+              data={data?.quarterlyRevenueForecast ?? []}
+              valueFormat="currency"
+              showLegend={false}
+            />
+          </TrendChartCard>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer
+        title="Sales Forecast"
+        description="Historical vs projected sales volume with weekly forecast trend."
+      >
+        <div className="grid gap-4 lg:grid-cols-2">
+          <ForecastChart
+            title="Historical vs Forecast Sales"
+            subtitle="Weekly sales volume baseline vs projected"
+            data={data?.salesHistoricalVsForecast ?? []}
+            loading={isLoading}
+            onRefresh={() => refetch()}
+          />
           <TrendChartCard
             title="Weekly Sales Forecast"
             subtitle="Projected weekly order volume"
@@ -119,16 +138,48 @@ export function ForecastingCenterPage() {
             demand={report.demand}
             categoryChart={data?.categoryDemandChart ?? []}
             growthChart={data?.demandGrowthChart ?? []}
+            productChart={data?.productDemandChart ?? []}
             loading={isLoading}
           />
-          <InventoryRiskForecast inventory={report.inventory} loading={isLoading} />
-          <StoreForecastTable stores={report.stores} loading={isLoading} />
+          <SectionContainer
+            title="Inventory Forecast"
+            description="Stock-out risk scoring and expected usage by SKU."
+          >
+            <div className="grid gap-4 lg:grid-cols-2">
+              <InventoryRiskForecast inventory={report.inventory} loading={isLoading} compact />
+              <TrendChartCard
+                title="Inventory Risk by Product"
+                data={data?.inventoryRiskChart ?? []}
+                loading={isLoading}
+              >
+                <EnterpriseBarChart data={data?.inventoryRiskChart ?? []} valueFormat="percent" />
+              </TrendChartCard>
+            </div>
+          </SectionContainer>
+          <SectionContainer title="Store Forecast" description="Store revenue and order performance outlook.">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <StoreForecastTable stores={report.stores} loading={isLoading} compact />
+              <TrendChartCard
+                title="Store Performance Forecast"
+                data={data?.storePerformanceChart ?? []}
+                loading={isLoading}
+              >
+                <EnterpriseBarChart
+                  data={data?.storePerformanceChart ?? []}
+                  valueFormat="currency"
+                  secondaryDataKey="secondary"
+                  showLegend
+                />
+              </TrendChartCard>
+            </div>
+          </SectionContainer>
           <ScenarioPlanner baseScenarios={report.scenarios.scenarios} loading={isLoading} />
           <ForecastAccuracyDashboard
             metrics={report.accuracy.metrics}
             overallScore={report.accuracy.overall_accuracy_score}
             loading={isLoading}
           />
+          <ModelInformationPanel overview={report.overview} loading={isLoading} />
         </>
       )}
 
@@ -140,7 +191,8 @@ export function ForecastingCenterPage() {
       >
         <div className="rounded-xl border border-dashed border-border/80 bg-muted/20 p-6 text-sm text-muted-foreground">
           AI-powered forecast recommendations and executive narrative insights will integrate here in Phase 11
-          — AI Business Insight Engine. Current forecasts are explainable statistical baselines from Phase 7.1.
+          — AI Business Insight Engine. Current forecasts use explainable statistical baselines from the
+          Phase 7 forecasting platform.
         </div>
       </SectionContainer>
     </div>

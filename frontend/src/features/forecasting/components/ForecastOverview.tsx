@@ -10,8 +10,8 @@ interface ForecastOverviewProps {
 export function ForecastOverview({ kpis, loading }: ForecastOverviewProps) {
   return (
     <SectionContainer
-      title="Forecast Overview"
-      description="Executive KPI-style forecast cards with trend, confidence placeholder, model, and horizon."
+      title="Executive Forecast Summary"
+      description="KPI-style forecast cards for revenue, sales, demand, risk, accuracy, and growth outlook."
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {loading

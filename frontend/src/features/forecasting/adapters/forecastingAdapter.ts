@@ -119,6 +119,44 @@ export function buildOverviewKpis(report: ForecastingReport): ForecastOverviewKp
   ]
 }
 
+export function buildProductDemandChart(report: ForecastingReport): ChartSeriesPoint[] {
+  return report.demand.product_demand.map((row) => ({
+    label: row.dimension,
+    value: row.predicted_demand,
+    direction: row.trend_direction,
+  }))
+}
+
+export function buildInventoryRiskChart(report: ForecastingReport): ChartSeriesPoint[] {
+  return report.inventory.items.map((item) => ({
+    label: item.product_code,
+    value: item.stock_out_risk_score * 100,
+    secondary: item.expected_usage,
+  }))
+}
+
+export function buildStorePerformanceChart(report: ForecastingReport): ChartSeriesPoint[] {
+  return report.stores.stores.map((store) => ({
+    label: store.store_code,
+    value: store.predicted_revenue,
+    secondary: store.predicted_orders,
+    growth: store.performance_risk_score * 100,
+  }))
+}
+
+export function buildScenarioComparisonChart(scenarios: ScenarioResult[]): ChartSeriesPoint[] {
+  return scenarios.map((scenario) => ({
+    label:
+      scenario.scenario === 'optimistic'
+        ? 'Optimistic'
+        : scenario.scenario === 'pessimistic'
+          ? 'Pessimistic'
+          : 'Expected',
+    value: scenario.adjusted_value,
+    secondary: scenario.base_value,
+  }))
+}
+
 export function buildCategoryDemandChart(report: ForecastingReport): ChartSeriesPoint[] {
   return report.demand.category_demand.map((row) => ({
     label: row.dimension,
@@ -148,9 +186,13 @@ export function buildForecastingCenterBundle(
     revenueHistoricalVsForecast: buildHistoricalVsForecastChart(report.revenue.monthly.points),
     salesHistoricalVsForecast: buildHistoricalVsForecastChart(report.sales.weekly.points),
     monthlyRevenueForecast: forecastPointsToChart(report.revenue.monthly.points),
+    quarterlyRevenueForecast: forecastPointsToChart(report.revenue.quarterly.points),
     weeklySalesForecast: forecastPointsToChart(report.sales.weekly.points),
+    productDemandChart: buildProductDemandChart(report),
     categoryDemandChart: buildCategoryDemandChart(report),
     demandGrowthChart: buildDemandGrowthChart(report),
+    inventoryRiskChart: buildInventoryRiskChart(report),
+    storePerformanceChart: buildStorePerformanceChart(report),
   }
 }
 
@@ -160,8 +202,9 @@ export function applyScenarioControls(
 ): ScenarioResult[] {
   const netAdjustment =
     controls.demandIncreasePct +
-    controls.seasonalBoostPct -
-    controls.discountImpactPct -
+    controls.promotionPct +
+    controls.seasonalityPct +
+    controls.growthPct -
     controls.inventoryConstraintPct
 
   return baseScenarios.map((scenario) => {
@@ -180,16 +223,22 @@ export function applyScenarioControls(
 }
 
 export const ACCURACY_METHODOLOGY = [
-  { name: 'MAE', description: 'MAE measures average absolute error.' },
-  { name: 'RMSE', description: 'RMSE penalizes larger errors.' },
-  { name: 'MAPE', description: 'MAPE shows percentage error.' },
-  { name: 'Bias', description: 'Bias shows over/under prediction tendency.' },
+  { name: 'MAE', description: 'Mean Absolute Error — average absolute deviation between forecast and actual.' },
+  { name: 'RMSE', description: 'Root Mean Squared Error — penalizes larger forecast errors more heavily.' },
+  { name: 'MAPE', description: 'Mean Absolute Percentage Error — error expressed as a percentage of actuals.' },
+  { name: 'SMAPE', description: 'Symmetric MAPE — balanced percentage error for low-volume series.' },
+  { name: 'Bias', description: 'Systematic over/under-prediction tendency across the holdout window.' },
+  { name: 'Accuracy Score', description: 'Composite 0–100 score derived from backtest holdout performance.' },
 ] as const
 
 export function formatAccuracyMetric(metric: AccuracyMetrics, field: keyof AccuracyMetrics): string {
+  if (field === 'smape') {
+    const value = metric.smape ?? metric.mape
+    return typeof value === 'number' ? `${value.toFixed(1)}%` : '—'
+  }
   const value = metric[field]
   if (typeof value !== 'number') return '—'
-  if (field === 'mape' || field === 'smape' || field === 'accuracy_score') return `${value.toFixed(1)}%`
+  if (field === 'mape' || field === 'accuracy_score') return `${value.toFixed(1)}%`
   if (field === 'bias') return `${value.toFixed(2)}%`
   return value.toLocaleString(undefined, { maximumFractionDigits: 0 })
 }

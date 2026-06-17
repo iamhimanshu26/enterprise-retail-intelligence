@@ -27,7 +27,7 @@ describe('ScenarioPlanner', () => {
   it('renders scenario comparison cards', () => {
     render(<ScenarioPlanner baseScenarios={FORECASTING_MOCK_REPORT.scenarios.scenarios} />)
     expect(screen.getByText('Optimistic')).toBeInTheDocument()
-    expect(screen.getByText('Realistic')).toBeInTheDocument()
+    expect(screen.getByText('Expected')).toBeInTheDocument()
     expect(screen.getByText('Pessimistic')).toBeInTheDocument()
   })
 
@@ -45,7 +45,7 @@ describe('ForecastAccuracyDashboard', () => {
         overallScore={FORECASTING_MOCK_REPORT.accuracy.overall_accuracy_score}
       />,
     )
-    expect(screen.getByText('Forecast Accuracy Dashboard')).toBeInTheDocument()
+    expect(screen.getByText('Forecast Accuracy')).toBeInTheDocument()
     expect(screen.getByText('Overall Accuracy Score')).toBeInTheDocument()
     expect(screen.getAllByText('MAE').length).toBeGreaterThan(0)
     expect(screen.getAllByText('RMSE').length).toBeGreaterThan(0)

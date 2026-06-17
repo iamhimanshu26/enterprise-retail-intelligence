@@ -1,13 +1,14 @@
-import { DataTable, MetricCard, SectionContainer } from '@/components/design-system'
+import { DataTable, MetricCard } from '@/components/design-system'
 import type { StoreForecast, StoreForecastRow } from '@/types/forecasting'
 import type { TableColumn } from '@/types'
 
 interface StoreForecastTableProps {
   stores: StoreForecast
   loading?: boolean
+  compact?: boolean
 }
 
-export function StoreForecastTable({ stores, loading }: StoreForecastTableProps) {
+export function StoreForecastTable({ stores, loading, compact }: StoreForecastTableProps) {
   const columns: TableColumn<StoreForecastRow>[] = [
     { key: 'store_code', header: 'Store' },
     {
@@ -39,31 +40,38 @@ export function StoreForecastTable({ stores, loading }: StoreForecastTableProps)
     },
   ]
 
+  const content = loading ? (
+    <div className="h-40 animate-pulse rounded-xl bg-muted" />
+  ) : (
+    <>
+      <div className="mb-4 grid gap-4 sm:grid-cols-3">
+        <MetricCard
+          label="High-growth Stores"
+          value={stores.high_growth_stores.join(', ') || '—'}
+          trend="up"
+        />
+        <MetricCard
+          label="Declining Stores"
+          value={stores.declining_stores.join(', ') || '—'}
+          trend="down"
+        />
+        <MetricCard label="Stores Forecasted" value={String(stores.stores.length)} />
+      </div>
+      <DataTable columns={columns} data={stores.stores} emptyMessage="No store forecast data" />
+    </>
+  )
+
+  if (compact) return <div>{content}</div>
+
   return (
-    <SectionContainer
-      title="Store Performance Forecast"
-      description="High-growth and declining stores with revenue, order, and risk forecasts."
-    >
-      {loading ? (
-        <div className="h-40 animate-pulse rounded-xl bg-muted" />
-      ) : (
-        <>
-          <div className="mb-4 grid gap-4 sm:grid-cols-3">
-            <MetricCard
-              label="High-growth Stores"
-              value={stores.high_growth_stores.join(', ') || '—'}
-              trend="up"
-            />
-            <MetricCard
-              label="Declining Stores"
-              value={stores.declining_stores.join(', ') || '—'}
-              trend="down"
-            />
-            <MetricCard label="Stores Forecasted" value={String(stores.stores.length)} />
-          </div>
-          <DataTable columns={columns} data={stores.stores} emptyMessage="No store forecast data" />
-        </>
-      )}
-    </SectionContainer>
+    <div className="space-y-4">
+      <div>
+        <h3 className="text-sm font-semibold text-foreground">Store Performance Table</h3>
+        <p className="text-xs text-muted-foreground">
+          High-growth and declining stores with revenue, order, and risk forecasts.
+        </p>
+      </div>
+      {content}
+    </div>
   )
 }

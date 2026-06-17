@@ -510,6 +510,35 @@ export function EngineeringArchitecture() {
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
 
       <SectionContainer
+        title="Enterprise Platform Flow"
+        description="End-to-end retail intelligence pipeline from synthetic data through forecasting to future AI insights."
+      >
+        <pre className="rounded-xl border border-border/80 bg-muted/20 p-4 text-xs leading-relaxed text-muted-foreground">
+{`Synthetic Data
+        ↓
+ETL Pipeline
+        ↓
+Analytics Warehouse
+        ↓
+Statistics Engine
+        ↓
+Business Analytics
+        ↓
+Executive Intelligence
+        ↓
+Forecasting Engine
+        ↓
+Forecasting Center
+        ↓
+Future AI Insights`}
+        </pre>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 7 Completed</span>
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">Forecasting Platform Operational</span>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer
         title="Forecasting Platform Flow"
         description="Phase 7 predictive analytics pipeline from warehouse data to executive decisions."
       >

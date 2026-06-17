@@ -32,8 +32,9 @@ describe('forecastingAdapter', () => {
     const base = FORECASTING_MOCK_REPORT.scenarios.scenarios
     const adjusted = applyScenarioControls(base, {
       demandIncreasePct: 10,
-      discountImpactPct: 0,
-      seasonalBoostPct: 5,
+      promotionPct: 5,
+      seasonalityPct: 5,
+      growthPct: 2,
       inventoryConstraintPct: 0,
     })
     const realistic = adjusted.find((s) => s.scenario === 'realistic')

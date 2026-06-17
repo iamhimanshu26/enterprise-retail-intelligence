@@ -9,6 +9,7 @@ interface DemandForecastTableProps {
   demand: DemandForecast
   categoryChart: ChartSeriesPoint[]
   growthChart: ChartSeriesPoint[]
+  productChart: ChartSeriesPoint[]
   loading?: boolean
 }
 
@@ -20,6 +21,7 @@ export function DemandForecastTable({
   demand,
   categoryChart,
   growthChart,
+  productChart,
   loading,
 }: DemandForecastTableProps) {
   const productColumns: TableColumn<DemandForecastRow>[] = [
@@ -56,7 +58,10 @@ export function DemandForecastTable({
         <div className="h-40 animate-pulse rounded-xl bg-muted" />
       ) : (
         <div className="space-y-6">
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-3">
+            <TrendChartCard title="Product Demand Forecast" data={productChart}>
+              <EnterpriseBarChart data={productChart} showLegend={false} />
+            </TrendChartCard>
             <TrendChartCard title="Category Demand" data={categoryChart}>
               <EnterpriseBarChart data={categoryChart} showLegend={false} />
             </TrendChartCard>

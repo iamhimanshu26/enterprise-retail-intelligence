@@ -1,12 +1,12 @@
 # Forecasting Engine
 
-Phase 7.1 delivers the **Forecasting & Predictive Analytics** backend foundation — reusable Python services for sales, revenue, demand, inventory, and store performance prediction with accuracy metrics and basic scenario planning.
+Phase 7 delivers the **Forecasting & Predictive Analytics** platform — reusable Python services, FastAPI endpoints, and the Forecasting Center UI for sales, revenue, demand, inventory, and store performance prediction with accuracy metrics and scenario planning.
 
 ---
 
 ## Objective
 
-Provide enterprise predictive analytics APIs that consume warehouse-ready retail data (Phase 4) and analytics/statistics outputs (Phase 5), without AI/LLM insights or advanced UI (Phase 7.2).
+Provide enterprise predictive analytics APIs and UI that consume warehouse-ready retail data (Phase 4) and analytics/statistics outputs (Phase 5). Phase 7.2 adds the Forecasting Center at `/forecasting`.
 
 ---
 
