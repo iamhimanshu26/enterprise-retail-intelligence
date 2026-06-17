@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 7
+export const CURRENT_PHASE = 8
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -108,7 +108,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Forecast revenue, sales, demand, inventory, seasonal trends, and store performance using statistical and ML models.',
     purpose: 'Enable data-driven planning.',
     technologies: ['Scikit-learn', 'Statsmodels', 'Prophet'],
-    status: 'current',
+    status: 'completed',
   },
   {
     id: '8',
@@ -118,7 +118,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Pipeline status, success/failure, runtime, quality score, validation reports, and execution history.',
     purpose: 'Monitor ETL health and reliability.',
     technologies: ['WebSocket', 'Prometheus', 'FastAPI'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '9',

@@ -292,12 +292,12 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description:
       'Sales, revenue, demand, inventory, and store forecasting with accuracy metrics, scenario planning, and explainable baseline models.',
     icon: 'lineChart',
-    status: 'in-progress',
+    status: 'completed',
     phase: 7,
     difficulty: 'expert',
-    technologies: ['Pandas', 'Scikit-learn', 'Statsmodels', 'FastAPI'],
+    technologies: ['Pandas', 'Scikit-learn', 'Statsmodels', 'FastAPI', 'React'],
     implementationStatus:
-      'Phase 7.1 complete · app/forecasting · /api/v1/forecasting · moving average · linear regression · seasonal naive · exponential smoothing',
+      'Phase 7 complete · app/forecasting · /forecasting center · accuracy dashboard · scenario planner · /api/v1/forecasting',
   },
   {
     id: 'database',
@@ -385,7 +385,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–6 complete · Phase 7 current`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–7 complete · Phase 8 current`,
   },
 ]
 
@@ -504,10 +504,36 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'in-progress', label: 'Phase 7.1 · Forecasting Engine' }}
+        badge={{ status: 'completed', label: 'Phase 7 · Forecasting Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
+
+      <SectionContainer
+        title="Forecasting Platform Flow"
+        description="Phase 7 predictive analytics pipeline from warehouse data to executive decisions."
+      >
+        <pre className="rounded-xl border border-border/80 bg-muted/20 p-4 text-xs leading-relaxed text-muted-foreground">
+{`Analytics Warehouse
+        ↓
+Feature Engineering
+        ↓
+Forecasting Models
+        ↓
+Accuracy Engine
+        ↓
+Scenario Planner
+        ↓
+Forecasting Center
+        ↓
+Executive Decisions`}
+        </pre>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 7.1 — Forecasting Engine, Models & APIs</span>
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 7.2 — Forecast UI, Accuracy Dashboard & Scenario Planning</span>
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 7 — Forecasting & Predictive Analytics Completed</span>
+        </div>
+      </SectionContainer>
 
       <div className="grid gap-4 sm:grid-cols-3">
         {[

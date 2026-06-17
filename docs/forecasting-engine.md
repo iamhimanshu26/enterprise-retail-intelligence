@@ -124,14 +124,19 @@ Data loads via `load_analytics_data()` — warehouse `fact_sales` when available
 
 ---
 
-## Future UI Integration (Phase 7.2)
+## Future UI Integration (Phase 7.2 — Complete)
 
-Phase 7.2 will add:
+Phase 7.2 added:
 
-- Forecast charts in Forecasting Center
-- Scenario planning workspace
-- Accuracy dashboard
-- Visualization adapter hooks for trend overlays on Phase 6 charts
+- Forecasting Center at `/forecasting`
+- Forecast overview KPI cards
+- Revenue and sales historical vs forecast charts
+- Demand, inventory, and store forecast sections
+- Scenario planning workspace with placeholder controls
+- Accuracy dashboard with methodology tooltips
+- Mock fallback adapter layer
+
+See [Forecasting Center](forecasting-center.md) for UI architecture details.
 
 ---
 

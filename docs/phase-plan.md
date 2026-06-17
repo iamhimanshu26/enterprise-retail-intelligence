@@ -1,6 +1,6 @@
 # Development Phase Plan
 
-> **Phase status:** Phases 0–6 complete · **Phase 7 current** (Forecasting & Predictive Analytics)
+> **Phase status:** Phases 0–7 complete · **Phase 8 current** (Pipeline Monitoring & Data Quality)
 
 > **Single source of truth (application):** `frontend/src/lib/roadmap.ts`  
 > Phases **0–14** (15 enterprise development phases) plus **Phase 0.5** UX milestone.
@@ -131,23 +131,23 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ---
 
-## 🚀 Phase 7 — Forecasting & Predictive Analytics
+## ✅ Phase 7 — Forecasting & Predictive Analytics
 
-**Status:** Current (Sprint 7.1 complete)
+**Status:** Complete (Sprints 7.1, 7.2)
 
 **Sprint 7.1:** Forecasting engine foundation — sales, revenue, demand, inventory, store forecasts, accuracy metrics, scenario planning, `/api/v1/forecasting`. See `docs/forecasting-engine.md`.
 
-**Sprint 7.2 (next):** Forecast UI, scenario workspace, accuracy dashboard.
+**Sprint 7.2:** Forecasting Center UI, accuracy dashboard, scenario planner at `/forecasting`. See `docs/forecasting-center.md`.
 
-**Libraries:** Scikit-learn, Statsmodels, Pandas, NumPy
+**Libraries:** Scikit-learn, Statsmodels, Pandas, NumPy, Recharts
 
 **Purpose:** Enable data-driven planning.
 
 ---
 
-## Phase 8 — Pipeline Monitoring & Data Quality
+## 🚀 Phase 8 — Pipeline Monitoring & Data Quality
 
-**Status:** Planned
+**Status:** Current
 
 Display pipeline status, success/failure, runtime, quality score, validation reports, and execution history.
 

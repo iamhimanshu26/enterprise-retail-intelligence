@@ -247,3 +247,17 @@ export async function getIntelligenceRecommendations(): Promise<
   >('/intelligence/recommendations')
   return response.data.data
 }
+
+export async function getForecastingOverview(): Promise<import('@/types/forecasting').ForecastingOverview> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/forecasting').ForecastingOverview>
+  >('/forecasting/overview')
+  return response.data.data
+}
+
+export async function runForecastingSample(): Promise<import('@/types/forecasting').ForecastingReport> {
+  const response = await dataServiceClient.post<
+    DataServiceApiResponse<import('@/types/forecasting').ForecastingReport>
+  >('/forecasting/run-sample')
+  return response.data.data
+}

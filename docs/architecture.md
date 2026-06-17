@@ -4,7 +4,7 @@
 
 The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–14 roadmap (`frontend/src/lib/roadmap.ts` in the application).
 
-**Platform phase:** Phases 0–6 complete · **Phase 7 (Forecasting & Predictive Analytics) current**
+**Platform phase:** Phases 0–7 complete · **Phase 8 (Pipeline Monitoring & Data Quality) current**
 
 ---
 
@@ -164,6 +164,10 @@ Interactive Analytics Dashboards (Sprint 6.2)
 Executive Visualization Studio (Sprint 6.3)
         ↓
 Forecasting (Phase 7)
+        ↓
+Forecasting Center (Phase 7.2)
+        ↓
+Pipeline Monitoring (Phase 8)
 ```
 
 - **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
@@ -171,25 +175,25 @@ Forecasting (Phase 7)
 - **Interactive Analytics Dashboards (Sprint 6.2)** — eight enterprise BI dashboards with shared layout, adapter layer, and API-ready filters
 - **Executive Visualization Studio (Sprint 6.3)** — KPI board, target vs actual, business health, anomalies, gallery at `/executive-visualization`
 - **Forecasting Engine (Sprint 7.1)** — `/api/v1/forecasting` — sales, revenue, demand, inventory, store forecasts, accuracy, scenarios
-- API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, and `/api/v1/intelligence/*`
+- **Forecasting Center (Sprint 7.2)** — `/forecasting` — overview KPIs, charts, scenario planner, accuracy dashboard
+- API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, `/api/v1/intelligence/*`, and `/api/v1/forecasting/*`
 - Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
 - See [Forecasting Engine](forecasting-engine.md) for Phase 7.1 API details
 
 ---
 
-## Forecasting Engine (Phase 7 — Sprint 7.1 Complete)
+## Forecasting Platform (Phase 7 — Complete)
 
 ```
-Historical Data ──► Feature Engineering ──► Model Selection ──► Forecast API
-                          │                       │
-                          ▼                       ▼
-                    Statistics Engine      Scenario Planning
+Analytics Warehouse ──► Feature Engineering ──► Forecasting Models ──► Accuracy Engine
+                                                          │
+                                                          ▼
+                                              Scenario Planner ──► Forecasting Center UI
 ```
 
-- Time series models: ARIMA, Prophet, exponential smoothing
-- ML ensembles: Random Forest, Gradient Boosting
-- Confidence intervals and scenario comparison
-- Integration with Statistics Lab (Phase 5)
+- Explainable baselines: moving average, linear regression, seasonal naive, exponential smoothing
+- Forecasting Center at `/forecasting` with accuracy dashboard and scenario planning
+- See [Forecasting Engine](forecasting-engine.md) and [Forecasting Center](forecasting-center.md)
 
 ---
 

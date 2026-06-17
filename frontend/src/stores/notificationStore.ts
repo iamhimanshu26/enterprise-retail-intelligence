@@ -22,7 +22,7 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   {
     id: '2',
     title: 'Phase 6 Complete',
-    message: 'Visualization framework, interactive dashboards, and Executive Visualization Studio are live. Phase 7 forecasting begins next.',
+    message: 'Forecasting Center is live with accuracy dashboard and scenario planning. Phase 8 pipeline monitoring begins next.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),
