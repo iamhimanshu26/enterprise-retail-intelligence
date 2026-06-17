@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   LineChart,
   MapPin,
+  Monitor,
   Package,
   Settings,
   Sparkles,
@@ -103,6 +104,14 @@ export const NAVIGATION: NavItem[] = [
     phase: 6,
   },
   {
+    id: 'executive-visualization-studio',
+    label: 'Executive Visualization',
+    path: '/executive-visualization',
+    icon: Monitor,
+    description: 'Premium BI studio — KPI board, benchmarks, anomalies, and dashboard gallery',
+    phase: 6,
+  },
+  {
     id: 'executive-intelligence-dashboard',
     label: 'Executive Intelligence',
     path: '/executive-intelligence',
@@ -116,7 +125,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/forecasting',
     icon: LineChart,
     description: 'Demand forecasting and scenario planning',
-    phase: 6,
+    phase: 7,
   },
   {
     id: 'etl-pipeline-studio',

@@ -1,4 +1,5 @@
 import { Loader2, RefreshCw } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Breadcrumb, ErrorState, PageHeader, TableSkeleton } from '@/components/design-system'
 import {
   EnterpriseAreaChart,
@@ -39,12 +40,18 @@ export function VisualizationStudio() {
     <div className="space-y-10">
       <PageHeader
         title="Visualization Studio"
-        description="Enterprise data visualization framework — reusable charts with statistics, analytics, and intelligence adapters."
-        badge={{ status: 'in-progress', label: 'Sprint 6.1' }}
+        description="Enterprise chart framework — reusable visualization components"
+        badge={{ status: 'completed', label: 'Sprint 6.1' }}
       />
       <Breadcrumb items={[{ label: 'Visualization Studio' }]} />
 
       <div className="flex flex-wrap items-center gap-3">
+        <Link
+          to="/executive-visualization"
+          className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-muted"
+        >
+          Executive Visualization Studio
+        </Link>
         <button
           type="button"
           onClick={() => refetch()}

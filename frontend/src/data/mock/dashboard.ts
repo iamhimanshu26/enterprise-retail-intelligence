@@ -36,11 +36,11 @@ const DATE_RANGE_MULTIPLIERS: Record<string, number> = {
 }
 
 export const MOCK_QUICK_ACTIONS: QuickAction[] = [
-  { id: 'qa1', label: 'Generate Retail Data', path: '/generator' },
-  { id: 'qa2', label: 'ETL Pipeline', path: '/etl' },
-  { id: 'qa3', label: 'Statistics Lab', path: '/statistics' },
-  { id: 'qa4', label: 'Forecast Center', path: '/forecasting' },
-  { id: 'qa5', label: 'Pipeline Monitor', path: '/pipeline' },
+  { id: 'qa1', label: 'Executive Visualization', path: '/executive-visualization' },
+  { id: 'qa2', label: 'Generate Retail Data', path: '/generator' },
+  { id: 'qa3', label: 'ETL Pipeline', path: '/etl' },
+  { id: 'qa4', label: 'Statistics Lab', path: '/statistics' },
+  { id: 'qa5', label: 'Visualization Studio', path: '/visualization' },
   { id: 'qa6', label: 'Engineering Architecture', path: '/engineering' },
 ]
 

@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 6
+export const CURRENT_PHASE = 7
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -95,10 +95,10 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     phase: 6,
     title: 'Data Visualization Platform',
     description:
-      'Interactive revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts on top of the intelligence layer.',
+      'Enterprise visualization framework, eight interactive analytics dashboards, and Executive Visualization Studio with KPI boards, target vs actual, anomalies, and dashboard gallery.',
     purpose: 'Transform analytics and intelligence outputs into rich visual insights.',
-    technologies: ['Recharts', 'D3.js', 'TanStack Table'],
-    status: 'current',
+    technologies: ['Recharts', 'React', 'TanStack Query', 'Zustand'],
+    status: 'completed',
   },
   {
     id: '7',
@@ -108,7 +108,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Forecast revenue, sales, demand, inventory, seasonal trends, and store performance using statistical and ML models.',
     purpose: 'Enable data-driven planning.',
     technologies: ['Scikit-learn', 'Statsmodels', 'Prophet'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '8',

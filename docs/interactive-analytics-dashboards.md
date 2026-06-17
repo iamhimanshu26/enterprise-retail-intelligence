@@ -159,3 +159,4 @@ No forecasting logic is implemented in Sprint 6.2.
 - [Executive Intelligence Platform](executive-intelligence.md)
 - [Statistics Engine](statistics-engine.md)
 - [ETL Pipeline](etl-pipeline.md)
+- [Executive Visualization Studio](executive-visualization-studio.md)

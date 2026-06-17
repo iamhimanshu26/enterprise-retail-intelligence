@@ -42,6 +42,12 @@ const VisualizationStudio = lazy(() =>
   })),
 )
 
+const ExecutiveVisualizationStudio = lazy(() =>
+  import('@/features/visualization/pages/ExecutiveVisualizationStudio').then((m) => ({
+    default: m.ExecutiveVisualizationStudio,
+  })),
+)
+
 const SalesIntelligence = lazy(() =>
   import('@/features/analytics/SalesIntelligence').then((m) => ({
     default: m.SalesIntelligence,
@@ -226,6 +232,14 @@ export function AppRouter() {
           element={
             <Suspense fallback={<DashboardFallback />}>
               <VisualizationStudio />
+            </Suspense>
+          }
+        />
+        <Route
+          path="executive-visualization"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <ExecutiveVisualizationStudio />
             </Suspense>
           }
         />
