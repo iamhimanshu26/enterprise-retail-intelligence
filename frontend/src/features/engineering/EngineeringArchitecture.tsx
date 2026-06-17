@@ -219,7 +219,20 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     difficulty: 'expert',
     technologies: ['Pandas', 'NumPy', 'Pydantic', 'FastAPI'],
     implementationStatus:
-      'Sprint 5.2 complete · app/analytics · /api/v1/analytics · Sales/Inventory/Customer/Supplier intelligence · executive KPI bridge',
+      'Sprint 5.2 complete · app/analytics · /api/v1/analytics · Sales/Inventory/Customer/Supplier intelligence',
+  },
+  {
+    id: 'executive-intelligence',
+    title: 'Executive Intelligence Platform',
+    description:
+      'Executive summaries, KPI intelligence, trend analysis, benchmarks, anomaly detection, rule-based recommendations, and business health scorecard.',
+    icon: 'brain',
+    status: 'completed',
+    phase: 5,
+    difficulty: 'expert',
+    technologies: ['Pandas', 'Pydantic', 'FastAPI', 'Statistics'],
+    implementationStatus:
+      'Sprint 5.3 complete · app/intelligence · /api/v1/intelligence · executive dashboard intelligence sections',
   },
   {
     id: 'statistics',
@@ -331,7 +344,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–5 Sprint 5.2 complete · Phase 6 next`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phase 5 complete · Phase 6 current`,
   },
 ]
 
@@ -450,7 +463,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phases 0–5 · Sprint 5.2' }}
+        badge={{ status: 'completed', label: 'Phase 5 Complete · Sprint 5.3' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

@@ -22,11 +22,11 @@ A production-quality microservices platform demonstrating full-stack engineering
 
 ✅ **Phase 4** — Python ETL & Data Engineering Pipeline
 
-✅ **Phase 5** — Business Analytics & Statistics Engine (Sprint 5.1 Statistics · Sprint 5.2 Business Analytics)
+**Status:** Complete (Sprint 5.1 Statistics · Sprint 5.2 Business Analytics · Sprint 5.3 Executive Intelligence)
 
-🚀 **Next Phase:** Phase 6 — Data Visualization Platform
+🚀 **Next Phase:** Phase 6 — Enterprise Data Visualization Platform
 
-The platform now supports synthetic data generation, modular Python ETL processing, data cleaning, transformation, quality scoring, analytics warehouse preparation, lineage tracking, execution reporting, enterprise statistics, and business analytics KPIs.
+The platform now supports synthetic data generation, modular Python ETL processing, data cleaning, transformation, quality scoring, analytics warehouse preparation, lineage tracking, execution reporting, enterprise statistics, business analytics KPIs, and executive intelligence (summaries, benchmarks, anomalies, recommendations, scorecard).
 
 ---
 
@@ -318,6 +318,7 @@ See [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md) for the post-
 - [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md)
 - [Statistics Engine](docs/statistics-engine.md)
 - [Business Analytics Engine](docs/business-analytics-engine.md)
+- [Executive Intelligence Platform](docs/executive-intelligence.md)
 - [Frontend README](frontend/README.md)
 
 ---

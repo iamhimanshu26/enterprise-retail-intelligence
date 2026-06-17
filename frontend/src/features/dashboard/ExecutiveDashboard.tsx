@@ -27,6 +27,7 @@ import { useExecutiveDashboard } from '@/hooks/useExecutiveDashboard'
 import { useWorkspaceStore } from '@/stores/workspaceStore'
 import { DashboardPageHeader } from './components/DashboardPageHeader'
 import { BusinessAnalyticsSection } from './components/BusinessAnalyticsSection'
+import { ExecutiveIntelligencePlatform } from './components/ExecutiveIntelligencePlatform'
 
 const BusinessIntelligenceModules = lazy(() =>
   import('./components/BusinessIntelligenceModules').then((module) => ({
@@ -81,7 +82,7 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
       <DashboardPageHeader
         title="Executive Dashboard"
         description={`Enterprise business intelligence for retail executives — ${workspace.label} workspace.`}
-        badge="Sprint 1.3 — Release Readiness"
+        badge="Sprint 5.3 — Executive Intelligence"
         lastUpdated={lastUpdated}
         onRefresh={() => refetch()}
         refreshing={isFetching}
@@ -165,6 +166,8 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
         </Suspense>
       )}
 
+      <ExecutiveIntelligencePlatform />
+
       <BusinessAnalyticsSection />
 
       <DashboardSection
@@ -197,8 +200,8 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
       </DashboardSection>
 
       <p className="text-center text-xs text-muted-foreground">
-        Sprint 1.3 enterprise polish — mock data via{' '}
-        <code className="text-foreground">src/data/mock/</code>.{' '}
+        Sprint 5.3 executive intelligence via{' '}
+        <code className="text-foreground">/api/v1/intelligence</code>. Mock BI modules via{' '}
         <Link to="/engineering" className="font-medium text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
           View architecture
         </Link>

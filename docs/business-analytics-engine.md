@@ -153,7 +153,7 @@ The Business Analytics Engine remains the **semantic BI layer** between raw stat
 
 ## Related Documentation
 
-- [Statistics Engine](statistics-engine.md)
+- [Executive Intelligence Platform](executive-intelligence.md)
 - [Analytics Warehouse](analytics-warehouse.md)
 - [Architecture](architecture.md)
 - [Phase Plan](phase-plan.md)

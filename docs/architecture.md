@@ -151,16 +151,18 @@ Statistics Engine (Sprint 5.1)
         ↓
 Business Analytics Engine (Sprint 5.2)
         ↓
+Executive Intelligence Engine (Sprint 5.3)
+        ↓
 Executive Dashboard + Intelligence Pages
         ↓
-Forecasting & AI Insights (Phase 7+)
+Forecasting (Phase 7) · Visualization (Phase 6)
 ```
 
 - **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
-- **Business Analytics Engine** — KPIs, rankings, segmentation, inventory/supplier risk, promotion impact, performance scores
+- **Executive Intelligence (Sprint 5.3)** — summaries, KPI status, trends, benchmarks, anomalies, recommendations, scorecard
 - Sales, inventory, customer, and supplier intelligence pages
 - API: `/api/v1/statistics/*` and `/api/v1/analytics/*`
-- See [Business Analytics Engine](business-analytics-engine.md) and [Statistics Engine](statistics-engine.md)
+- See [Business Analytics Engine](business-analytics-engine.md), [Executive Intelligence](executive-intelligence.md), and [Statistics Engine](statistics-engine.md)
 
 ---
 

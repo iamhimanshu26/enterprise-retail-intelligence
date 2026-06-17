@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 5
+export const CURRENT_PHASE = 6
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -88,7 +88,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin calculations.',
     purpose: 'Provide business intelligence and statistical analysis.',
     technologies: ['NumPy', 'SciPy', 'Statsmodels', 'Pandas'],
-    status: 'current',
+    status: 'completed',
   },
   {
     id: '6',
@@ -98,7 +98,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Revenue trends, sales trends, product analytics, regional analytics, customer analytics, inventory dashboards, and executive charts.',
     purpose: 'Transform raw data into business insights.',
     technologies: ['Recharts', 'D3.js', 'TanStack Table'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '7',

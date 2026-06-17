@@ -187,3 +187,63 @@ export async function runAnalyticsSample(): Promise<import('@/types/analytics').
   >('/analytics/run-sample')
   return response.data.data
 }
+
+export async function getIntelligenceOverview(): Promise<import('@/types/intelligence').IntelligenceOverview> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').IntelligenceOverview>
+  >('/intelligence/overview')
+  return response.data.data
+}
+
+export async function runExecutiveIntelligenceSample(): Promise<
+  import('@/types/intelligence').ExecutiveIntelligenceReport
+> {
+  const response = await dataServiceClient.post<
+    DataServiceApiResponse<import('@/types/intelligence').ExecutiveIntelligenceReport>
+  >('/intelligence/run-sample')
+  return response.data.data
+}
+
+export async function getExecutiveSummary(): Promise<import('@/types/intelligence').ExecutiveSummaryData> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').ExecutiveSummaryData>
+  >('/intelligence/executive-summary')
+  return response.data.data
+}
+
+export async function getIntelligenceKpis(): Promise<import('@/types/intelligence').KpiIntelligenceItem[]> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').KpiIntelligenceItem[]>
+  >('/intelligence/kpis')
+  return response.data.data
+}
+
+export async function getIntelligenceTrends(): Promise<import('@/types/intelligence').TrendAnalysisItem[]> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').TrendAnalysisItem[]>
+  >('/intelligence/trends')
+  return response.data.data
+}
+
+export async function getIntelligenceAnomalies(): Promise<import('@/types/intelligence').AnomalyItem[]> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').AnomalyItem[]>
+  >('/intelligence/anomalies')
+  return response.data.data
+}
+
+export async function getIntelligenceBenchmarks(): Promise<import('@/types/intelligence').BenchmarkItem[]> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').BenchmarkItem[]>
+  >('/intelligence/benchmarks')
+  return response.data.data
+}
+
+export async function getIntelligenceRecommendations(): Promise<
+  import('@/types/intelligence').RecommendationItem[]
+> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/intelligence').RecommendationItem[]>
+  >('/intelligence/recommendations')
+  return response.data.data
+}
