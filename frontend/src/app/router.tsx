@@ -4,6 +4,7 @@ import { AppShell, CardSkeleton } from '@/components/design-system'
 import { LoginPage } from '@/features/auth/LoginPage'
 import { LandingPage } from '@/features/landing/LandingPage'
 import { PlaceholderPage } from '@/features/placeholder/PlaceholderPage'
+import { ForecastingCenter } from '@/features/forecasting/ForecastingCenter'
 import { useAuthStore } from '@/stores/authStore'
 
 const ExecutiveDashboard = lazy(() =>
@@ -243,7 +244,7 @@ export function AppRouter() {
             </Suspense>
           }
         />
-        <Route path="forecasting" element={<PlaceholderPage navId="forecasting-center" />} />
+        <Route path="forecasting" element={<ForecastingCenter />} />
         <Route path="etl" element={
           <Suspense fallback={<DashboardFallback />}>
             <EtlPipelineStudio />

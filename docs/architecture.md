@@ -144,7 +144,7 @@ Data Sources ──► Ingestion Layer ──► Validation ──► Transforma
 
 ---
 
-## Analytics Engine (Phase 5 — Complete)
+## Analytics & Visualization (Phases 5–6 — Complete)
 
 ```text
 Analytics Warehouse
@@ -170,13 +170,14 @@ Forecasting (Phase 7)
 - **Visualization Framework (Sprint 6.1)** — reusable Recharts components, theme, adapters, Visualization Studio at `/visualization`
 - **Interactive Analytics Dashboards (Sprint 6.2)** — eight enterprise BI dashboards with shared layout, adapter layer, and API-ready filters
 - **Executive Visualization Studio (Sprint 6.3)** — KPI board, target vs actual, business health, anomalies, gallery at `/executive-visualization`
-- Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
+- **Forecasting Engine (Sprint 7.1)** — `/api/v1/forecasting` — sales, revenue, demand, inventory, store forecasts, accuracy, scenarios
 - API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, and `/api/v1/intelligence/*`
-- See [Business Analytics Engine](business-analytics-engine.md), [Executive Intelligence](executive-intelligence.md), [Visualization Framework](visualization-framework.md), [Interactive Analytics Dashboards](interactive-analytics-dashboards.md), [Executive Visualization Studio](executive-visualization-studio.md), and [Statistics Engine](statistics-engine.md)
+- Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
+- See [Forecasting Engine](forecasting-engine.md) for Phase 7.1 API details
 
 ---
 
-## Future Forecasting Engine (Phase 7)
+## Forecasting Engine (Phase 7 — Sprint 7.1 Complete)
 
 ```
 Historical Data ──► Feature Engineering ──► Model Selection ──► Forecast API

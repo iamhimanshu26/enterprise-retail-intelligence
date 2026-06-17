@@ -133,11 +133,13 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ## 🚀 Phase 7 — Forecasting & Predictive Analytics
 
-**Status:** Current
+**Status:** Current (Sprint 7.1 complete)
 
-Build prediction models for revenue, sales, demand, inventory, seasonal trends, and store performance.
+**Sprint 7.1:** Forecasting engine foundation — sales, revenue, demand, inventory, store forecasts, accuracy metrics, scenario planning, `/api/v1/forecasting`. See `docs/forecasting-engine.md`.
 
-**Future libraries:** Scikit-learn, Statsmodels
+**Sprint 7.2 (next):** Forecast UI, scenario workspace, accuracy dashboard.
+
+**Libraries:** Scikit-learn, Statsmodels, Pandas, NumPy
 
 **Purpose:** Enable data-driven planning.
 
