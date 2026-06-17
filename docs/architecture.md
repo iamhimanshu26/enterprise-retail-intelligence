@@ -77,6 +77,7 @@ See [Data Model Guide](data-model.md) for entity relationships and schema detail
 - **ETL pipeline (Phase 4)** — extract, validate, profile, clean, transform, aggregate, load
 - **Cleaning engine (Sprint 4.2)** — missing values, duplicates, standardization, business rules
 - **Analytics warehouse (Sprint 4.3)** — star schema, load strategies, lineage, execution history
+- **Statistics engine (Sprint 5.1)** — descriptive, business, distribution, time-series, regional, health metrics
 - API versioning (`/api/v1`)
 - Structured logging
 
@@ -141,20 +142,25 @@ Data Sources ──► Ingestion Layer ──► Validation ──► Transforma
 
 ---
 
-## Analytics Engine (Phase 5 — Current)
+## Analytics Engine (Phase 5 — Sprint 5.2 Complete)
 
-```
-PostgreSQL ──► OLAP Layer ──► Analytics API ──► Frontend Dashboards
-                   │
-                   ├── Dimensional modeling (star schema)
-                   ├── Aggregation engine
-                   └── Real-time metrics computation
+```text
+Analytics Warehouse
+        ↓
+Statistics Engine (Sprint 5.1)
+        ↓
+Business Analytics Engine (Sprint 5.2)
+        ↓
+Executive Dashboard + Intelligence Pages
+        ↓
+Forecasting & AI Insights (Phase 7+)
 ```
 
-- Sales, inventory, customer, and supplier intelligence modules
-- Interactive charts and drill-down capabilities
-- Regional and temporal filtering
-- Export and scheduled report generation
+- **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
+- **Business Analytics Engine** — KPIs, rankings, segmentation, inventory/supplier risk, promotion impact, performance scores
+- Sales, inventory, customer, and supplier intelligence pages
+- API: `/api/v1/statistics/*` and `/api/v1/analytics/*`
+- See [Business Analytics Engine](business-analytics-engine.md) and [Statistics Engine](statistics-engine.md)
 
 ---
 

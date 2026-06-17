@@ -117,3 +117,73 @@ export async function runStatisticsSample(): Promise<import('@/types/statistics'
   >('/statistics/run-sample')
   return response.data.data
 }
+
+export async function getAnalyticsOverview(): Promise<import('@/types/analytics').AnalyticsOverview> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').AnalyticsOverview>
+  >('/analytics/overview')
+  return response.data.data
+}
+
+export async function getAnalyticsKpis(): Promise<import('@/types/analytics').AnalyticsKpiAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').AnalyticsKpiAnalytics>
+  >('/analytics/kpis')
+  return response.data.data
+}
+
+export async function getAnalyticsSales(): Promise<import('@/types/analytics').SalesAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').SalesAnalytics>
+  >('/analytics/sales')
+  return response.data.data
+}
+
+export async function getAnalyticsStores(): Promise<import('@/types/analytics').StoreAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').StoreAnalytics>
+  >('/analytics/stores')
+  return response.data.data
+}
+
+export async function getAnalyticsProducts(): Promise<import('@/types/analytics').ProductAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').ProductAnalytics>
+  >('/analytics/products')
+  return response.data.data
+}
+
+export async function getAnalyticsCustomers(): Promise<import('@/types/analytics').CustomerAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').CustomerAnalytics>
+  >('/analytics/customers')
+  return response.data.data
+}
+
+export async function getAnalyticsInventory(): Promise<import('@/types/analytics').InventoryAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').InventoryAnalytics>
+  >('/analytics/inventory')
+  return response.data.data
+}
+
+export async function getAnalyticsSuppliers(): Promise<import('@/types/analytics').SupplierAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').SupplierAnalytics>
+  >('/analytics/suppliers')
+  return response.data.data
+}
+
+export async function getAnalyticsPromotions(): Promise<import('@/types/analytics').PromotionAnalytics> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/analytics').PromotionAnalytics>
+  >('/analytics/promotions')
+  return response.data.data
+}
+
+export async function runAnalyticsSample(): Promise<import('@/types/analytics').BusinessAnalyticsReport> {
+  const response = await dataServiceClient.post<
+    DataServiceApiResponse<import('@/types/analytics').BusinessAnalyticsReport>
+  >('/analytics/run-sample')
+  return response.data.data
+}

@@ -26,6 +26,7 @@ import { resolveDashboardErrorType } from '@/lib/dashboard-errors'
 import { useExecutiveDashboard } from '@/hooks/useExecutiveDashboard'
 import { useWorkspaceStore } from '@/stores/workspaceStore'
 import { DashboardPageHeader } from './components/DashboardPageHeader'
+import { BusinessAnalyticsSection } from './components/BusinessAnalyticsSection'
 
 const BusinessIntelligenceModules = lazy(() =>
   import('./components/BusinessIntelligenceModules').then((module) => ({
@@ -163,6 +164,8 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
           <BusinessIntelligenceModules data={data} loading={refreshing} />
         </Suspense>
       )}
+
+      <BusinessAnalyticsSection />
 
       <DashboardSection
         title="Analytics Overview"

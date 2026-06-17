@@ -116,9 +116,9 @@ Components:
 
 | Phase | Integration |
 |-------|-------------|
-| Phase 5.2+ | Replace executive dashboard mocks with statistics APIs |
-| Phase 6 | Forecasting consumes time-series statistics |
-| Phase 7 | Visualization platform charts from distribution outputs |
+| Sprint 5.2 | Business Analytics Engine consumes statistics business metrics and warehouse data |
+| Phase 6 | Visualization platform charts from analytics breakdown outputs |
+| Phase 7 | Forecasting consumes time-series statistics and sales analytics |
 | Phase 11 | AI insights explain business metric anomalies |
 
 ---
@@ -126,5 +126,5 @@ Components:
 ## Related Documentation
 
 - [Analytics Warehouse](analytics-warehouse.md)
-- [Enterprise Audit (Phase 4)](enterprise-audit-phase-4.md)
+- [Business Analytics Engine](business-analytics-engine.md)
 - [ETL Pipeline](etl-pipeline.md)

@@ -202,11 +202,24 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     title: 'Analytics Pipeline',
     description: 'Real-time and batch analytics processing with dimensional modeling and OLAP capabilities.',
     icon: 'barChart',
-    status: 'in-progress',
+    status: 'completed',
     phase: 5,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Star Schema', 'OLAP'],
-    implementationStatus: 'Phase 5.1 statistics engine complete · BI dashboards in Phase 5.2+',
+    implementationStatus: 'Sprint 5.1 statistics + Sprint 5.2 business analytics engine complete',
+  },
+  {
+    id: 'business-analytics',
+    title: 'Business Analytics Engine',
+    description:
+      'Retail business intelligence layer converting statistics and warehouse data into KPIs, rankings, segmentation, inventory risk, supplier scores, and promotion impact.',
+    icon: 'barChart',
+    status: 'completed',
+    phase: 5,
+    difficulty: 'expert',
+    technologies: ['Pandas', 'NumPy', 'Pydantic', 'FastAPI'],
+    implementationStatus:
+      'Sprint 5.2 complete · app/analytics · /api/v1/analytics · Sales/Inventory/Customer/Supplier intelligence · executive KPI bridge',
   },
   {
     id: 'statistics',
@@ -318,7 +331,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–4 complete · Phase 5 current`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–5 Sprint 5.2 complete · Phase 6 next`,
   },
 ]
 
@@ -437,7 +450,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phases 0–4 Complete' }}
+        badge={{ status: 'completed', label: 'Phases 0–5 · Sprint 5.2' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

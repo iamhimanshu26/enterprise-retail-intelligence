@@ -36,6 +36,30 @@ const EtlPipelineStudio = lazy(() =>
   })),
 )
 
+const SalesIntelligence = lazy(() =>
+  import('@/features/analytics/SalesIntelligence').then((m) => ({
+    default: m.SalesIntelligence,
+  })),
+)
+
+const InventoryIntelligence = lazy(() =>
+  import('@/features/analytics/InventoryIntelligence').then((m) => ({
+    default: m.InventoryIntelligence,
+  })),
+)
+
+const CustomerAnalyticsPage = lazy(() =>
+  import('@/features/analytics/CustomerAnalyticsPage').then((m) => ({
+    default: m.CustomerAnalyticsPage,
+  })),
+)
+
+const SupplierAnalyticsPage = lazy(() =>
+  import('@/features/analytics/SupplierAnalyticsPage').then((m) => ({
+    default: m.SupplierAnalyticsPage,
+  })),
+)
+
 function DashboardFallback() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -98,10 +122,38 @@ export function AppRouter() {
             </Suspense>
           }
         />
-        <Route path="sales" element={<PlaceholderPage navId="sales-intelligence" />} />
-        <Route path="inventory" element={<PlaceholderPage navId="inventory-intelligence" />} />
-        <Route path="customers" element={<PlaceholderPage navId="customer-analytics" />} />
-        <Route path="suppliers" element={<PlaceholderPage navId="supplier-analytics" />} />
+        <Route
+          path="sales"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <SalesIntelligence />
+            </Suspense>
+          }
+        />
+        <Route
+          path="inventory"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <InventoryIntelligence />
+            </Suspense>
+          }
+        />
+        <Route
+          path="customers"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <CustomerAnalyticsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="suppliers"
+          element={
+            <Suspense fallback={<DashboardFallback />}>
+              <SupplierAnalyticsPage />
+            </Suspense>
+          }
+        />
         <Route path="statistics" element={
           <Suspense fallback={<DashboardFallback />}>
             <StatisticsLab />
