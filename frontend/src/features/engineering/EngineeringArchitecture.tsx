@@ -104,7 +104,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 4,
     difficulty: 'advanced',
     technologies: ['Faker', 'Pandas', 'PostgreSQL', 'DuckDB'],
-    implementationStatus: 'Synthetic generator → ETL pipeline foundation (Sprint 4.1)',
+    implementationStatus: 'Synthetic generator → ETL foundation (4.1) → cleaning engine (4.2)',
   },
   {
     id: 'synthetic-generator',
@@ -131,6 +131,19 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     technologies: ['Pandas', 'Polars', 'DuckDB', 'Pydantic'],
     implementationStatus:
       'Sprint 4.1 foundation · app/etl modules · /api/v1/etl · /etl studio UI · independent stage architecture',
+  },
+  {
+    id: 'data-cleaning-engine',
+    title: 'Data Cleaning & Transformation Engine',
+    description:
+      'Production-grade cleaning pipeline: profile → validate → detect missing → detect duplicates → clean → normalize → transform → business rules → quality score → analytics-ready output with full audit trail.',
+    icon: 'workflow',
+    status: 'in-progress',
+    phase: 4,
+    difficulty: 'advanced',
+    technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB', 'Pydantic'],
+    implementationStatus:
+      'Sprint 4.2 · profiling · missing values · duplicates · standardization · dates/currency · business rules · quality score · audit log · quality report JSON',
   },
   {
     id: 'analytics',

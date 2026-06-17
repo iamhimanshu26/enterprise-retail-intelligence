@@ -8,6 +8,7 @@ interface EtlStageCardProps {
   status: string
   icon?: React.ReactNode
   className?: string
+  sprintLabel?: string
 }
 
 export function EtlStageCard({
@@ -17,6 +18,7 @@ export function EtlStageCard({
   status,
   icon,
   className,
+  sprintLabel = '4.1',
 }: EtlStageCardProps) {
   return (
     <div className={cn('rounded-xl border border-border/80 bg-card shadow-sm', className)}>
@@ -41,7 +43,7 @@ export function EtlStageCard({
       <div className="p-5">
         <p className="text-sm text-muted-foreground">{description}</p>
         <p className="mt-3 text-xs text-muted-foreground">
-          Sprint 4.1 — architecture implemented; interactive execution UI in Sprint 4.2+
+          Sprint {sprintLabel} — engine modules implemented; interactive run UI in future sprints
         </p>
       </div>
     </div>

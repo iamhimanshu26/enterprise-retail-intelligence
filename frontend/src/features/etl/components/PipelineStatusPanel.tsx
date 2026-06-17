@@ -68,13 +68,13 @@ export function StageIcon({ id }: { id: string }) {
   return <Icon className="h-5 w-5" />
 }
 
-export function PipelineMetrics() {
+export function PipelineMetrics({ sprint = '4.2' }: { sprint?: string }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      <MetricCard label="Pipeline stages" value="8" />
-      <MetricCard label="Entity schemas" value="3" />
-      <MetricCard label="Load targets" value="2" />
-      <MetricCard label="Sprint" value="4.1" />
+      <MetricCard label="Cleaning stages" value="10" />
+      <MetricCard label="ETL foundation stages" value="8" />
+      <MetricCard label="Quality dimensions" value="5" />
+      <MetricCard label="Sprint" value={sprint} />
     </div>
   )
 }

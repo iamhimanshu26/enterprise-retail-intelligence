@@ -8,6 +8,7 @@ import pandas as pd
 
 from app.etl.aggregate import run_aggregations
 from app.etl.clean import clean_dataframe
+from app.etl.cleaning_pipeline import run_cleaning_sample
 from app.etl.config import ENTITY_SCHEMAS, PipelineConfig, SourceFormat
 from app.etl.extract import extract_data
 from app.etl.exceptions import EtlError
@@ -102,7 +103,15 @@ class EtlPipeline:
 
 
 def run_sample_pipeline() -> Dict[str, Any]:
-    """Run pipeline on in-memory sample retail store records."""
+    """Run Sprint 4.2 cleaning engine on sample data (backward-compatible entry point)."""
+    config = PipelineConfig(entity="stores")
+    if config.use_cleaning_engine:
+        return run_cleaning_sample()
+    return _run_legacy_sample_pipeline()
+
+
+def _run_legacy_sample_pipeline() -> Dict[str, Any]:
+    """Sprint 4.1 foundation pipeline sample."""
     sample = [
         {
             "store_code": "ST-KAN-00001",

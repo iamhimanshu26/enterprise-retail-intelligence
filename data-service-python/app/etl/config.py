@@ -31,6 +31,33 @@ class PipelineStage(str, Enum):
     REPORT = "report"
 
 
+class CleaningEngineStage(str, Enum):
+    PROFILE = "profile"
+    MISSING_VALUES = "missing_values"
+    DUPLICATE_DETECTION = "duplicate_detection"
+    CLEAN = "clean"
+    STANDARDIZE = "standardize"
+    NORMALIZE = "normalize"
+    TRANSFORM = "transform"
+    BUSINESS_RULES = "business_rules"
+    QUALITY_SCORE = "quality_score"
+    AUDIT_LOG = "audit_log"
+
+
+CLEANING_STAGE_ORDER: List[CleaningEngineStage] = [
+    CleaningEngineStage.PROFILE,
+    CleaningEngineStage.MISSING_VALUES,
+    CleaningEngineStage.DUPLICATE_DETECTION,
+    CleaningEngineStage.CLEAN,
+    CleaningEngineStage.STANDARDIZE,
+    CleaningEngineStage.NORMALIZE,
+    CleaningEngineStage.TRANSFORM,
+    CleaningEngineStage.BUSINESS_RULES,
+    CleaningEngineStage.QUALITY_SCORE,
+    CleaningEngineStage.AUDIT_LOG,
+]
+
+
 STAGE_ORDER: List[PipelineStage] = [
     PipelineStage.EXTRACT,
     PipelineStage.VALIDATE,
@@ -143,6 +170,21 @@ STATUS_ALIASES: Dict[str, str] = {
     "pending": "PENDING",
 }
 
+PREFECTURE_ALIASES: Dict[str, str] = {
+    "TOKYO": "Tokyo",
+    "tokyo": "Tokyo",
+    "東京都": "Tokyo",
+    "OSAKA": "Osaka",
+    "osaka": "Osaka",
+    "大阪府": "Osaka",
+    "KANAGAWA": "Kanagawa",
+    "kanagawa": "Kanagawa",
+    "神奈川県": "Kanagawa",
+    "HOKKAIDO": "Hokkaido",
+    "hokkaido": "Hokkaido",
+    "北海道": "Hokkaido",
+}
+
 
 class ExtractConfig(BaseModel):
     source_format: SourceFormat = SourceFormat.CSV
@@ -179,6 +221,7 @@ class PipelineConfig(BaseModel):
     transform: TransformConfig = Field(default_factory=TransformConfig)
     load: LoadConfig = Field(default_factory=LoadConfig)
     run_aggregations: bool = True
+    use_cleaning_engine: bool = True
 
 
 class StageInfo(BaseModel):
@@ -187,6 +230,31 @@ class StageInfo(BaseModel):
     description: str
     status: str = "foundation_ready"
     order: int
+
+
+def get_cleaning_engine_stages() -> List[StageInfo]:
+    meta = {
+        CleaningEngineStage.PROFILE: ("Data Profiling", "Row/column stats, nulls, duplicates, distributions"),
+        CleaningEngineStage.MISSING_VALUES: ("Missing Values", "Detect and handle nulls, empties, placeholders"),
+        CleaningEngineStage.DUPLICATE_DETECTION: ("Duplicate Detection", "Exact, partial, and business-key duplicates"),
+        CleaningEngineStage.CLEAN: ("Data Cleaning", "Tracked cleaning with audit trail"),
+        CleaningEngineStage.STANDARDIZE: ("Standardization", "Store names, categories, customer names"),
+        CleaningEngineStage.NORMALIZE: ("Normalization", "Regions, prefectures, cities, payment methods"),
+        CleaningEngineStage.TRANSFORM: ("Transformation", "Dates, currency, derived metrics"),
+        CleaningEngineStage.BUSINESS_RULES: ("Business Rules", "Revenue, inventory, discount, date rules"),
+        CleaningEngineStage.QUALITY_SCORE: ("Quality Score", "Completeness, consistency, validity, uniqueness"),
+        CleaningEngineStage.AUDIT_LOG: ("Audit Log", "Every transformation recorded with timestamp"),
+    }
+    return [
+        StageInfo(
+            id=stage.value,
+            title=meta[stage][0],
+            description=meta[stage][1],
+            status="engine_ready",
+            order=i + 1,
+        )
+        for i, stage in enumerate(CLEANING_STAGE_ORDER)
+    ]
 
 
 def get_pipeline_stages() -> List[StageInfo]:

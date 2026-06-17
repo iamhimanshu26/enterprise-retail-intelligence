@@ -7,7 +7,8 @@ import {
   TableSkeleton,
 } from '@/components/design-system'
 import { getEtlOverview } from '@/lib/dataServiceApi'
-import type { EtlOverview } from '@/types/etl'
+import { CLEANING_ENGINE_FLOW, CLEANING_UI_STAGES, type EtlOverview } from '@/types/etl'
+import { CleaningEnginePanel } from './components/CleaningEnginePanel'
 import { EtlStageCard } from './components/EtlStageCard'
 import { PipelineMetrics, PipelineStatusPanel, StageIcon } from './components/PipelineStatusPanel'
 
@@ -25,12 +26,18 @@ export function EtlPipelineStudio() {
       .finally(() => setLoading(false))
   }, [])
 
+  const cleaningStages = overview?.cleaning_stages ?? CLEANING_UI_STAGES.map((s, i) => ({
+    ...s,
+    status: 'engine_ready',
+    order: i + 1,
+  }))
+
   return (
     <div className="space-y-8">
       <PageHeader
         title="ETL Pipeline Studio"
-        description="Enterprise extract, validate, clean, transform, normalize, aggregate, and load framework for retail intelligence pipelines."
-        badge={{ status: 'in-progress', label: 'Sprint 4.1' }}
+        description="Enterprise data cleaning and transformation engine — profile, validate, clean, standardize, transform, and score retail datasets."
+        badge={{ status: 'in-progress', label: 'Sprint 4.2' }}
       />
 
       <Breadcrumb items={[{ label: 'ETL Pipeline Studio' }]} />
@@ -43,11 +50,41 @@ export function EtlPipelineStudio() {
         <TableSkeleton rows={4} />
       ) : overview ? (
         <>
-          <PipelineMetrics />
+          <PipelineMetrics sprint={overview.sprint} />
 
           <SectionContainer
-            title="Pipeline Architecture"
-            description="Modular stages designed for independent reuse across analytics, statistics, and forecasting"
+            title="Data Cleaning & Transformation Engine"
+            description="Sprint 4.2 production pipeline — every stage generates metadata and execution statistics"
+          >
+            <CleaningEnginePanel
+              status={overview.status}
+              sprint={overview.sprint}
+              flow={overview.cleaning_flow ?? CLEANING_ENGINE_FLOW}
+            />
+          </SectionContainer>
+
+          <SectionContainer
+            title="Cleaning Engine Stages"
+            description="Profiling, missing values, duplicates, standardization, transformation, validation, quality scoring, and audit logging"
+          >
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {cleaningStages.map((stage) => (
+                <EtlStageCard
+                  key={stage.id}
+                  title={stage.title}
+                  description={stage.description}
+                  order={stage.order}
+                  status={stage.status}
+                  icon={<StageIcon id={stage.id} />}
+                  sprintLabel="4.2"
+                />
+              ))}
+            </div>
+          </SectionContainer>
+
+          <SectionContainer
+            title="ETL Foundation (Sprint 4.1)"
+            description="Original extract-load pipeline stages — preserved for backward compatibility"
           >
             <PipelineStatusPanel
               status={overview.status}
@@ -55,13 +92,7 @@ export function EtlPipelineStudio() {
               sources={overview.supported_sources}
               targets={overview.supported_load_targets}
             />
-          </SectionContainer>
-
-          <SectionContainer
-            title="Pipeline Stages"
-            description="Each stage is independently implemented in the Python ETL module — execution UI expands in future sprints"
-          >
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {overview.stages.map((stage) => (
                 <EtlStageCard
                   key={stage.id}
@@ -70,17 +101,9 @@ export function EtlPipelineStudio() {
                   order={stage.order}
                   status={stage.status}
                   icon={<StageIcon id={stage.id} />}
+                  sprintLabel="4.1"
                 />
               ))}
-            </div>
-          </SectionContainer>
-
-          <SectionContainer
-            title="Data Flow"
-            description="Synthetic generator exports feed the ETL pipeline in Phase 4"
-          >
-            <div className="rounded-xl border border-dashed border-border/80 bg-muted/20 p-6 text-center text-sm text-muted-foreground">
-              Synthetic Data → Upload/API → Validate → Clean → Transform → Normalize → Aggregate → Load → Analytics Layer → Success Report
             </div>
           </SectionContainer>
         </>

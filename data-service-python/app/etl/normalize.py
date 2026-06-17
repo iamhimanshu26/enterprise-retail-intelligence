@@ -1,10 +1,13 @@
 """Value normalization for consistent retail domain fields."""
 
+from __future__ import annotations
+
 from typing import Any, Dict
 
 import pandas as pd
 
-from app.etl.config import PAYMENT_ALIASES, REGION_ALIASES, STATUS_ALIASES
+from app.etl.audit_log import AuditLog
+from app.etl.config import PAYMENT_ALIASES, PREFECTURE_ALIASES, REGION_ALIASES, STATUS_ALIASES
 
 
 class NormalizeReport:
@@ -19,7 +22,7 @@ class NormalizeReport:
         }
 
 
-def normalize_dataframe(df: pd.DataFrame, entity: str) -> tuple:
+def normalize_dataframe(df: pd.DataFrame, entity: str, audit: AuditLog | None = None) -> tuple:
     report = NormalizeReport()
     result = df.copy()
 
@@ -55,7 +58,16 @@ def normalize_dataframe(df: pd.DataFrame, entity: str) -> tuple:
         report.columns_normalized.append("category")
 
     if "prefecture" in result.columns:
-        result["prefecture"] = result["prefecture"].astype(str).str.strip()
+        before = result["prefecture"].astype(str)
+        mapped = before.map(lambda v: PREFECTURE_ALIASES.get(v, PREFECTURE_ALIASES.get(v.strip(), v.strip().title())))
+        changed = int((mapped != before).sum())
+        result["prefecture"] = mapped
         report.columns_normalized.append("prefecture")
+        if changed and audit:
+            audit.record_batch("prefecture", changed, "Prefecture normalization")
+
+    if "city" in result.columns:
+        result["city"] = result["city"].astype(str).str.strip().str.title()
+        report.columns_normalized.append("city")
 
     return result, report
