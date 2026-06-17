@@ -83,7 +83,7 @@ export function ExportPanel({
               }`}
             >
               {label}
-              {!available && <span className="block text-[10px]">Phase 4</span>}
+              {!available && <span className="block text-[10px]">Soon</span>}
             </button>
           ))}
         </div>

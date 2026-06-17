@@ -93,7 +93,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'intermediate',
     technologies: ['FastAPI', 'Pydantic', 'Uvicorn'],
-    implementationStatus: 'Health endpoint · Faker/Pandas generator · modular ETL pipeline · /api/v1/etl',
+    implementationStatus: 'Health endpoint · Faker/Pandas generator · modular ETL · analytics warehouse · /api/v1/etl · /api/v1/generator',
   },
   {
     id: 'data-flow',
@@ -170,6 +170,32 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     technologies: ['Lineage Graph', 'Audit Log', 'FastAPI'],
     implementationStatus:
       'Sprint 4.3 · lineage engine · structured metadata · /api/v1/etl/lineage · ETL Studio lineage card',
+  },
+  {
+    id: 'data-quality-platform',
+    title: 'Data Quality Platform',
+    description:
+      'Enterprise quality dashboard with six dimensions (completeness, accuracy, consistency, validity, timeliness, uniqueness) and Data Quality Index scoring.',
+    icon: 'barChart',
+    status: 'completed',
+    phase: 4,
+    difficulty: 'advanced',
+    technologies: ['Pydantic', 'Pandas', 'FastAPI'],
+    implementationStatus:
+      'Sprint 4.3 · quality_score module · /api/v1/etl/quality/dashboard · QualityScoreCard in ETL Studio',
+  },
+  {
+    id: 'execution-history',
+    title: 'Execution History',
+    description:
+      'ETL run tracking with pipeline id, timing, processed rows, failed rows, quality score, and metrics — in-memory store with future PostgreSQL persistence.',
+    icon: 'activity',
+    status: 'completed',
+    phase: 4,
+    difficulty: 'intermediate',
+    technologies: ['FastAPI', 'Audit Log'],
+    implementationStatus:
+      'Sprint 4.3 · execution_history module · /api/v1/etl/history · ExecutionHistoryTable in ETL Studio',
   },
   {
     id: 'analytics',

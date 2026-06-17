@@ -108,7 +108,7 @@ Aligns with Phase 2 PostgreSQL schema in `retail` schema (`docs/data-model.md`).
 | CSV | ✅ | Per-entity or combined |
 | JSON | ✅ | Records array |
 | Excel (XLSX) | ✅ | Multi-sheet for `all` export |
-| Parquet | 🔒 Phase 4 | Placeholder response |
+| Parquet | 🔒 Future | Placeholder response — use CSV, JSON, or Excel |
 
 Downloads are served from FastAPI with `Content-Disposition` for local browser download.
 
@@ -144,7 +144,15 @@ Uses the existing enterprise design system (`SectionContainer`, `PageHeader`, `D
 
 ---
 
-## Future ETL Usage (Phase 4+)
+## Future ETL Usage
+
+Generated datasets feed the Phase 4 ETL pipeline directly:
+
+```text
+/generator export → CSV/JSON/Excel → /api/v1/etl/run
+```
+
+See [ETL Pipeline](etl-pipeline.md) and [Analytics Warehouse](analytics-warehouse.md).
 
 1. Export CSV/JSON/Excel from the generator dashboard
 2. ETL pipeline ingests files with schema validation against `retail` tables
@@ -152,7 +160,7 @@ Uses the existing enterprise design system (`SectionContainer`, `PageHeader`, `D
 4. Normalized load into PostgreSQL `retail` schema
 5. Analytics and dashboard layers replace mock data
 
-Direct PostgreSQL bulk insert from the generator API is planned as an optional Phase 4 enhancement.
+Direct PostgreSQL bulk insert from the generator API remains a future enhancement.
 
 ---
 

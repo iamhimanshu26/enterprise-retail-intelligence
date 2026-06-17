@@ -1,6 +1,6 @@
 # Data Cleaning & Transformation Engine
 
-Sprint 4.2 extends the Sprint 4.1 ETL foundation with a **production-grade Data Cleaning & Transformation Engine**. The engine profiles, validates, cleans, standardizes, transforms, and scores enterprise retail datasets while maintaining a full audit trail for every change.
+Sprint 4.2 extends the Sprint 4.1 ETL foundation with a **production-grade Data Cleaning & Transformation Engine**. Phase 4 is now complete — see [Analytics Warehouse (Sprint 4.3)](analytics-warehouse.md) and [Enterprise Audit](enterprise-audit-phase-4.md).
 
 ---
 

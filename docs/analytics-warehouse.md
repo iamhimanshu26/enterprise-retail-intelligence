@@ -186,4 +186,5 @@ No changes to star schema or load engine required — only new loader implementa
 
 - [ETL Pipeline (Sprint 4.1)](etl-pipeline.md)
 - [Data Cleaning Engine (Sprint 4.2)](data-cleaning-engine.md)
+- [Enterprise Audit (Phase 4)](enterprise-audit-phase-4.md)
 - [Architecture Guide](architecture.md)

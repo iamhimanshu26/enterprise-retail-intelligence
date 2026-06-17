@@ -18,7 +18,7 @@ Phase 2 delivers the persistence and API-ready domain layer that future data and
 - **REST placeholders** — `/api/v1/stores`, `/products`, `/customers`, `/suppliers`, `/inventory`, `/sales`, `/promotions`, `/returns`
 - **OpenAPI** — Swagger UI for API exploration
 
-Phase 3 (Synthetic Retail Data Generator) will populate these tables. Phase 4 ETL and Phase 5+ analytics read from the same normalized schema. See [Data Model Guide](data-model.md).
+Phase 3 (Synthetic Retail Data Generator) populates development datasets. Phase 4 ETL loads cleaned data into the analytics warehouse. Phase 5+ analytics read from warehouse and domain APIs. See [Data Model Guide](data-model.md).
 
 ---
 
@@ -32,6 +32,7 @@ Phase 3 (Synthetic Retail Data Generator) will populate these tables. Phase 4 ET
 - API communication via Axios with JWT interceptors
 - TanStack Query for server state (prepared for Phase 2+)
 - **Executive Dashboard (Phase 1)** — mock-driven BI with reusable analytics components, lazy-loaded chart/BI modules, and API-ready filter/query hooks
+- **ETL Studio (Phase 4)** — enterprise pipeline dashboard with quality metrics, warehouse summary, lineage, and execution history
 
 **Port:** 5173 (dev) / 80 (production)
 
@@ -72,18 +73,19 @@ See [Data Model Guide](data-model.md) for entity relationships and schema detail
 ### Data Service (FastAPI)
 
 - Python-based data processing service
-- Prepared for pandas, numpy, polars, scikit-learn integration
+- **Synthetic data generator (Phase 3)** — Faker, Pandas, CSV/JSON/Excel export
+- **ETL pipeline (Phase 4)** — extract, validate, profile, clean, transform, aggregate, load
+- **Cleaning engine (Sprint 4.2)** — missing values, duplicates, standardization, business rules
+- **Analytics warehouse (Sprint 4.3)** — star schema, load strategies, lineage, execution history
 - API versioning (`/api/v1`)
-- Dependency injection and configuration management
 - Structured logging
 
 **Port:** 8000
 
-**Module Structure (prepared, not implemented):**
+**Implemented modules:**
 
 ```
-api/ core/ generator/ etl/ statistics/
-forecasting/ validation/ models/ services/ utils/
+app/generator/   app/etl/   app/api/v1/generator.py   app/api/v1/etl.py
 ```
 
 ### Database (PostgreSQL)
@@ -122,7 +124,7 @@ Frontend (React)
 
 ---
 
-## Future ETL Architecture (Phase 3)
+## ETL Architecture (Phase 4 — Complete)
 
 ```
 Data Sources ──► Ingestion Layer ──► Validation ──► Transformation ──► Load ──► PostgreSQL
@@ -139,7 +141,7 @@ Data Sources ──► Ingestion Layer ──► Validation ──► Transforma
 
 ---
 
-## Future Analytics Engine (Phase 4–5)
+## Analytics Engine (Phase 5 — Current)
 
 ```
 PostgreSQL ──► OLAP Layer ──► Analytics API ──► Frontend Dashboards
@@ -168,7 +170,7 @@ Historical Data ──► Feature Engineering ──► Model Selection ──�
 - Time series models: ARIMA, Prophet, exponential smoothing
 - ML ensembles: Random Forest, Gradient Boosting
 - Confidence intervals and scenario comparison
-- Integration with Statistics Lab (Phase 4)
+- Integration with Statistics Lab (Phase 5)
 
 ---
 

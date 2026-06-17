@@ -4,7 +4,7 @@
 
 A production-quality microservices platform demonstrating full-stack engineering, data pipelines, business intelligence, statistics, and demand forecasting — architected for Fortune 500 retail scale.
 
-[![Phase](https://img.shields.io/badge/Phase-2%20Complete-success)](/)
+[![Phase](https://img.shields.io/badge/Phase-4%20Complete-success)](/)
 [![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Spring%20%7C%20FastAPI-blue)](/)
 [![Deploy](https://img.shields.io/badge/Deploy-Vercel%20%7C%20Docker-black)](/)
 
@@ -18,7 +18,13 @@ A production-quality microservices platform demonstrating full-stack engineering
 
 ✅ **Phase 2** — Core Retail Domain & Database Model
 
-🚀 **Next Phase:** Phase 3 — Synthetic Retail Data Generator
+✅ **Phase 3** — Synthetic Retail Data Generator
+
+✅ **Phase 4** — Python ETL & Data Engineering Pipeline
+
+🚀 **Next Phase:** Phase 5 — Business Analytics & Statistics Engine
+
+The platform now supports synthetic data generation, modular Python ETL processing, data cleaning, transformation, quality scoring, analytics warehouse preparation, lineage tracking, and execution reporting.
 
 ---
 
@@ -95,19 +101,19 @@ Business Insights
                          └─────────────────────────────────────┘
 ```
 
-All services are independently deployable. Phases 0–2 establish the foundation, domain model, and executive dashboard; later phases add synthetic data, ETL, analytics, forecasting, and observability layers.
+All services are independently deployable. Phases 0–4 establish foundation, domain model, executive dashboard, synthetic data generation, and the full Python ETL pipeline; later phases add analytics, forecasting, and observability layers.
 
 ---
 
 ## Tech Stack
 
-### Current (Phases 0–2)
+### Current (Phases 0–4)
 
 | Layer | Technologies |
 |-------|----------------|
 | **Frontend** | React 19 · TypeScript · Vite · Tailwind CSS · TanStack Query · Zustand · Framer Motion · React Router |
 | **Backend** | Java 21 · Spring Boot 3 · Spring Security · JWT · Spring Data JPA · OpenAPI / Swagger · Flyway |
-| **Python** | Python 3.12 · FastAPI · Pydantic |
+| **Python** | Python 3.12 · FastAPI · Pydantic · Pandas · NumPy · Polars · DuckDB · Faker |
 | **Database** | PostgreSQL 16 · Schema-separated (`retail`, `audit`) · Flyway migrations |
 | **Infrastructure** | Docker · Docker Compose · Kubernetes manifests · Nginx reverse proxy |
 | **DevOps** | GitHub Actions CI · Vercel (frontend) · Helm charts (planned) |
@@ -141,7 +147,7 @@ Live demo: deploy frontend to Vercel and visit `/engineering` for the architectu
 enterprise-retail-intelligence/
 ├── frontend/                 # React SPA — enterprise UI shell & design system
 ├── backend-springboot/       # Spring Boot API — JWT, security, domain packages
-├── data-service-python/      # FastAPI — ETL, statistics, forecasting (planned)
+├── data-service-python/      # FastAPI — ETL, generator, statistics, forecasting
 ├── database/
 │   ├── init/                 # Docker PostgreSQL bootstrap scripts
 │   └── migrations/           # Flyway SQL migrations (Phase 2 domain schema)
@@ -289,11 +295,13 @@ Phase 14   Portfolio & Enterprise Presentation
 
 | Phase | Status |
 |-------|--------|
-| 0, 0.5, 1, 2 | ✅ Complete |
-| 3 | 🚀 Current — Synthetic Retail Data Generator |
-| 4–14 | Planned |
+| 0, 0.5, 1, 2, 3, 4 | ✅ Complete |
+| 5 | 🚀 Current — Business Analytics & Statistics Engine |
+| 6–14 | 🔒 Planned |
 
 See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
+
+See [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md) for the post-Phase-4 readiness checkpoint.
 
 ---
 
@@ -305,6 +313,7 @@ See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpo
 - [ETL Pipeline](docs/etl-pipeline.md)
 - [Data Cleaning Engine](docs/data-cleaning-engine.md)
 - [Analytics Warehouse](docs/analytics-warehouse.md)
+- [Enterprise Audit (Phase 4)](docs/enterprise-audit-phase-4.md)
 - [Frontend README](frontend/README.md)
 
 ---

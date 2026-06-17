@@ -40,7 +40,7 @@ def export_dataset(
         return None, "", "No data available for export"
 
     if format == "parquet":
-        return None, "", "Parquet export is planned for Phase 4 — use CSV, JSON, or Excel for Phase 3"
+        return None, "", "Parquet export is planned for a future release — use CSV, JSON, or Excel"
 
     buffer = io.BytesIO()
 

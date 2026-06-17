@@ -4,14 +4,14 @@ Sprint 4.1 establishes the **modular ETL foundation** for the Enterprise Retail 
 
 ## Sprint Status
 
-- ✅ Sprint 4.1 Complete — ETL foundation
-- ✅ Sprint 4.2 Complete — Data cleaning & transformation engine
-- ✅ Sprint 4.3 Complete — Analytics warehouse & data quality platform
-- ✅ Phase 4 Complete — Python ETL & Data Engineering Platform
+- ✅ Sprint 4.1 — ETL Foundation & Pipeline Framework
+- ✅ Sprint 4.2 — Data Cleaning & Transformation Engine
+- ✅ Sprint 4.3 — Analytics Warehouse & Data Quality Platform
+- ✅ Phase 4 — Python ETL & Data Engineering Pipeline Completed
 
 ---
 
-## Architecture
+## Complete Pipeline (Phase 4)
 
 ```text
 Synthetic Data / Upload / API
@@ -20,51 +20,48 @@ Synthetic Data / Upload / API
         ↓
      Validate
         ↓
+     Profile
+        ↓
       Clean
+        ↓
+   Normalize
         ↓
    Transform
         ↓
-   Normalize
+ Business Rules
         ↓
    Aggregate
         ↓
       Load
         ↓
-  Analytics Layer
+ Analytics Warehouse
         ↓
- Success Report
+ Data Lineage · Execution History · Quality Score · Metrics
+        ↓
+ Analytics Ready (Phase 5)
 ```
 
-**Module location:** `data-service-python/app/etl/`
+### Stage capabilities
 
-| Module | Responsibility |
-|--------|----------------|
-| `pipeline.py` | Orchestrates all stages end-to-end |
-| `extract.py` | CSV, Excel, JSON, PostgreSQL (interface), in-memory |
-| `validate.py` | Schema, types, PKs, enums, dates — structured reports |
-| `clean.py` | Nulls, duplicates, trim, invalid flags — auditable changes |
-| `transform.py` | Currency, dates, derived metrics, margins |
-| `normalize.py` | Regions, payment methods, statuses, categories |
-| `aggregate.py` | Sales by region, store, category, month |
-| `load.py` | PostgreSQL (interface) and DuckDB loaders |
-| `report.py` | Execution metrics, quality score, success rate |
-| `config.py` | Entity schemas, pipeline settings, stage metadata |
-| `exceptions.py` | Stage-specific error types |
+| Stage | Module(s) | Output |
+|-------|-----------|--------|
+| **Extract** | `extract.py` | Raw DataFrame from CSV, Excel, JSON, PostgreSQL interface, memory |
+| **Validate** | `validate.py` | Schema, types, PKs, enums — `ValidationReport` |
+| **Profile** | `profiling.py` | Row/column stats, nulls, distributions — `ProfilingReport` |
+| **Clean** | `clean.py`, `missing_values.py`, `duplicates.py` | Tracked cleaning with audit trail |
+| **Normalize** | `normalize.py`, `standardize.py` | Regions, prefectures, store names, categories |
+| **Transform** | `transform.py`, `dates.py`, `currency.py` | Dates, currency, derived metrics |
+| **Business rules** | `business_rules.py` | Revenue, inventory, discount, date validation |
+| **Aggregate** | `aggregate.py` | Sales by region, store, category, month |
+| **Load** | `load.py`, `load_engine.py` | Full, incremental, append, replace strategies |
+| **Analytics warehouse** | `warehouse.py` | Star schema: `fact_sales`, `dim_store`, etc. |
+| **Lineage** | `lineage.py` | Structured dataset movement metadata |
+| **Execution history** | `execution_history.py` | Pipeline runs with timing and quality score |
+| **Quality scoring** | `quality_score.py` | Six dimensions + Data Quality Index |
+| **Metrics** | `metrics.py` | Throughput, execution time, resource placeholders |
+| **Reporting** | `quality_report.py`, `report.py` | JSON execution and quality reports |
 
----
-
-## Execution Flow
-
-1. **Extract** — Load raw data via pluggable `BaseExtractor` implementations.
-2. **Validate** — Compare against `ENTITY_SCHEMAS` in `config.py`; produce `ValidationReport`.
-3. **Clean** — Apply `CleanConfig` rules; track every change in `CleaningReport`.
-4. **Transform** — Configurable transforms per entity (margins, currency precision, dates).
-5. **Normalize** — Map aliases to canonical enum values (e.g. `kanto` → `KANTO`).
-6. **Aggregate** — Build analytics-ready rollups (optional per run).
-7. **Load** — Write to DuckDB (in-memory) or prepare PostgreSQL dry-run.
-8. **Report** — `EtlExecutionReport` with rows processed, quality score, timing.
-
-Each stage returns a structured report object for future dashboard visualization.
+Orchestrators: `pipeline.py` (4.1), `cleaning_pipeline.py` (4.2), `enterprise_pipeline.py` (4.3 full flow).
 
 ---
 
@@ -77,7 +74,7 @@ Each stage returns a structured report object for future dashboard visualization
 | **Auditability** | Cleaning and validation track changes — no silent drops |
 | **Extensibility** | `BaseExtractor` / `BaseLoader` interfaces for new sources |
 | **Compatibility** | Preserves Phase 2 schemas and Phase 3 generator exports |
-| **Progressive delivery** | Sprint 4.1 = architecture; execution UI expands in 4.2+ |
+| **Progressive delivery** | Sprints 4.1–4.3 delivered incrementally; Phase 4 complete |
 
 ---
 
@@ -101,7 +98,12 @@ Additional entities from Phase 2 schema will plug into the same pattern.
 | `GET` | `/api/v1/etl/stages` | Stage metadata for UI |
 | `GET` | `/api/v1/etl/schemas` | Entity validation schemas |
 | `GET` | `/api/v1/etl/config/defaults` | Default `PipelineConfig` |
-| `POST` | `/api/v1/etl/run/sample` | Execute sample in-memory pipeline |
+| `GET` | `/api/v1/etl/cleaning/stages` | Cleaning engine stages |
+| `GET` | `/api/v1/etl/warehouse/summary` | Warehouse row counts |
+| `GET` | `/api/v1/etl/history` | Execution history |
+| `GET` | `/api/v1/etl/lineage/sample` | Sample lineage graph |
+| `GET` | `/api/v1/etl/quality/dashboard` | Quality dimensions + DQI |
+| `POST` | `/api/v1/etl/run/sample` | Execute full enterprise sample pipeline |
 | `POST` | `/api/v1/etl/run` | Execute pipeline with config |
 
 ---
@@ -146,13 +148,15 @@ Aggregation outputs (`sales_by_region`, etc.) are designed as DataFrames ready f
 
 **Route:** `/etl` — ETL Pipeline Studio
 
-Sprint 4.1 UI shows:
+The studio includes:
 
-- Pipeline status and flow diagram
-- Eight stage placeholder cards (Extract → Report)
-- Metrics: stages, schemas, load targets
-
-Interactive file upload and live execution UI planned for Sprint 4.2+.
+- Enterprise ETL flow diagram (Phase 4 complete)
+- Run Sample Pipeline execution
+- Data Quality Index and six quality dimensions
+- Warehouse summary and analytics warehouse cards
+- Data lineage flow and execution history table
+- Pipeline metrics (throughput, timing)
+- Cleaning engine stages (Sprint 4.2) and foundation stages (Sprint 4.1)
 
 ---
 
@@ -180,4 +184,5 @@ curl -X POST http://localhost:8000/api/v1/etl/run/sample
 - [Analytics Warehouse (Sprint 4.3)](analytics-warehouse.md)
 - [Synthetic Data Generator](synthetic-data-generator.md)
 - [Data Model](data-model.md)
+- [Enterprise Audit (Phase 4)](enterprise-audit-phase-4.md)
 - [Architecture Guide](architecture.md)

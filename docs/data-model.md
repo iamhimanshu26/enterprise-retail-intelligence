@@ -113,11 +113,11 @@ JPA entity field names map to snake_case columns (e.g. `storeCode` → `store_co
 
 | Phase | Integration |
 |-------|-------------|
-| Phase 3 | Synthetic data generator seeds reference and transactional data |
-| Phase 3–4 | ETL loads CSV/Excel/JSON into retail tables |
-| Phase 4–5 | Analytics engine queries normalized schema |
+| Phase 3 ✅ | Synthetic data generator — complete |
+| Phase 4 ✅ | ETL loads into analytics warehouse (DuckDB/PostgreSQL interface) |
+| Phase 5 🚀 | Analytics engine queries warehouse and domain APIs |
 | Phase 6 | Forecasting reads sales and inventory history |
-| Phase 5+ | Executive dashboard replaces mock layer with REST APIs |
+| Phase 5+ | Executive dashboard replaces mock layer with live analytics APIs |
 
 ---
 
@@ -128,4 +128,4 @@ Reference catalog structure (no generated transactional data in Phase 2):
 - `database/seed/README.md` — seeding strategy and column contracts
 - Future: `database/seed/reference/` for static lookup files
 
-Synthetic generation is intentionally deferred to Phase 3.
+Synthetic generation is available via `/generator` (Phase 3 complete).
