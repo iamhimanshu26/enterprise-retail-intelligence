@@ -552,6 +552,32 @@ Future AI Insights`}
       </SectionContainer>
 
       <SectionContainer
+        title="Enterprise Monitoring Layer"
+        description="Phase 8.1 modular monitoring backend — execution tracking through service health for the Operations Center."
+      >
+        <pre className="rounded-xl border border-border/80 bg-muted/20 p-4 text-xs leading-relaxed text-muted-foreground">
+{`Platform Modules
+        ↓
+Execution Tracker
+        ↓
+Quality Monitor
+        ↓
+Metrics Engine
+        ↓
+Failure Engine
+        ↓
+Retry Engine
+        ↓
+Service Health
+        ↓
+Operations Center (Phase 8.2)`}
+        </pre>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 8.1 — Monitoring Backend Foundation</span>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer
         title="Operations Center"
         description="Phase 8 pipeline monitoring flow from execution through future Airflow orchestration."
       >
