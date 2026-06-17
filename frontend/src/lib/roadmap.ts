@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 4
+export const CURRENT_PHASE = 5
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -75,10 +75,10 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
     phase: 4,
     title: 'Python ETL & Data Engineering Pipeline',
     description:
-      'Enterprise ETL for CSV, Excel, and JSON with validation, cleaning, duplicate removal, missing value handling, transformation, aggregation, and analytics-layer loading.',
+      'Enterprise ETL for CSV, Excel, and JSON with validation, cleaning, transformation, aggregation, analytics warehouse loading, data lineage, execution history, and quality dashboard.',
     purpose: 'Create production-quality data engineering workflows.',
     technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB'],
-    status: 'current',
+    status: 'completed',
   },
   {
     id: '5',
@@ -88,7 +88,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Revenue, profit, growth, mean, median, variance, standard deviation, customer retention, inventory turnover, and profit margin calculations.',
     purpose: 'Provide business intelligence and statistical analysis.',
     technologies: ['NumPy', 'SciPy', 'Statsmodels', 'Pandas'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '6',

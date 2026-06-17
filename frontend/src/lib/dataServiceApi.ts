@@ -65,3 +65,41 @@ export async function getEtlOverview(): Promise<import('@/types/etl').EtlOvervie
   )
   return response.data.data
 }
+
+export async function getWarehouseSummary(): Promise<import('@/types/etl').WarehouseSummary> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/etl').WarehouseSummary>
+  >('/etl/warehouse/summary')
+  return response.data.data
+}
+
+export async function getExecutionHistory(limit = 20): Promise<{
+  executions: import('@/types/etl').ExecutionRecord[]
+  total: number
+}> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<{ executions: import('@/types/etl').ExecutionRecord[]; total: number }>
+  >('/etl/history', { params: { limit } })
+  return response.data.data
+}
+
+export async function getQualityDashboard(): Promise<import('@/types/etl').QualityScore> {
+  const response = await dataServiceClient.get<DataServiceApiResponse<import('@/types/etl').QualityScore>>(
+    '/etl/quality/dashboard',
+  )
+  return response.data.data
+}
+
+export async function getSampleLineage(): Promise<import('@/types/etl').LineageData> {
+  const response = await dataServiceClient.get<DataServiceApiResponse<import('@/types/etl').LineageData>>(
+    '/etl/lineage/sample',
+  )
+  return response.data.data
+}
+
+export async function runEtlSample(): Promise<import('@/types/etl').EtlRunResult> {
+  const response = await dataServiceClient.post<DataServiceApiResponse<import('@/types/etl').EtlRunResult>>(
+    '/etl/run/sample',
+  )
+  return response.data.data
+}

@@ -12,20 +12,24 @@ from app.etl.profiling import ProfilingReport
 class QualityScore:
     def __init__(self) -> None:
         self.completeness: float = 100.0
+        self.accuracy: float = 100.0
         self.consistency: float = 100.0
         self.validity: float = 100.0
-        self.accuracy: float = 100.0
+        self.timeliness: float = 100.0
         self.uniqueness: float = 100.0
         self.overall: float = 100.0
+        self.data_quality_index: float = 100.0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "completeness": round(self.completeness, 2),
+            "accuracy": round(self.accuracy, 2),
             "consistency": round(self.consistency, 2),
             "validity": round(self.validity, 2),
-            "accuracy": round(self.accuracy, 2),
+            "timeliness": round(self.timeliness, 2),
             "uniqueness": round(self.uniqueness, 2),
             "overall": round(self.overall, 2),
+            "data_quality_index": round(self.data_quality_index, 2),
         }
 
 
@@ -50,11 +54,17 @@ def compute_quality_score(
         score.uniqueness = max(0, 100 - (duplicate_count / rows * 100))
 
     score.validity = max(0, 100 - (business_violations / rows * 100))
-    score.consistency = max(85.0, score.completeness - 2)  # baseline from normalization pass
+    score.consistency = max(85.0, score.completeness - 2)
     score.accuracy = max(0, (score.completeness + score.validity) / 2)
+    score.timeliness = max(90.0, score.validity - 1)
 
     score.overall = round(
         (score.completeness + score.consistency + score.validity + score.accuracy + score.uniqueness) / 5,
+        2,
+    )
+    score.data_quality_index = round(
+        (score.completeness + score.accuracy + score.consistency + score.validity
+         + score.timeliness + score.uniqueness) / 6,
         2,
     )
     return score

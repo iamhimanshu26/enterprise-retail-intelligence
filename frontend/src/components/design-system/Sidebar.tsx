@@ -97,9 +97,9 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onMobileClose }
         {!collapsed && (
           <div className="border-t border-sidebar-border p-4">
             <div className="rounded-lg bg-sidebar-accent/50 p-3">
-              <p className="text-xs font-medium text-sidebar-foreground">Phase 4 — ETL Pipeline</p>
+              <p className="text-xs font-medium text-sidebar-foreground">Phase 5 — Analytics & Statistics</p>
               <p className="mt-1 text-[10px] text-sidebar-muted">
-                Phase 3 generator complete — export data for ETL ingestion
+                Phase 4 ETL complete — analytics warehouse ready for BI
               </p>
             </div>
           </div>

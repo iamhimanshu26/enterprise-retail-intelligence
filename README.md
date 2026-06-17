@@ -304,6 +304,7 @@ See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpo
 - [Synthetic Data Generator](docs/synthetic-data-generator.md)
 - [ETL Pipeline](docs/etl-pipeline.md)
 - [Data Cleaning Engine](docs/data-cleaning-engine.md)
+- [Analytics Warehouse](docs/analytics-warehouse.md)
 - [Frontend README](frontend/README.md)
 
 ---

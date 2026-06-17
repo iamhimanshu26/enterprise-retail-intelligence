@@ -1,6 +1,13 @@
 # Enterprise ETL Pipeline
 
-Sprint 4.1 establishes the **modular ETL foundation** for the Enterprise Retail Intelligence & Forecasting Platform. The pipeline processes synthetic retail datasets (and future uploads) through independent, reusable stages that feed analytics, statistics, forecasting, and AI modules.
+Sprint 4.1 establishes the **modular ETL foundation** for the Enterprise Retail Intelligence & Forecasting Platform. Sprint 4.2 adds the cleaning engine; Sprint 4.3 completes Phase 4 with the analytics warehouse.
+
+## Sprint Status
+
+- ✅ Sprint 4.1 Complete — ETL foundation
+- ✅ Sprint 4.2 Complete — Data cleaning & transformation engine
+- ✅ Sprint 4.3 Complete — Analytics warehouse & data quality platform
+- ✅ Phase 4 Complete — Python ETL & Data Engineering Platform
 
 ---
 
@@ -169,6 +176,8 @@ curl -X POST http://localhost:8000/api/v1/etl/run/sample
 
 ## Related Documentation
 
+- [Data Cleaning Engine (Sprint 4.2)](data-cleaning-engine.md)
+- [Analytics Warehouse (Sprint 4.3)](analytics-warehouse.md)
 - [Synthetic Data Generator](synthetic-data-generator.md)
 - [Data Model](data-model.md)
 - [Architecture Guide](architecture.md)

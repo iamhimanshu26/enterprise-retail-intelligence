@@ -100,11 +100,11 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     title: 'Data Flow',
     description: 'End-to-end data movement from synthetic generation through transformation, analytics, and visualization layers.',
     icon: 'arrow',
-    status: 'in-progress',
+    status: 'completed',
     phase: 4,
     difficulty: 'advanced',
     technologies: ['Faker', 'Pandas', 'PostgreSQL', 'DuckDB'],
-    implementationStatus: 'Synthetic generator → ETL foundation (4.1) → cleaning engine (4.2)',
+    implementationStatus: 'Synthetic generator → ETL (4.1) → cleaning (4.2) → analytics warehouse (4.3) · Phase 4 complete',
   },
   {
     id: 'synthetic-generator',
@@ -125,12 +125,12 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description:
       'Modular enterprise ETL: extract (CSV/Excel/JSON/PostgreSQL), validate, clean, transform, normalize, aggregate, load (PostgreSQL/DuckDB), and execution reporting.',
     icon: 'workflow',
-    status: 'in-progress',
+    status: 'completed',
     phase: 4,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Polars', 'DuckDB', 'Pydantic'],
     implementationStatus:
-      'Sprint 4.1 foundation · app/etl modules · /api/v1/etl · /etl studio UI · independent stage architecture',
+      'Sprint 4.1–4.3 complete · modular ETL · warehouse · lineage · execution history · quality dashboard · /etl studio',
   },
   {
     id: 'data-cleaning-engine',
@@ -138,23 +138,49 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description:
       'Production-grade cleaning pipeline: profile → validate → detect missing → detect duplicates → clean → normalize → transform → business rules → quality score → analytics-ready output with full audit trail.',
     icon: 'workflow',
-    status: 'in-progress',
+    status: 'completed',
     phase: 4,
     difficulty: 'advanced',
     technologies: ['Pandas', 'NumPy', 'Polars', 'DuckDB', 'Pydantic'],
     implementationStatus:
-      'Sprint 4.2 · profiling · missing values · duplicates · standardization · dates/currency · business rules · quality score · audit log · quality report JSON',
+      'Sprint 4.2 complete · profiling · missing values · duplicates · standardization · dates/currency · business rules · quality score · audit log',
+  },
+  {
+    id: 'analytics-warehouse',
+    title: 'Analytics Warehouse',
+    description:
+      'Star schema analytics layer on PostgreSQL and DuckDB — fact_sales, dim_store, dim_product, dim_customer, dim_supplier, dim_date with full/incremental/append/replace load strategies.',
+    icon: 'database',
+    status: 'completed',
+    phase: 4,
+    difficulty: 'advanced',
+    technologies: ['DuckDB', 'PostgreSQL', 'Pandas', 'Star Schema'],
+    implementationStatus:
+      'Sprint 4.3 · warehouse loaders · load engine · warehouse summary API · interfaces for Snowflake/BigQuery/Redshift',
+  },
+  {
+    id: 'data-lineage',
+    title: 'Data Lineage',
+    description:
+      'End-to-end dataset lineage tracking from source files through validation, cleaning, transformation, aggregation, and warehouse tables.',
+    icon: 'gitBranch',
+    status: 'completed',
+    phase: 4,
+    difficulty: 'advanced',
+    technologies: ['Lineage Graph', 'Audit Log', 'FastAPI'],
+    implementationStatus:
+      'Sprint 4.3 · lineage engine · structured metadata · /api/v1/etl/lineage · ETL Studio lineage card',
   },
   {
     id: 'analytics',
     title: 'Analytics Pipeline',
     description: 'Real-time and batch analytics processing with dimensional modeling and OLAP capabilities.',
     icon: 'barChart',
-    status: 'planned',
+    status: 'in-progress',
     phase: 5,
     difficulty: 'advanced',
     technologies: ['Pandas', 'Star Schema', 'OLAP'],
-    implementationStatus: 'Module shell created — visualization platform in Phase 5',
+    implementationStatus: 'Phase 5 current — statistics and BI on analytics warehouse',
   },
   {
     id: 'statistics',
@@ -162,10 +188,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'Hypothesis testing, regression analysis, time series decomposition, and statistical modeling.',
     icon: 'activity',
     status: 'planned',
-    phase: 4,
+    phase: 5,
     difficulty: 'expert',
     technologies: ['Statsmodels', 'Scikit-learn', 'SciPy'],
-    implementationStatus: 'Statistics Lab placeholder — engine in Phase 4',
+    implementationStatus: 'Statistics Lab placeholder — engine in Phase 5',
   },
   {
     id: 'forecasting',
@@ -264,7 +290,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0, 0.5, 1, 2, and 3 complete · Phase 4 current`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–4 complete · Phase 5 current`,
   },
 ]
 
@@ -383,7 +409,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phases 0–3 Complete' }}
+        badge={{ status: 'completed', label: 'Phases 0–4 Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />

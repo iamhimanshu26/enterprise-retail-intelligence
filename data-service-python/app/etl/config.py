@@ -6,6 +6,13 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 
+class LoadStrategy(str, Enum):
+    FULL = "full"
+    INCREMENTAL = "incremental"
+    APPEND = "append"
+    REPLACE = "replace"
+
+
 class SourceFormat(str, Enum):
     CSV = "csv"
     EXCEL = "xlsx"
@@ -207,10 +214,24 @@ class TransformConfig(BaseModel):
     currency_precision: int = 2
 
 
+class LoadStrategy(str, Enum):
+    FULL = "full"
+    INCREMENTAL = "incremental"
+    APPEND = "append"
+    REPLACE = "replace"
+
+
 class LoadConfig(BaseModel):
     target: LoadTarget = LoadTarget.DUCKDB
     dry_run: bool = False
     table_prefix: str = "retail_"
+    strategy: LoadStrategy = LoadStrategy.REPLACE
+
+
+class WarehouseConfig(BaseModel):
+    target: LoadTarget = LoadTarget.DUCKDB
+    strategy: LoadStrategy = LoadStrategy.REPLACE
+    enabled: bool = True
 
 
 class PipelineConfig(BaseModel):
@@ -220,8 +241,10 @@ class PipelineConfig(BaseModel):
     clean: CleanConfig = Field(default_factory=CleanConfig)
     transform: TransformConfig = Field(default_factory=TransformConfig)
     load: LoadConfig = Field(default_factory=LoadConfig)
+    warehouse: WarehouseConfig = Field(default_factory=WarehouseConfig)
     run_aggregations: bool = True
     use_cleaning_engine: bool = True
+    use_warehouse: bool = True
 
 
 class StageInfo(BaseModel):
