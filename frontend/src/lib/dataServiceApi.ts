@@ -58,3 +58,10 @@ export async function getPreview(jobId: string, entity: string): Promise<Preview
 export function getExportUrl(jobId: string, entity: string, format: string): string {
   return `${DATA_SERVICE_URL}/api/v1/generator/jobs/${jobId}/export/${entity}/${format}`
 }
+
+export async function getEtlOverview(): Promise<import('@/types/etl').EtlOverview> {
+  const response = await dataServiceClient.get<DataServiceApiResponse<import('@/types/etl').EtlOverview>>(
+    '/etl/overview',
+  )
+  return response.data.data
+}

@@ -24,6 +24,12 @@ const SyntheticDataGenerator = lazy(() =>
   })),
 )
 
+const EtlPipelineStudio = lazy(() =>
+  import('@/features/etl/EtlPipelineStudio').then((m) => ({
+    default: m.EtlPipelineStudio,
+  })),
+)
+
 function DashboardFallback() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -92,7 +98,11 @@ export function AppRouter() {
         <Route path="suppliers" element={<PlaceholderPage navId="supplier-analytics" />} />
         <Route path="statistics" element={<PlaceholderPage navId="statistics-lab" />} />
         <Route path="forecasting" element={<PlaceholderPage navId="forecasting-center" />} />
-        <Route path="etl" element={<PlaceholderPage navId="etl-pipeline-studio" />} />
+        <Route path="etl" element={
+          <Suspense fallback={<DashboardFallback />}>
+            <EtlPipelineStudio />
+          </Suspense>
+        } />
         <Route path="generator" element={
           <Suspense fallback={<DashboardFallback />}>
             <SyntheticDataGenerator />

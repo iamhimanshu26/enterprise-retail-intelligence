@@ -90,7 +90,7 @@ export const NAVIGATION: NavItem[] = [
     path: '/etl',
     icon: Workflow,
     description: 'Design and manage data pipelines',
-    phase: 3,
+    phase: 4,
   },
   {
     id: 'synthetic-data-generator',

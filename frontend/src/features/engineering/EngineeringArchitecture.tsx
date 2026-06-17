@@ -93,7 +93,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'intermediate',
     technologies: ['FastAPI', 'Pydantic', 'Uvicorn'],
-    implementationStatus: 'Health endpoint · Faker/Pandas synthetic generator · /api/v1/generator',
+    implementationStatus: 'Health endpoint · Faker/Pandas generator · modular ETL pipeline · /api/v1/etl',
   },
   {
     id: 'data-flow',
@@ -101,10 +101,10 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     description: 'End-to-end data movement from synthetic generation through transformation, analytics, and visualization layers.',
     icon: 'arrow',
     status: 'in-progress',
-    phase: 3,
+    phase: 4,
     difficulty: 'advanced',
-    technologies: ['Faker', 'Pandas', 'PostgreSQL'],
-    implementationStatus: 'Synthetic generator live — ETL ingestion in Phase 4',
+    technologies: ['Faker', 'Pandas', 'PostgreSQL', 'DuckDB'],
+    implementationStatus: 'Synthetic generator → ETL pipeline foundation (Sprint 4.1)',
   },
   {
     id: 'synthetic-generator',
@@ -122,13 +122,15 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
   {
     id: 'etl',
     title: 'ETL Pipeline',
-    description: 'Batch and streaming ETL pipelines with validation, error handling, and pipeline orchestration.',
+    description:
+      'Modular enterprise ETL: extract (CSV/Excel/JSON/PostgreSQL), validate, clean, transform, normalize, aggregate, load (PostgreSQL/DuckDB), and execution reporting.',
     icon: 'workflow',
-    status: 'planned',
+    status: 'in-progress',
     phase: 4,
     difficulty: 'advanced',
-    technologies: ['Python', 'Pandas', 'Airflow'],
-    implementationStatus: 'Synthetic data export ready — pipeline engine in Phase 4',
+    technologies: ['Pandas', 'Polars', 'DuckDB', 'Pydantic'],
+    implementationStatus:
+      'Sprint 4.1 foundation · app/etl modules · /api/v1/etl · /etl studio UI · independent stage architecture',
   },
   {
     id: 'analytics',
