@@ -26,7 +26,9 @@ Business Metrics
         ↓
 Executive Dashboard (Phase 5 complete)
         ↓
-Forecasting & AI Insights (Phase 6+)
+Visualization Platform (Phase 6 complete)
+        ↓
+Forecasting & AI Insights (Phase 7+)
 ```
 
 **Module location:** `data-service-python/app/statistics/`
@@ -117,8 +119,8 @@ Components:
 | Phase | Integration |
 |-------|-------------|
 | Sprint 5.3 | Executive Intelligence Platform consumes analytics report for executive dashboard |
-| Phase 6 | Visualization platform charts from analytics breakdown outputs |
-| Phase 7 | Forecasting consumes time-series statistics and sales analytics |
+| Phase 6 ✅ | Visualization platform — framework, dashboards, executive studio |
+| Phase 7 🚀 | Forecasting consumes time-series statistics and sales analytics |
 | Phase 11 | AI insights explain business metric anomalies |
 
 ---

@@ -1,6 +1,6 @@
 # Enterprise Audit — Phase 4 Complete
 
-> **Historical checkpoint (Phase 4).** Phases 0–5 are now complete; Phase 6 (Enterprise Data Visualization Platform) is current. See [phase-plan.md](phase-plan.md).
+> **Historical checkpoint (Phase 4).** Phases 0–6 are now complete; Phase 7 (Forecasting & Predictive Analytics) is current. See [phase-plan.md](phase-plan.md).
 
 Post-Phase-4 production-readiness checkpoint for the **Enterprise Retail Intelligence & Forecasting Platform**.
 

@@ -99,10 +99,10 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onMobileClose }
           <div className="border-t border-sidebar-border p-4">
             <div className="rounded-lg bg-sidebar-accent/50 p-3">
               <p className="text-xs font-medium text-sidebar-foreground">
-                Phase {CURRENT_PHASE} — Data Visualization Platform
+                Phase {CURRENT_PHASE} — Forecasting & Predictive Analytics
               </p>
               <p className="mt-1 text-[10px] text-sidebar-muted">
-                Phase 5 complete — statistics, analytics, and executive intelligence live
+                Phase 6 complete — visualization framework and executive studio live
               </p>
             </div>
           </div>

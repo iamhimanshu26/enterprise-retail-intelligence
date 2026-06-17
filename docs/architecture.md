@@ -4,6 +4,8 @@
 
 The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–14 roadmap (`frontend/src/lib/roadmap.ts` in the application).
 
+**Platform phase:** Phases 0–6 complete · **Phase 7 (Forecasting & Predictive Analytics) current**
+
 ---
 
 ## Phase 2 — Core Retail Domain & Database Model

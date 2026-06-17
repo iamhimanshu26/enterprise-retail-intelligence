@@ -82,7 +82,7 @@ export const ExecutiveDashboard = memo(function ExecutiveDashboard() {
       <DashboardPageHeader
         title="Executive Dashboard"
         description={`Enterprise business intelligence for retail executives — ${workspace.label} workspace.`}
-        badge="Phase 5 Complete · Executive Intelligence"
+        badge="Phase 6 Complete · Executive Intelligence"
         lastUpdated={lastUpdated}
         onRefresh={() => refetch()}
         refreshing={isFetching}

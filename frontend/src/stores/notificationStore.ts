@@ -21,8 +21,8 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   },
   {
     id: '2',
-    title: 'Phase 5 Complete',
-    message: 'Statistics, business analytics, and executive intelligence APIs are live. Phase 6 visualization begins next.',
+    title: 'Phase 6 Complete',
+    message: 'Visualization framework, interactive dashboards, and Executive Visualization Studio are live. Phase 7 forecasting begins next.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),

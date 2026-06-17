@@ -116,8 +116,8 @@ JPA entity field names map to snake_case columns (e.g. `storeCode` → `store_co
 | Phase 3 ✅ | Synthetic data generator — complete |
 | Phase 4 ✅ | ETL loads into analytics warehouse (DuckDB/PostgreSQL interface) |
 | Phase 5 ✅ | Statistics, business analytics, and executive intelligence APIs |
-| Phase 6 🚀 | Enterprise visualization platform — charts and interactive dashboards |
-| Phase 7 | Forecasting reads sales and inventory history |
+| Phase 6 ✅ | Enterprise visualization platform — framework, dashboards, executive studio |
+| Phase 7 🚀 | Forecasting reads sales and inventory history |
 
 ---
 

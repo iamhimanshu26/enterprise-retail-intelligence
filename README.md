@@ -300,9 +300,9 @@ Phase 14   Portfolio & Enterprise Presentation
 
 | Phase | Status |
 |-------|--------|
-| 0, 0.5, 1, 2, 3, 4, 5 | ✅ Complete |
-| 6 | 🚀 Current — Visualization Framework (Sprint 6.1) |
-| 7–14 | 🔒 Planned |
+| 0, 0.5, 1, 2, 3, 4, 5, 6 | ✅ Complete |
+| 7 | 🚀 Current — Forecasting & Predictive Analytics |
+| 8–14 | 🔒 Planned |
 
 See [Development Phase Plan](docs/phase-plan.md) for full deliverables and purpose statements.
 

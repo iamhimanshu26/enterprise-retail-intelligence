@@ -291,11 +291,11 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     title: 'Forecasting Engine',
     description: 'Demand forecasting with ARIMA, Prophet, ML ensembles, and scenario planning capabilities.',
     icon: 'lineChart',
-    status: 'planned',
-    phase: 6,
+    status: 'in-progress',
+    phase: 7,
     difficulty: 'expert',
     technologies: ['Prophet', 'ARIMA', 'XGBoost'],
-    implementationStatus: 'Forecasting Center placeholder — models in Phase 6',
+    implementationStatus: 'Forecasting Center placeholder — models in Phase 7',
   },
   {
     id: 'database',
@@ -383,7 +383,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phase 5 complete · Phase 6 current`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–6 complete · Phase 7 current`,
   },
 ]
 
@@ -502,7 +502,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phase 6 Complete · Sprint 6.3' }}
+        badge={{ status: 'in-progress', label: 'Phase 7 · Forecasting' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
