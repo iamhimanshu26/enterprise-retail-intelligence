@@ -4,7 +4,7 @@
 
 The Enterprise Retail Intelligence & Forecasting Platform is a microservices-based system designed for horizontal scalability, independent deployment, and enterprise-grade reliability. Phase 0 establishes the architectural foundation; see [Development Phase Plan](phase-plan.md) for the full Phase 0–14 roadmap (`frontend/src/lib/roadmap.ts` in the application).
 
-**Platform phase:** Phases 0–7 complete · **Phase 8 (Pipeline Monitoring & Data Quality) current**
+**Platform phase:** Phases 0–8 complete · **Phase 9 (Workflow Orchestration — Airflow) current**
 
 ---
 
@@ -168,6 +168,10 @@ Forecasting (Phase 7)
 Forecasting Center (Phase 7.2)
         ↓
 Pipeline Monitoring (Phase 8)
+        ↓
+Operations Center (Phase 8.2)
+        ↓
+Workflow Orchestration (Phase 9)
 ```
 
 - **Statistics Engine** — descriptive, business, distribution, time-series, regional, health metrics
@@ -176,9 +180,28 @@ Pipeline Monitoring (Phase 8)
 - **Executive Visualization Studio (Sprint 6.3)** — KPI board, target vs actual, business health, anomalies, gallery at `/executive-visualization`
 - **Forecasting Engine (Phase 7)** — `/api/v1/forecasting` — sales, revenue, demand, inventory, store forecasts, accuracy, scenarios
 - **Forecasting Center (Phase 7)** — `/forecasting` — executive summary, charts, accuracy dashboard, scenario planner
-- API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, `/api/v1/intelligence/*`, and `/api/v1/forecasting/*`
+- **Pipeline Monitoring (Phase 8)** — `/api/v1/monitoring` — execution tracking, quality, failures, retries, lineage, service health
+- **Operations Center (Phase 8.2)** — `/pipeline` — executive monitoring overview, status board, quality center, failure/retry dashboards
+- API: `/api/v1/statistics/*`, `/api/v1/analytics/*`, `/api/v1/intelligence/*`, `/api/v1/forecasting/*`, and `/api/v1/monitoring/*`
 - Sales, inventory, customer, supplier, product, regional, ETL quality, and executive intelligence dashboard routes
-- See [Forecasting Engine](forecasting-engine.md) and [Forecasting Center](forecasting-center.md)
+- See [Forecasting Engine](forecasting-engine.md), [Forecasting Center](forecasting-center.md), [Operations Center](operations-center.md), and [Pipeline Monitoring](pipeline-monitoring.md)
+
+---
+
+## Pipeline Monitoring (Phase 8 — Complete)
+
+```
+Pipeline Execution ──► Execution Tracking ──► Quality Monitoring
+        │                      │
+        ▼                      ▼
+ Failure Analysis ──► Retry Management ──► Operations Center UI
+```
+
+- Aggregates ETL execution history into platform-wide operational KPIs
+- Data quality dimensions with history trends
+- Failure analysis and retry recommendation placeholders
+- Service health cards for all platform services
+- Ready for Airflow orchestration in Phase 9
 
 ---
 

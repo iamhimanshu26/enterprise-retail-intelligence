@@ -300,6 +300,19 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
       'Phase 7 complete · app/forecasting · /forecasting center · accuracy dashboard · scenario planner · /api/v1/forecasting',
   },
   {
+    id: 'pipeline-monitoring',
+    title: 'Pipeline Monitoring & Operations Center',
+    description:
+      'Pipeline health, execution history, data quality, failure analysis, retry management, lineage, and service health dashboards.',
+    icon: 'activity',
+    status: 'completed',
+    phase: 8,
+    difficulty: 'advanced',
+    technologies: ['FastAPI', 'React', 'TanStack Query', 'Recharts'],
+    implementationStatus:
+      'Phase 8 complete · /pipeline operations center · /api/v1/monitoring · quality · failures · retries · lineage',
+  },
+  {
     id: 'database',
     title: 'Database Schema',
     description: 'Normalized retail domain model in PostgreSQL with Flyway migrations, UUID keys, indexes, and CHECK constraints for analytics readiness.',
@@ -359,11 +372,11 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     title: 'Monitoring & Observability',
     description: 'Distributed tracing, metrics collection, log aggregation, and alerting with Prometheus and Grafana.',
     icon: 'monitor',
-    status: 'planned',
+    status: 'in-progress',
     phase: 12,
     difficulty: 'advanced',
     technologies: ['Prometheus', 'Grafana', 'Jaeger'],
-    implementationStatus: 'Pipeline Monitor placeholder — observability in Phase 12',
+    implementationStatus: 'Operations Center live — full Prometheus/Grafana stack in Phase 12',
   },
   {
     id: 'folder-structure',
@@ -385,7 +398,7 @@ const ARCHITECTURE_SECTIONS: ArchitectureSection[] = [
     phase: 0,
     difficulty: 'beginner',
     technologies: ['Roadmap', 'Phased Delivery'],
-    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–7 complete · Phase 8 current`,
+    implementationStatus: `${ENTERPRISE_PHASE_COUNT}-phase enterprise roadmap — Phases 0–8 complete · Phase 9 current`,
   },
 ]
 
@@ -504,7 +517,7 @@ export function EngineeringArchitecture() {
       <PageHeader
         title="Engineering Architecture"
         description="Internal engineering documentation portal for system design, technology decisions, and the complete development roadmap."
-        badge={{ status: 'completed', label: 'Phase 7 · Forecasting Complete' }}
+        badge={{ status: 'completed', label: 'Phase 8 · Monitoring Complete' }}
       />
 
       <Breadcrumb items={[{ label: 'Engineering Architecture' }]} />
@@ -535,6 +548,32 @@ Future AI Insights`}
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
           <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 7 Completed</span>
           <span className="rounded-md bg-success/10 px-2 py-1 text-success">Forecasting Platform Operational</span>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer
+        title="Operations Center"
+        description="Phase 8 pipeline monitoring flow from execution through future Airflow orchestration."
+      >
+        <pre className="rounded-xl border border-border/80 bg-muted/20 p-4 text-xs leading-relaxed text-muted-foreground">
+{`Pipeline Execution
+        ↓
+Execution Tracking
+        ↓
+Quality Monitoring
+        ↓
+Failure Analysis
+        ↓
+Retry Management
+        ↓
+Operations Center
+        ↓
+Future Airflow`}
+        </pre>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 8.1 Complete</span>
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 8.2 Complete</span>
+          <span className="rounded-md bg-success/10 px-2 py-1 text-success">✅ Phase 8 — Pipeline Monitoring & Data Quality Completed</span>
         </div>
       </SectionContainer>
 

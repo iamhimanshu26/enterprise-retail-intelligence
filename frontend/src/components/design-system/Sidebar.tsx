@@ -99,10 +99,10 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onMobileClose }
           <div className="border-t border-sidebar-border p-4">
             <div className="rounded-lg bg-sidebar-accent/50 p-3">
               <p className="text-xs font-medium text-sidebar-foreground">
-                Phase {CURRENT_PHASE} — Pipeline Monitoring & Data Quality
+                Phase {CURRENT_PHASE} — Workflow Orchestration (Airflow)
               </p>
               <p className="mt-1 text-[10px] text-sidebar-muted">
-                Phase 7 complete — Forecasting Center and scenario planning live
+                Phase 8 complete — Operations Center and data quality live
               </p>
             </div>
           </div>

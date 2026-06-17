@@ -1,6 +1,6 @@
 # Development Phase Plan
 
-> **Phase status:** Phases 0–7 complete · **Phase 8 current** (Pipeline Monitoring & Data Quality)
+> **Phase status:** Phases 0–8 complete · **Phase 9 current** (Workflow Orchestration — Airflow)
 
 > **Single source of truth (application):** `frontend/src/lib/roadmap.ts`  
 > Phases **0–14** (15 enterprise development phases) plus **Phase 0.5** UX milestone.
@@ -145,19 +145,21 @@ Implement enterprise ETL pipelines supporting CSV, Excel, and JSON with validati
 
 ---
 
-## 🚀 Phase 8 — Pipeline Monitoring & Data Quality
+## ✅ Phase 8 — Pipeline Monitoring & Data Quality
 
-**Status:** Current
+**Status:** Complete (Sprints 8.1, 8.2)
 
-Display pipeline status, success/failure, runtime, quality score, validation reports, and execution history.
+**Sprint 8.1:** Monitoring engine — `/api/v1/monitoring`, execution aggregation, quality, failures, retries. See `docs/pipeline-monitoring.md`.
+
+**Sprint 8.2:** Pipeline Operations Center at `/pipeline`. See `docs/operations-center.md`.
 
 **Purpose:** Monitor ETL health and reliability.
 
 ---
 
-## Phase 9 — Airflow Workflow Orchestration
+## 🚀 Phase 9 — Workflow Orchestration (Airflow)
 
-**Status:** Planned
+**Status:** Current
 
 Integrate Apache Airflow for scheduled ETL, retry logic, DAG monitoring, and workflow history.
 

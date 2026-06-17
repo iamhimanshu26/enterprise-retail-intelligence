@@ -310,3 +310,17 @@ export async function getForecastingScenarios(): Promise<import('@/types/forecas
   >('/forecasting/scenarios')
   return response.data.data
 }
+
+export async function getMonitoringOverview(): Promise<import('@/types/monitoring').MonitoringOverview> {
+  const response = await dataServiceClient.get<
+    DataServiceApiResponse<import('@/types/monitoring').MonitoringOverview>
+  >('/monitoring/overview')
+  return response.data.data
+}
+
+export async function runMonitoringSample(): Promise<import('@/types/monitoring').MonitoringReport> {
+  const response = await dataServiceClient.post<
+    DataServiceApiResponse<import('@/types/monitoring').MonitoringReport>
+  >('/monitoring/run-sample')
+  return response.data.data
+}

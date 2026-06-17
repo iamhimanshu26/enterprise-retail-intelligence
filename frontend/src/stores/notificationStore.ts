@@ -22,7 +22,7 @@ const INITIAL_NOTIFICATIONS: Notification[] = [
   {
     id: '2',
     title: 'Phase 6 Complete',
-    message: 'Forecasting Center is live with accuracy dashboard and scenario planning. Phase 8 pipeline monitoring begins next.',
+    message: 'Pipeline Operations Center is live with quality monitoring and failure analysis. Phase 9 Airflow orchestration begins next.',
     type: 'info',
     read: false,
     timestamp: new Date(Date.now() - 3600000).toISOString(),

@@ -5,6 +5,7 @@ import { LoginPage } from '@/features/auth/LoginPage'
 import { LandingPage } from '@/features/landing/LandingPage'
 import { PlaceholderPage } from '@/features/placeholder/PlaceholderPage'
 import { ForecastingCenter } from '@/features/forecasting/ForecastingCenter'
+import { OperationsCenter } from '@/features/monitoring/pages/OperationsCenter'
 import { useAuthStore } from '@/stores/authStore'
 
 const ExecutiveDashboard = lazy(() =>
@@ -255,7 +256,7 @@ export function AppRouter() {
             <SyntheticDataGenerator />
           </Suspense>
         } />
-        <Route path="pipeline" element={<PlaceholderPage navId="pipeline-monitor" />} />
+        <Route path="pipeline" element={<OperationsCenter />} />
         <Route path="insights" element={<PlaceholderPage navId="business-insights" />} />
         <Route
           path="engineering"

@@ -8,7 +8,7 @@ Enterprise-grade React application for the **Enterprise Retail Intelligence & Fo
 
 The frontend is a production-quality single-page application built for Fortune 500 retail operations. It provides a unified interface for retail intelligence, business analytics, ETL pipeline management, forecasting, and system architecture documentation.
 
-**Current status:** **Phases 0–7 complete** — through forecasting & predictive analytics (engine, Forecasting Center, accuracy dashboard, scenario planning). **Phase 8 current** — pipeline monitoring & data quality.
+**Current status:** **Phases 0–8 complete** — through pipeline monitoring & Operations Center. **Phase 9 current** — Airflow workflow orchestration.
 
 ---
 

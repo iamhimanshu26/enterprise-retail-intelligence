@@ -17,7 +17,7 @@ export const ENTERPRISE_PHASE_COUNT = 15
 export const ROADMAP_ITEM_COUNT = 16
 
 /** Next phase under active development. */
-export const CURRENT_PHASE = 8
+export const CURRENT_PHASE = 9
 
 export const PROJECT_ROADMAP: ProjectPhase[] = [
   {
@@ -118,7 +118,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Pipeline status, success/failure, runtime, quality score, validation reports, and execution history.',
     purpose: 'Monitor ETL health and reliability.',
     technologies: ['WebSocket', 'Prometheus', 'FastAPI'],
-    status: 'current',
+    status: 'completed',
   },
   {
     id: '9',
@@ -128,7 +128,7 @@ export const PROJECT_ROADMAP: ProjectPhase[] = [
       'Scheduled ETL, retry logic, DAG monitoring, and workflow history via Apache Airflow.',
     purpose: 'Automate enterprise data pipelines.',
     technologies: ['Apache Airflow', 'Celery', 'Redis'],
-    status: 'locked',
+    status: 'current',
   },
   {
     id: '10',

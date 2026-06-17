@@ -153,11 +153,11 @@ export const NAVIGATION: NavItem[] = [
   },
   {
     id: 'pipeline-monitor',
-    label: 'Pipeline Monitor',
+    label: 'Operations Center',
     path: '/pipeline',
     icon: Activity,
-    description: 'Real-time pipeline health and metrics',
-    phase: 7,
+    description: 'Pipeline health, quality, failures, and service monitoring',
+    phase: 8,
   },
   {
     id: 'business-insights',
